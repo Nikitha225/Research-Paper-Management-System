@@ -33,6 +33,37 @@
         </p>
       </section>
       <section class="entanglement">
+        <h2>Entanglement in NetSquid</h2>
+        <div class="section-desc">
+          <p>
+            Figure 1 depicts the block-level representation of components in
+            NetSquid for the entanglement of two nodes in a network. Such as for
+            entanglement, it requires two nodes. Let us consider.
+          </p>
+          <ul>
+            <li>
+              As the source node, Node A consists of the Quantum Source
+              component, which generates qubits, and Quantum Processor, which
+              performs quantum operations. By default, a quantum processor
+              consists of Quantum Memory which stores the qubits in its memory.
+            </li>
+            <li>
+              Similarly, Node B, as the destination node, consists of Quantum
+              Processor (includes Quantum Memory).
+            </li>
+            <li>
+              Node A and Node B are connected using Connection, an abstract
+              communication link between nodes. Under the hood, it consists of
+              either a Quantum or Classical Channel. In the case of
+              Entanglement, it consists of Quantum Channel.
+            </li>
+            <li>
+              4. So, the entanglement is performed between nodes by generating
+              two qubits entangled by Quantum Source at Node A and sending one
+              qubit from its qout0 port to
+            </li>
+          </ul>
+        </div>
         <div class="img-box">
           <img
             class="entanglement-img"
@@ -42,6 +73,55 @@
         </div>
       </section>
       <section class="teleportation">
+        <h2>Teleportation in NetSquid</h2>
+        <div class="section-desc">
+          <p>
+            In Figure 2, a block diagram of quantum teleportation has two nodes,
+            Node A and Node B connected by Classical and Quantum Connections.
+            Where Quantum connection acts as a Quantum Source to generate qubits
+            and send them to both nodes, the Classical channel in Classical
+            connection transfers classical bits from Node A to Node B for
+            recreating the original qubit.
+          </p>
+          <ul>
+            <li>
+              Initially, Node A has a qubit that wants to transfer to Node B.
+            </li>
+            <li>
+              Quantum Source at Entanglement connection generates entangled
+              qubits and transfers the qubits to Quantum channels C2A and C2B
+              from ports qout0 and qout1 respectively.
+            </li>
+            <li>
+              Once quantum channels receive the qubits, they transfer the qubits
+              from receive ports to Entanglement Connection output ports A and
+              B. Then Qubits are transferred to Node A and Node B to their ports
+              port_ac and port_bc, respectively.
+            </li>
+            <li>
+              Once Node A receives a qubit at its input port, it stores it in
+              Quantum memory via the qin1 port. Similarly, Node B also stores a
+              qubit in its respective memory.
+            </li>
+            <li>
+              Now Node A measures with a qubit that it wants to transfer to Node
+              B with the newly arrived entangled qubit and transfers the
+              measurement in the form of classical bits via the Classical
+              channel.
+            </li>
+            <li>
+              Hence teleportation is achieved by transferring classical bits
+              from the cin_alice output port to A port of Classical connection,
+              connection input port to Classical channel send input port to recv
+              port, followed by connection’s B output port to cout_bob input
+              port at Node B.
+            </li>
+            <li>
+              Once Node B receives Classical bits, it performs correction on its
+              newly arrived entangled qubit to get the original qubit.
+            </li>
+          </ul>
+        </div>
         <div class="img-box">
           <img
             class="teleportation-img"
@@ -51,11 +131,86 @@
         </div>
       </section>
       <section class="purify">
+        <h2>Purification in NetSquid</h2>
+        <div class="section-desc">
+          <p>
+            Figure 3 describes the Purification protocol in which the fidelity
+            between two entangled nodes improves by performing distillation and
+            purification sub-protocols. The working mechanism is as follows.
+          </p>
+          <ul>
+            <li>
+              Initially, Node A has Quantum Source to generate entangled qubits
+              and a Quantum processor to store qubits in its memory.
+            </li>
+            <li>
+              First Quantum Source at Node A generates qubits and stores one
+              qubit in Quantum memory from its qout0 port to Quantum memory qin0
+              port. It sends another entangled qubit from its qout1 port to Node
+              A external port port_name_a to Entanglement Connection input port
+              A.
+            </li>
+            <li>
+              Inside Entanglement Connection. It transfers a qubit from its
+              input port A to Quantum Channel’s input’s send port to the
+              output’s recv port to Entanglement Connection’s output port B.
+            </li>
+            <li>
+              From Entanglement Connection’s B port; a qubit is transferred to
+              Node B’s port_name_b input port to Quantum memory qin0 input port.
+            </li>
+            <li>
+              Node A performs local measurement and transmits the message to
+              Node B via a classical channel inside a classical connection, as
+              shown in Figure 3 Purification.
+            </li>
+            <li>
+              If the local measurement at Node A is the same as the local
+              measurement at Node B, then the Success signal is sent; else Fail
+              Signal is sent, and the Entanglement process is repeated.
+            </li>
+            <li>
+              Hence all the steps are repeated until the entanglement is
+              successful and local measurements are equal in the Filtering
+              sub-protocol; Fidelity is above a certain threshold in the
+              Distillation sub-protocol.
+            </li>
+          </ul>
+        </div>
         <div class="img-box">
           <img class="purify-img" src="/img/netsquid-purify.png" alt="" />
         </div>
       </section>
       <section class="purify-protocols">
+        <h2>Purification protocol in NetSquid</h2>
+        <div class="section-desc">
+          <p>
+            Purification protocol is used to achieve Purification in Quantum
+            entanglement and repeater, It works with the help of the Signaling
+            protocol as mentioned above. The working of purification as follows.
+          </p>
+          <ul>
+            <li>
+              Initially Node A and Node B in Figure 3 Purification, won't have
+              the entangled qubits and entanglement generation happens when
+              input signal is Wait or Fail.
+            </li>
+            <li>
+              Hence Wait signal is generated at Node A then Quantum Source
+              generates entangled qubits and shares each between Node A and Node
+              B.
+            </li>
+            <li>
+              Once both nodes receives qubits, then local measurement performs
+              at respective nodes for purification (i.e. Either Distillation of
+              Filtering sub-protocols), following by purification.
+            </li>
+            <li>
+              If purification is success at both nodes, then overall
+              purification is success, else all above steps are repeated.
+            </li>
+          </ul>
+        </div>
         <div class="img-box">
           <img
             class="purify-protocols-img"
@@ -65,11 +220,90 @@
         </div>
       </section>
       <section class="repeater">
+        <h2>Repeater in NetSquid</h2>
+        <div class="section-desc">
+          <p>
+            Repeater protocol is a process of achieving long distance
+            entanglement with the help of repeater nodes as an intermediate in
+            between source and destination nodes. This is achieved as follows.
+          </p>
+          <ul>
+            <li>
+              Consider three nodes Node A, Node R and Node B as source, repeater
+              and destination nodes respectively.
+            </li>
+            <li>
+              Node A and Node B has both Quantum source and Quantum
+              Processor(also memory) and Node R has only Quantum processor.
+            </li>
+            <li>
+              Node A and Node R are connected by Entanglement Channel and
+              Classical Channel, similarly between Node R and Node B.
+            </li>
+            <li>
+              Initially, Node A and Node B generates Entangled qubits and stores
+              one of qubits in its respective memory locations via respective
+              ports.
+            </li>
+            <li>
+              Second qubit at Node A transfers to Node R via Quantum
+              Channel(A->R) in Entanglement Connection Similarly, Node B
+              transfers to Node R via (B->R) Quantum Channel as show in Figure 5
+              Repeater.
+            </li>
+            <li>
+              Once qubits reached Node B, they stores in qin0 and qin1 ports at
+              Node R, Purification protocol takes place at each node( either
+              Distillation or purification sub-protocol)
+            </li>
+            <li>
+              Then Node R performs measurement on two qubits(similar to
+              teleportation), then transfers the classical bits to Node B.
+            </li>
+            <li>
+              Node B performs correction and sends success signal, then if Node
+              A and Node B are success then repeater protocol is success.
+            </li>
+          </ul>
+        </div>
         <div class="img-box">
           <img class="repeater-img" src="/img/netsquid-repeater.png" alt="" />
         </div>
       </section>
       <section class="repeater-protocols">
+        <h2>Repeater protocol</h2>
+        <div class="section-desc">
+          <p>
+            Below flow diagram follows the signaling mechanism in repeater
+            protocol, as signals genete events the entities progress from one
+            stage to another stage by notifying with the help of signals, the
+            following is the brief description.
+          </p>
+          <ul>
+            <li>
+              Initially, Node A, Node R and Node B dont have entangled qubits,
+              waiting for Wait or Fail signal to generate entangled qubits.
+            </li>
+            <li>
+              So, Wait signal is sent to both Node A and Node B, then they
+              generate qubits at respective nodes and transfers pair to Node R.
+            </li>
+            <li>
+              Once Node R receives qubits from both nodes, then four nodes
+              performs Purification protocol (either Distillation or
+              Purification).
+            </li>
+            <li>
+              Once Purification is success at Node R, it performs measurement on
+              its qubits and sends the measurement to Node B.
+            </li>
+            <li>
+              Then Node B performs correction and sends the Success signal.
+              Hence if Node A and Node B signals are success then overall
+              repeater protocol is success else the above steps are repeated.
+            </li>
+          </ul>
+        </div>
         <div class="img-box">
           <img
             class="repeater-protocols-img"
