@@ -12,14 +12,17 @@ def pdf_page_to_json(pdf_page):
     paraNum = 1
     paraText = ""
     prevLine = ""
-    para_content = ""
+    line_content = ""
     for paraNum, content in enumerate(pdf_page):
-        fontSize, bold, paraContent = content[0], content[1], content[2]
-        para_content = paraContent.strip().split("\n")
-        para_content = " ".join(para_content)
+        para = {}
+        for lineNum, lineContent in enumerate(content):
+            fontSize, bold, lineContent = lineContent[0], lineContent[1], lineContent[2]
 
-        page_json["paragraph_" + str(paraNum)] = {"font_size": round(fontSize), "bold": bold, "text": para_content}
-        para_content = ""
+            line_content = lineContent.strip().split("\n")
+            line_content = " ".join(line_content)
+
+            para["line_" + str(lineNum)] = {"font_size": round(fontSize), "bold": bold, "text": line_content}
+        page_json["paragraph_" + str(paraNum)] = para
 
     # for page_line in pageLines:
     #     if page_line != '\n':
@@ -51,6 +54,7 @@ def pdf_to_json(pdf_file):
     page_no = 0
     for pdf_layout in extract_pages(pdf_file):
         for element in pdf_layout:
+            Extract_lines = []
             if isinstance(element, LTTextContainer):
                 for text_line in element:
                     bold = False
@@ -59,7 +63,8 @@ def pdf_to_json(pdf_file):
                             Font_size = character.size
                             if 'Bold' in character.fontname:
                                 bold = True
-                Extract_Data.append((Font_size, bold, (element.get_text())))
+                    Extract_lines.append((Font_size, bold, (text_line.get_text())))
+            Extract_Data.append(Extract_lines)
         # print(Extract_Data)
         # break
         pdf_json[f"page_{page_no + 1}"] = pdf_page_to_json(Extract_Data)
@@ -68,7 +73,7 @@ def pdf_to_json(pdf_file):
         # print(pdf_json)
         # break
 
-    filename += ".json"
+    filename += "__.json"
     with open(filename, 'w', encoding='utf-8') as jp:
         json.dump(pdf_json, jp, ensure_ascii=False, indent=4)
 
@@ -76,4 +81,7 @@ def pdf_to_json(pdf_file):
 
 
 # pdf_to_json('multi_agent/multi_agent.pdf')
-pdf_to_json('5G_Security/5G_Security.pdf')
+# pdf_to_json('5G_Security/5G_Security.pdf')
+# pdf_to_json('NetSquid/NetSquid.pdf')
+# pdf_to_json('Sequence/Sequence.pdf')
+pdf_to_json('Sequence2/Sequence2.pdf')
