@@ -1,0 +1,174 @@
+Standardization 
+bodies
+
+Work groups
+
+Major security areas in focus
+
+Milestones
+
+3GPP
+
+Service and System Aspects 
+Security Group (SA3)
+
+Security architecture, RAN security, authentication 
+mechanism, subscriber privacy, network slicing
+
+TR 33.899 Study on the security aspects of the next genera-
+tion system, TS 33.501: Security architecture and procedures 
+for 5G system
+
+5GPPP
+
+5GPPP Security WG
+
+Security architecture, subscriber privacy, authentica-
+tion mechanism
+
+5G PPP Security Landscape (White Paper) June 2017.
+
+IETF
+
+NGMN
+
+ETSI
+
+I2NSF, DICE WG, ACE WG, 
+DetNet WG
+
+Security solutions for massive IoT devices in 5G, user 
+privacy, network security functions (NSFs)
+
+RFC 8192, RFC 7744, Deterministic Networking (DetNet) 
+Security Considerations
+
+NGMN 5G security group 
+(NGMN P1 WS1 5G security 
+group)
+
+Subscriber privacy, network slicing, MEC security
+
+5G security recommendations: Package 1 and 2, and 5G 
+security: Package 3
+
+ETSI TC CYBER, ETSI NFV 
+SEC WG
+
+Security architecture, NFV security, MEC security, 
+privacy
+
+ETSI GS NFV-SEC 010, ETSI GS NFV- SEC 013 ETSI GS NFV-
+SEC 006 and ETSI GS MEC 009
+
+Table 3. Security activities of various standardization bodies.
+
+have proposed one potential solution to protect 
+subscribers from IMSI catching attacks in 5G net-
+works.
+
+ During the standardization of 5G, strong pri-
+vacy regulations and legislation should be taken 
+into  account.  The  regulatory  approach  can  be 
+classified into three types. First is government-lev-
+el regulation, where governments mainly make 
+country-specific privacy regulations and through 
+multi-national organizations such as the United 
+Nations (UN) and European Union (EU). Second 
+is the industry level, where various industries and 
+groups  such  as  3GPP  and  ETSI  collaboratively 
+draft the best principles and practices to protect 
+privacy. Third is the consumer-level regulations, 
+where desired privacy is ensured by considering 
+consumers’ requirements [7].
+
+5G Security Standardization
+5G security standardization is still in the drafting 
+phase,  and  various  key  organizations  are  pro-
+viding  immense  contributions  toward  its  rapid 
+development, as highlighted in Table 3. In March 
+2015,  3GPP  set  the  deadline  for  defining  5G 
+standards around 2020. The same year, NGMN 
+published a white paper on 5G [6] that covered 
+a wide range of topics including virtualization, 
+privacy, radio architecture, availability, and IoT, 
+among others. For 5G security standardization, 
+the NGMN P1 WS1 5G security group is mainly 
+gathering requirements and providing their sug-
+gestions. In January 2016, the SA3 group [3] of 
+3GPP started working to standardize the 5G secu-
+rity aspects and provide contributions to 5G-PPP 
+initiated projects. The major task was to propose 
+5G security architecture by analyzing threats and 
+requirements. The SA3 group of 3GPP covers all 
+security aspects including RAN security, authenti-
+cation mechanisms, and network slicing, among 
+others [1].
+
+The Open Networking Foundation (ONF) is 
+dedicated to accelerating the adoption of SDN 
+and NFV, and publishes technical specifications 
+including specifications for security of these tech-
+nologies [4]. Also, the ETSI Industry Specification 
+Group  (ISG)  for  NFV  Security  (ISG  NFV  SEC) 
+is responsible for security specifications of NFV 
+platforms. ISG NFV SEC has highlighted the need 
+for a standard interface in ETSI NFV architecture 
+for  adding  security  functions  that  can  react  to 
+
+potential security threats in real time. In 2014, 
+ESTI  MEC  ISG  was  formed  to  look  after  MEC 
+security standards and empower NFV capabili-
+ties within the RAN to deliver security and robust-
+ness. The NGMN 5G security group is working 
+on identifying the security requirements for MEC 
+and proposing corresponding recommendations. 
+Regarding privacy, subscription privacy is one of 
+the core security areas focused in 3GPP SA3. For 
+example, privacy enhanced identity protection 
+deals with safeguarding the IMSI from adversaries 
+on the air interface. SA3 is also taking valuable 
+input from the FSAG group GSMA to identify sub-
+scriber privacy challenges [1]. Furthermore, the 
+standards suggested by the Internet Engineering 
+Task Force (IETF) will be critical because 5G will 
+use various Internet protocols. The Internation-
+al Telecommunication Union (ITU) continuously 
+gathers contributions from regional organizations 
+like ETSI and ARIB, and proposes recommenda-
+tions for the standardization organizations.
+
+Conclusion
+5G  will  use  mobile  clouds,  SDN,  and  NFV  to 
+meet  the  challenges  of  massive  connectivity, 
+flexibility, and costs. With all their benefits, these 
+technologies also have inherent security challeng-
+es. Therefore, in this article we have highlighted 
+the  main  security  challenges  that  can  become 
+more threatening in 5G unless they are properly 
+addressed. We have also presented the poten-
+tial security mechanisms and solutions for those 
+challenges. 5G still has to be deployed; thus, the 
+security challenges in these technologies and their 
+solutions will become more vivid. However, the 
+integration of IoT seems to raise more security 
+concerns, specifically in terms of privacy. There-
+fore, novel security solutions need to be sought 
+out that use the development in, for example, arti-
+ficial intelligence and context awareness to enable 
+proactive network forensics and response lever-
+aging the programmability enabled by SDN and 
+runtime, but need-based security service insertion 
+in various network perimeters using NFV.
+
+Acknowledgment
+This work was supported by TEKES Finland and 
+the  Academy  of  Finland  under  projects  The 
+Naked Approach, Towards Digital Paradise, and 
+SecureConnect. Andrei Gurtov was supported by 
+
+42
+
+Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply. 
+
+IEEE Communications Standards Magazine • March 2018

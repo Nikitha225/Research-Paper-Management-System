@@ -1,0 +1,1676 @@
+{
+    "page_1": {
+        "paragraph_1": {
+            "line_1": "ENABLING 5G VERTICALS AND SERVICES THROUGH NETWORK SOFTWARIZATION AND SLICING"
+        },
+        "paragraph_2": {
+            "line_1": "Overview of ",
+            "line_2": "5G Security Challenges and Solutions"
+        },
+        "paragraph_3": {
+            "line_1": "Ijaz Ahmad, Tanesh Kumar, Madhusanka Liyanage, Jude Okwuibe, Mika Ylianttila, and Andrei Gurtov"
+        },
+        "paragraph_4": {
+            "line_1": "Abstract"
+        },
+        "paragraph_5": {
+            "line_1": "5G networks will use novel technological con-",
+            "line_2": "cepts  to  meet  the  requirements  of  broadband ",
+            "line_3": "access everywhere, high user and device mobility, ",
+            "line_4": "and connectivity of massive number of devices ",
+            "line_5": "(e.g., the Internet of Things) in an ultra-reliable ",
+            "line_6": "and affordable way. Software defined networking ",
+            "line_7": "and network functions virtualization leveraging ",
+            "line_8": "the advances in cloud computing such as mobile ",
+            "line_9": "edge computing are the most sought out tech-",
+            "line_10": "nologies to meet these requirements. However, ",
+            "line_11": "securely using these technologies and providing ",
+            "line_12": "user privacy in future wireless networks are the ",
+            "line_13": "new concerns. Therefore, this article provides an ",
+            "line_14": "overview of the security challenges in clouds, soft-",
+            "line_15": "ware defined networking, and network functions ",
+            "line_16": "virtualization, and the challenges of user privacy. ",
+            "line_17": "Henceforth, this article presents solutions to these ",
+            "line_18": "challenges and future directions for secure 5G ",
+            "line_19": "systems."
+        },
+        "paragraph_6": {
+            "line_1": "Introduction",
+            "line_2": "According to the Fifth Generation Public Private ",
+            "line_3": "Partnership (5G-PPP), 5G will connect about 7 ",
+            "line_4": "trillion wireless devices or things, shrink the aver-",
+            "line_5": "age service creation time from 90 hours to 90 ",
+            "line_6": "minutes, and enable advanced user controlled pri-",
+            "line_7": "vacy [1]. By connecting all aspects of life, 5G aims ",
+            "line_8": "at a digital society that requires high service avail-",
+            "line_9": "ability and security using a diverse set of technolo-",
+            "line_10": "gies. Therefore, the concepts of cloud computing, ",
+            "line_11": "software defined networking (SDN), and network ",
+            "line_12": "functions virtualization (NFV) are sought out to ",
+            "line_13": "meet the growing user and service demands with-",
+            "line_14": "in the constraints of capital expenditures (CapEx) ",
+            "line_15": "and operational expenses (OpEx) through flexible ",
+            "line_16": "network operation and management."
+        },
+        "paragraph_7": {
+            "line_1": "Cloud computing provides an efficient way for ",
+            "line_2": "operators to maintain data, services, and applica-",
+            "line_3": "tions by bringing technologically distinct systems ",
+            "line_4": "into a single domain on which multiple services ",
+            "line_5": "can be deployed to achieve a higher degree of ",
+            "line_6": "flexibility  and  availability  with  less  CapEx  and ",
+            "line_7": "OpEx.  Mobile  edge  computing  (MEC),  using ",
+            "line_8": "the concepts of cloud computing, will empower ",
+            "line_9": "the network edge to process delay-sensitive and ",
+            "line_10": "context-aware applications in close proximity of ",
+            "line_11": "users or things. Softwarizing network functions ",
+            "line_12": "will enable portability and flexibility of network-",
+            "line_13": "ing systems and services. SDN enables network ",
+            "line_14": "function softwarization by separating the network ",
+            "line_15": "control  from  the  data  forwarding  planes,  and"
+        },
+        "paragraph_8": {
+            "line_1": "enabling programmability of both planes. Hence, ",
+            "line_2": "SDN  brings  innovation  in  networking  through ",
+            "line_3": "abstraction  and  programmability  on  one  hand ",
+            "line_4": "and simplifies network management through log-",
+            "line_5": "ically centralized control of the network on the ",
+            "line_6": "other hand."
+        },
+        "paragraph_9": {
+            "line_1": "NFV provides the basis for placing various ",
+            "line_2": "network functions in different network perim-",
+            "line_3": "eters  and  eliminates  the  need  for  function ",
+            "line_4": "or  service-specific  hardware.  SDN  and  NFV, ",
+            "line_5": "complementing each other, improve network ",
+            "line_6": "elasticity,  simplify  network  control  and  man-",
+            "line_7": "agement, break the barriers of vendor- specific ",
+            "line_8": "proprietary solutions, and thus are considered ",
+            "line_9": "the core technologies in the transformation of ",
+            "line_10": "networks for 5G by 5G-PPP. Network slicing, ",
+            "line_11": "leveraging NFV and SDN, enables the 5G net-",
+            "line_12": "work infrastructure to share the same resources ",
+            "line_13": "for multiple use cases such  as the Internet of ",
+            "line_14": "Things (IoT), enhanced broadband, and critical ",
+            "line_15": "communication [1]. A generic 5G deployment ",
+            "line_16": "scenario using these key technologies is depict-",
+            "line_17": "ed in Fig. 1."
+        },
+        "paragraph_10": {
+            "line_1": "However, recent research in these technol-",
+            "line_2": "ogies reveals potential security challenges that ",
+            "line_3": "must  be  addressed  in  order  to  ensure  securi-",
+            "line_4": "ty of new 5G services and infrastructures, and ",
+            "line_5": "users. For example, multi-tenant shared cloud ",
+            "line_6": "infrastructures among multiple virtual network ",
+            "line_7": "operators require strict isolation at multiple levels ",
+            "line_8": "to avoid illegal resource consumption and main-",
+            "line_9": "tain integrity of users’ information of different ",
+            "line_10": "operators [2]. According to the 5G-PPP Phase ",
+            "line_11": "1  Security  Landscape  [1],  network  slicing  has ",
+            "line_12": "several open security challenges such as security ",
+            "line_13": "isolation of network slices and security of inter-",
+            "line_14": "slice communications [3]. Moreover, program-",
+            "line_15": "mable network architectures like SDN require ",
+            "line_16": "strong authentication and authorization for appli-",
+            "line_17": "cations to avoid misuse of the network resourc-",
+            "line_18": "es exposed to applications through the control ",
+            "line_19": "plane. Similarly, misconfigurations of virtual net-",
+            "line_20": "work functions (VNFs) can lead to inter-feder-",
+            "line_21": "ated  conflicts  creating  jeopardy  in  the  whole ",
+            "line_22": "network [4]. Since 5G will connect every aspect ",
+            "line_23": "of life to the network, having most users’ infor-",
+            "line_24": "mation stored and shared online, maintaining ",
+            "line_25": "user privacy, will be highly challenging."
+        },
+        "paragraph_11": {
+            "line_1": "Furthermore,  wireless  communication  sys-",
+            "line_2": "tems have been prone to security vulnerabilities ",
+            "line_3": "from the very inception. In 1G wireless networks, ",
+            "line_4": "mobile phones and wireless channels were target-",
+            "line_5": "ed for illegal cloning and masquerading. In 2G"
+        },
+        "paragraph_12": {
+            "line_1": "Digital Object Identifier:",
+            "line_2": "10.1109/MCOMSTD.2018.1700063"
+        },
+        "paragraph_13": {
+            "line_1": "Ijaz Ahmad, Tanesh Kumar, Madhusanka Liyanage, Jude Okwuibe, and Mika Ylianttila are with the University of Oulu;  ",
+            "line_2": "Andrei Gurtov is with Linköping University."
+        },
+        "paragraph_14": {
+            "line_1": "36"
+        },
+        "paragraph_15": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        }
+    },
+    "page_2": {
+        "paragraph_1": {
+            "line_1": "Smart",
+            "line_2": "city"
+        },
+        "paragraph_2": {
+            "line_1": "Smart",
+            "line_2": "devices"
+        },
+        "paragraph_3": {
+            "line_1": "Smart",
+            "line_2": "mobility"
+        },
+        "paragraph_4": {
+            "line_1": "Smart energy/",
+            "line_2": "smart grid"
+        },
+        "paragraph_5": {
+            "line_1": "Smart health"
+        },
+        "paragraph_6": {
+            "line_1": "Services"
+        },
+        "paragraph_7": {
+            "line_1": "Access",
+            "line_2": "network"
+        },
+        "paragraph_8": {
+            "line_1": "Core",
+            "line_2": "network"
+        },
+        "paragraph_9": {
+            "line_1": "Legacy"
+        },
+        "paragraph_10": {
+            "line_1": "RRU & DAS"
+        },
+        "paragraph_11": {
+            "line_1": "SDN & NFV"
+        },
+        "paragraph_12": {
+            "line_1": "Cloudlets hosting applications"
+        },
+        "paragraph_13": {
+            "line_1": "Configurable",
+            "line_2": "devices"
+        },
+        "paragraph_14": {
+            "line_1": "C-RAN"
+        },
+        "paragraph_15": {
+            "line_1": "SDN & NFV"
+        },
+        "paragraph_16": {
+            "line_1": "Figure 1. 5G deployment scenarios and key technologies."
+        },
+        "paragraph_17": {
+            "line_1": "wireless networks, message spamming became ",
+            "line_2": "common for not only pervasive attacks but inject-",
+            "line_3": "ing false information or broadcasting unwanted ",
+            "line_4": "marketing information. In 3G wireless networks, ",
+            "line_5": "IP-based communication enabled the migration ",
+            "line_6": "of Internet security vulnerabilities and challeng-",
+            "line_7": "es in the wireless domains. With the increased ",
+            "line_8": "necessity of IP-based communication, 4G mobile ",
+            "line_9": "networks enabled the proliferation of smart devic-",
+            "line_10": "es, multimedia traffic, and new services into the ",
+            "line_11": "mobile  domain  [5].  This  development  led  to  a ",
+            "line_12": "more complicated and dynamic threat landscape. ",
+            "line_13": "With  the  advent  of  5G  wireless  networks,  the ",
+            "line_14": "security threat vectors will be bigger than even ",
+            "line_15": "before with greater concern for privacy."
+        },
+        "paragraph_18": {
+            "line_1": "Therefore, it is crucial to highlight the security ",
+            "line_2": "challenges that not only are threatening due to ",
+            "line_3": "the wireless nature of mobile networks, but also ",
+            "line_4": "exist in the potential technologies that are highly ",
+            "line_5": "important for 5G. The rest of the article is orga-",
+            "line_6": "nized as follows. We describe the key security ",
+            "line_7": "challenges, followed by security solutions for the ",
+            "line_8": "highlighted security challenges. We highlight the ",
+            "line_9": "5G security standardization activities at the time ",
+            "line_10": "of writing this article, and finally we conclude the ",
+            "line_11": "article.",
+            "line_12": "Key Security Challenges in 5G",
+            "line_13": "5G needs robust security architectures and solu-",
+            "line_14": "tions since it will connect every aspect of life to ",
+            "line_15": "communication networks. Therefore, we investi-",
+            "line_16": "gate and highlight the important security and pri-",
+            "line_17": "vacy challenges in 5G networks (depicted in Fig. ",
+            "line_18": "2) and overview the potential solutions that could ",
+            "line_19": "lead to secure 5G systems. The basic challeng-",
+            "line_20": "es in 5G highlighted by Next Generation Mobile ",
+            "line_21": "Networks (NGMN) [6] and highly discussed in ",
+            "line_22": "the literature are as follows:",
+            "line_23": "•  Flash network traffic: There will be a high ",
+            "line_24": "number of end-user devices and new things ",
+            "line_25": "(IoT)."
+        },
+        "paragraph_19": {
+            "line_1": "•  Security of radio interfaces: Radio interface ",
+            "line_2": "encryption keys are sent over insecure chan-",
+            "line_3": "nels"
+        },
+        "paragraph_20": {
+            "line_1": "•  User  plane  integrity:  There  is  no  cryp-",
+            "line_2": "tographic integrity protection for the user ",
+            "line_3": "data plane"
+        },
+        "paragraph_21": {
+            "line_1": "•  Mandated  security  in  the  network:  Ser-",
+            "line_2": "vice-driven constraints on the security archi-",
+            "line_3": "tecture lead to the optional use of security ",
+            "line_4": "measures."
+        },
+        "paragraph_22": {
+            "line_1": "•  Roaming security: User-security parameters ",
+            "line_2": "are  not  updated  with  roaming  from  one ",
+            "line_3": "operator  network  to  another,  leading  to ",
+            "line_4": "security compromises with roaming."
+        },
+        "paragraph_23": {
+            "line_1": "•  Denial of service (DoS) attacks on the infra-",
+            "line_2": "structure: There are visible etwork control ",
+            "line_3": "elements and unencrypted control channels.",
+            "line_4": "•  Signaling storms: Distributed control systems ",
+            "line_5": "require coordination, for example, non-ac-",
+            "line_6": "cess stratum (NAS) layer of Third Generation ",
+            "line_7": "Partnership Project (3GPP) protocols."
+        },
+        "paragraph_24": {
+            "line_1": "•  DoS attacks on end-user devices: There are ",
+            "line_2": "no security measures for operating systems, ",
+            "line_3": "applications, and configuration data on user ",
+            "line_4": "devices.",
+            "line_5": "The 5G design principles outlined by NGMN ",
+            "line_6": "beyond radio efficiency include creating a com-",
+            "line_7": "mon composable core and simplified operations ",
+            "line_8": "and  management  by  embracing  new  comput-",
+            "line_9": "ing and networking technologies. Therefore, we ",
+            "line_10": "focused on the security of those technologies that ",
+            "line_11": "will fulfill the design principles outlined by NGMN ",
+            "line_12": "(i.e., mobile clouds, SDN, and NFV). Table 1 pro-",
+            "line_13": "vides  a  summary  of  different  types  of  security ",
+            "line_14": "threats and attacks, the targeted elements or ser-",
+            "line_15": "vices in a network, and the technologies that are ",
+            "line_16": "most prone to the attacks or threats are ticked. ",
+            "line_17": "These security challenges are briefly described in ",
+            "line_18": "the following sections."
+        },
+        "paragraph_25": {
+            "line_1": "Security Challenges in SDN",
+            "line_2": "SDN  facilitates  innovation  in  communication ",
+            "line_3": "networks  and  simplifies  network  management ",
+            "line_4": "by enabling programmability and logically cen-",
+            "line_5": "tralizing the network control planes. These two ",
+            "line_6": "features are significantly important for future net-",
+            "line_7": "works; however, they also open the network to ",
+            "line_8": "security challenges. For example, the SDN con-",
+            "line_9": "troller updates or modifies flow rules in the data ",
+            "line_10": "forwarding  elements.  This  control  information ",
+            "line_11": "traffic can easily be identified, making it a visible ",
+            "line_12": "entity in the network and rendering it a favorite ",
+            "line_13": "choice for DoS attacks. Similarly, the centraliza-"
+        },
+        "paragraph_26": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        },
+        "paragraph_27": {
+            "line_1": "37"
+        }
+    },
+    "page_3": {
+        "paragraph_1": {
+            "line_1": "5G access units"
+        },
+        "paragraph_2": {
+            "line_1": "Macro",
+            "line_2": "cell"
+        },
+        "paragraph_3": {
+            "line_1": "Edge",
+            "line_2": "cloud"
+        },
+        "paragraph_4": {
+            "line_1": "Illegal",
+            "line_2": "intercept"
+        },
+        "paragraph_5": {
+            "line_1": "Mobile core-",
+            "line_2": "centralized",
+            "line_3": "functions"
+        },
+        "paragraph_6": {
+            "line_1": "Centralized NFV/SDN-",
+            "line_2": "based processing"
+        },
+        "paragraph_7": {
+            "line_1": "DoS",
+            "line_2": "attacks"
+        },
+        "paragraph_8": {
+            "line_1": "Micro ",
+            "line_2": "MicMM croc",
+            "line_3": "MicMM cro ",
+            "line_4": "Cells",
+            "line_5": "Cellsells",
+            "line_6": "CeCells",
+            "line_7": "o rk",
+            "line_8": "et w",
+            "line_9": "traffic"
+        },
+        "paragraph_9": {
+            "line_1": "Fla s h  n"
+        },
+        "paragraph_10": {
+            "line_1": "Internet",
+            "line_2": "Int",
+            "line_3": "Intnternernernetetet",
+            "line_4": "Internet"
+        },
+        "paragraph_11": {
+            "line_1": "m"
+        },
+        "paragraph_12": {
+            "line_1": "g fr o",
+            "line_2": "et"
+        },
+        "paragraph_13": {
+            "line_1": "h re ats o rigin atin",
+            "line_2": "In te r n"
+        },
+        "paragraph_14": {
+            "line_1": "T"
+        },
+        "paragraph_15": {
+            "line_1": "User privacy"
+        },
+        "paragraph_16": {
+            "line_1": "IoT devices"
+        },
+        "paragraph_17": {
+            "line_1": "Unified access"
+        },
+        "paragraph_18": {
+            "line_1": "IoT devices"
+        },
+        "paragraph_19": {
+            "line_1": "D2D"
+        },
+        "paragraph_20": {
+            "line_1": "IoT Radio"
+        },
+        "paragraph_21": {
+            "line_1": "IoT radios"
+        },
+        "paragraph_22": {
+            "line_1": "Fake base",
+            "line_2": "station"
+        },
+        "paragraph_23": {
+            "line_1": "Figure 2. 5G network and the threat landscape."
+        },
+        "paragraph_24": {
+            "line_1": "tion of network control can also make the control-",
+            "line_2": "ler a bottleneck for the whole network in the case ",
+            "line_3": "of saturation attacks. By enabling programmabil-",
+            "line_4": "ity, most network functions can be implemented ",
+            "line_5": "as SDN applications. If malicious applications are ",
+            "line_6": "granted access, or critical application program-",
+            "line_7": "ming interfaces (APIs) are exposed to unintended ",
+            "line_8": "software, a havoc can be spread across the net-",
+            "line_9": "work [7]."
+        },
+        "paragraph_25": {
+            "line_1": "The current SDN architecture (i.e., OpenFlow) ",
+            "line_2": "requires the data forwarding elements to store ",
+            "line_3": "traffic flow requests until the controller updates ",
+            "line_4": "the flow forwarding rules. Hence, the data plane ",
+            "line_5": "elements can also be prone to saturation attacks ",
+            "line_6": "since the forwarding elements, such as OpenFlow ",
+            "line_7": "switches, have limited resources to buffer unsolic-",
+            "line_8": "ited (TCP/UDP) flows. Furthermore, this depen-",
+            "line_9": "dence on the controller requires the control-data ",
+            "line_10": "planes channel to be resilient to security attacks ",
+            "line_11": "unlike the current optional use of security proto-",
+            "line_12": "cols and long restoration delays in large networks. ",
+            "line_13": "Redundant or multiple controllers may solve the ",
+            "line_14": "challenge  of  controller  availability  or  increase ",
+            "line_15": "resilience to security attacks. However, misconfig-",
+            "line_16": "uration of forwarding elements or inter-federated ",
+            "line_17": "conflicts due to multiple controllers will hinder ",
+            "line_18": "network-wide security policy enforcement [4]."
+        },
+        "paragraph_26": {
+            "line_1": "Security Challenges in NFV",
+            "line_2": "Even though NFV is highly important for future ",
+            "line_3": "communication  networks,  it  has  basic  secu-",
+            "line_4": "rity challenges such as confidentiality, integrity, ",
+            "line_5": "authenticity, and non-repudiation [7]. From the ",
+            "line_6": "point of view of its use in mobile networks, it is ",
+            "line_7": "presented in [7] that the current NFV platforms ",
+            "line_8": "do not provide proper security and isolation to ",
+            "line_9": "virtualized telecommunication services. One of ",
+            "line_10": "the main challenges persistent in the use of NFV ",
+            "line_11": "in mobile networks is the dynamic nature of VNFs ",
+            "line_12": "that leads to configuration errors and thus security ",
+            "line_13": "lapses [8]. Moreover, VNFs are vulnerable to typ-",
+            "line_14": "ical cyber-attacks such as spoofing, sniffing, and"
+        },
+        "paragraph_27": {
+            "line_1": "DoS. NFV is also vulnerable to a special set of ",
+            "line_2": "virtualization threats, such as side-channel attacks, ",
+            "line_3": "flooding attacks, hypervisor hijacking [9], malware ",
+            "line_4": "injection,  and  virtual  machine  (VM)  migration ",
+            "line_5": "related attacks, as well as cloud-specific attacks. ",
+            "line_6": "Moreover, private deployments of NFV are vul-",
+            "line_7": "nerable only to malicious insiders (e.g., a mali-",
+            "line_8": "cious administrator), since remote access to the ",
+            "line_9": "system is prevented. Due to the common acces-",
+            "line_10": "sibility of the infrastructure, a malicious user or a ",
+            "line_11": "compromised provider of VNF can interfere with ",
+            "line_12": "the operations of the infrastructure by inserting ",
+            "line_13": "malware or manipulating network traffic."
+        },
+        "paragraph_28": {
+            "line_1": "Operational interference and misuse of shared ",
+            "line_2": "resources are considered as infrastructure-level ",
+            "line_3": "attacks on NFV. Due to the common accessibility ",
+            "line_4": "of physical infrastructure resources, an attacker ",
+            "line_5": "can interfere with operations of the infrastructure ",
+            "line_6": "by inserting malware or manipulating network traf-",
+            "line_7": "fic. In these kinds of resource misuse attacks, the ",
+            "line_8": "victim can have no benefit of shared or dedicated ",
+            "line_9": "resources. The maintenance of trust in virtualized ",
+            "line_10": "NFV systems is also a big challenge. Usually, phys-",
+            "line_11": "ical network devices are installed and configured ",
+            "line_12": "by a trusted employee, and there is established ",
+            "line_13": "trust of the device. However, because VNFs fetch ",
+            "line_14": "dynamically from the cloud, some level of trust ",
+            "line_15": "mechanism is needed to prevent malicious VNFs. ",
+            "line_16": "Further challenges are highlighted in Table 1."
+        },
+        "paragraph_29": {
+            "line_1": "Security Challenges in ",
+            "line_2": "Mobile Clouds and MEC",
+            "line_3": "Since cloud computing systems comprise vari-",
+            "line_4": "ous resources, which are shared among users, ",
+            "line_5": "it is possible that a user spreads malicious traf-",
+            "line_6": "fic to tear down the performance of the whole ",
+            "line_7": "system,  consume  more  resources,  or  stealthi-",
+            "line_8": "ly access resource of other users. MEC, on the ",
+            "line_9": "other hand, comprises different complementary ",
+            "line_10": "technologies interoperating in an open ecosystem ",
+            "line_11": "where virtualization and distributed computing ",
+            "line_12": "are harnessed by service providers to deploy and ",
+            "line_13": "serve applications to end users. Given that MEC ",
+            "line_14": "is relatively in its infancy, coupled with the diver-",
+            "line_15": "sity of MEC technologies, there is potential for ",
+            "line_16": "malicious attacks and privacy issues. Since MEC ",
+            "line_17": "extends cloud computing capabilities to the edge ",
+            "line_18": "of mobile networks, the level of protection that ",
+            "line_19": "can be offered to the edge hosts is low compared ",
+            "line_20": "to  what  is  obtainable  in  traditional  large  data ",
+            "line_21": "centers. Similarly, in multi-tenant cloud networks ",
+            "line_22": "where tenants run their own control logic, inter-",
+            "line_23": "actions can cause conflicts in network configura-",
+            "line_24": "tions. Mobile cloud computing (MCC) migrates ",
+            "line_25": "the  concepts  of  cloud  computing  into  the  5G ",
+            "line_26": "ecosystems.  This  creates  a  number  of  security ",
+            "line_27": "vulnerabilities  that  mostly  arise  with  the  archi-",
+            "line_28": "tectural and infrastructural modifications in 5G. ",
+            "line_29": "Therefore, the open architecture of MCC and the ",
+            "line_30": "versatility of mobile terminals create vulnerabilities ",
+            "line_31": "through which adversaries could launch threats ",
+            "line_32": "and breach privacy in mobile clouds [10]."
+        },
+        "paragraph_30": {
+            "line_1": "In  this  work,  we  categorize  MCC  threats ",
+            "line_2": "according to targeted cloud segments into front-",
+            "line_3": "end, back-end, and network-based mobile security ",
+            "line_4": "threats. Detailed descriptions of each cloud seg-",
+            "line_5": "ment and their threat landscapes are contained in ",
+            "line_6": "[7]. The threat landscape at the front-end range ",
+            "line_7": "from physical threats to application-based threats. ",
+            "line_8": "On the back-end platform, threats are mainly tar-"
+        },
+        "paragraph_31": {
+            "line_1": "38"
+        },
+        "paragraph_32": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        }
+    },
+    "page_4": {
+        "paragraph_1": {
+            "line_1": "Security threat"
+        },
+        "paragraph_2": {
+            "line_1": "Target point/network element"
+        },
+        "paragraph_3": {
+            "line_1": "DoS attack"
+        },
+        "paragraph_4": {
+            "line_1": "Hijacking attacks"
+        },
+        "paragraph_5": {
+            "line_1": "Signaling storms"
+        },
+        "paragraph_6": {
+            "line_1": "Centralized control elements"
+        },
+        "paragraph_7": {
+            "line_1": "SDN controller, hypervisor"
+        },
+        "paragraph_8": {
+            "line_1": "5G core network elements"
+        },
+        "paragraph_9": {
+            "line_1": "Resource (slice) theft"
+        },
+        "paragraph_10": {
+            "line_1": "Hypervisor, shared cloud resources"
+        },
+        "paragraph_11": {
+            "line_1": "Configuration attacks"
+        },
+        "paragraph_12": {
+            "line_1": "SDN (virtual) switches, routers"
+        },
+        "paragraph_13": {
+            "line_1": "Saturation attacks"
+        },
+        "paragraph_14": {
+            "line_1": "SDN controller and switches"
+        },
+        "paragraph_15": {
+            "line_1": "Penetration attacks"
+        },
+        "paragraph_16": {
+            "line_1": "Virtual resources, clouds"
+        },
+        "paragraph_17": {
+            "line_1": "User identity theft"
+        },
+        "paragraph_18": {
+            "line_1": "User information data bases"
+        },
+        "paragraph_19": {
+            "line_1": "TCP level attacks"
+        },
+        "paragraph_20": {
+            "line_1": "SDN controller-switch communication"
+        },
+        "paragraph_21": {
+            "line_1": "Man-in-the-middle attack"
+        },
+        "paragraph_22": {
+            "line_1": "SDN controller-communication"
+        },
+        "paragraph_23": {
+            "line_1": "Reset and IP spoofing"
+        },
+        "paragraph_24": {
+            "line_1": "Control channels"
+        },
+        "paragraph_25": {
+            "line_1": "Scanning attacks"
+        },
+        "paragraph_26": {
+            "line_1": "Open air interfaces"
+        },
+        "paragraph_27": {
+            "line_1": "Security keys exposure"
+        },
+        "paragraph_28": {
+            "line_1": "Unencrypted channels"
+        },
+        "paragraph_29": {
+            "line_1": "Semantic information attacks"
+        },
+        "paragraph_30": {
+            "line_1": "Subscriber location"
+        },
+        "paragraph_31": {
+            "line_1": "Timing attacks"
+        },
+        "paragraph_32": {
+            "line_1": "Subscriber location"
+        },
+        "paragraph_33": {
+            "line_1": "Boundary attacks"
+        },
+        "paragraph_34": {
+            "line_1": "Subscriber location"
+        },
+        "paragraph_35": {
+            "line_1": "IMSI catching attacks"
+        },
+        "paragraph_36": {
+            "line_1": "Base station, identity registers"
+        },
+        "paragraph_37": {
+            "line_1": "Table 1. Security challenges in 5G technologies [7]."
+        },
+        "paragraph_38": {
+            "line_1": "geted toward the mobile cloud servers. The scope ",
+            "line_2": "of these threats may range from data replication ",
+            "line_3": "to HTTP and XML DoS (HX-DoS) attacks. For the ",
+            "line_4": "network- based mobile security threats, poten-",
+            "line_5": "tial attacks include Wi- Fi sniffing, DoS attacks, ",
+            "line_6": "address impersonation, and session hijacking."
+        },
+        "paragraph_39": {
+            "line_1": "On the side of MEC, the main security con-",
+            "line_2": "cerns  are  in  the  context  of  cloud-enabled  IoT ",
+            "line_3": "environment as well as the open APIs through ",
+            "line_4": "which developers and creators serve contents to ",
+            "line_5": "MEC applications and end users. The need for ",
+            "line_6": "open APIs in MEC is mainly to provide support ",
+            "line_7": "for federated services and interactions with dif-",
+            "line_8": "ferent providers and content creators. However, ",
+            "line_9": "the adoption of open APIs often create vulnera-",
+            "line_10": "bilities through which adversaries in the form of ",
+            "line_11": "third parties can launch various attacks on the ",
+            "line_12": "MEC environment. This has triggered research on ",
+            "line_13": "relevant security technologies channeled toward ",
+            "line_14": "the security of the MEC nodes, which include the ",
+            "line_15": "MEC server and other IoT nodes. Popular threats ",
+            "line_16": "in this landscape are DoS attack, man-in-the-mid-",
+            "line_17": "dle (MitM) attack, malicious mode problems, pri-",
+            "line_18": "vacy leakages, and VM manipulation. A broad ",
+            "line_19": "description of the threat landscape in MEC is pre-",
+            "line_20": "sented in [11], in which the authors cover a wide ",
+            "line_21": "array of potential security threats for the MEC sys-",
+            "line_22": "tem and also why security is one of the greatest ",
+            "line_23": "challenges of MEC."
+        },
+        "paragraph_40": {
+            "line_1": "Privacy Challenges in 5G",
+            "line_2": "From the user’s perspective, the major privacy ",
+            "line_3": "concerns  could  arise  from  data,  location,  and ",
+            "line_4": "identity. Most smartphone applications require ",
+            "line_5": "details of subscribers’ personal information before"
+        },
+        "paragraph_41": {
+            "line_1": "Redundant or multiple ",
+            "line_2": "controllers may solve the ",
+            "line_3": "challenge of controller ",
+            "line_4": "availability or increase ",
+            "line_5": "resilience to security ",
+            "line_6": "attacks. However, miscon-",
+            "line_7": "figuration of forwarding ",
+            "line_8": "elements or inter-federat-",
+            "line_9": "ed conflicts due to multiple ",
+            "line_10": "controllers will hinder ",
+            "line_11": "network-wide security ",
+            "line_12": "policy enforcement."
+        },
+        "paragraph_42": {
+            "line_1": "Effected technology"
+        },
+        "paragraph_43": {
+            "line_1": "SDN"
+        },
+        "paragraph_44": {
+            "line_1": "NFV"
+        },
+        "paragraph_45": {
+            "line_1": "Cloud"
+        },
+        "paragraph_46": {
+            "line_1": "Links"
+        },
+        "paragraph_47": {
+            "line_1": "Privacy"
+        },
+        "paragraph_48": {
+            "line_1": "ü"
+        },
+        "paragraph_49": {
+            "line_1": "ü"
+        },
+        "paragraph_50": {
+            "line_1": "ü"
+        },
+        "paragraph_51": {
+            "line_1": "ü"
+        },
+        "paragraph_52": {
+            "line_1": "ü"
+        },
+        "paragraph_53": {
+            "line_1": "ü"
+        },
+        "paragraph_54": {
+            "line_1": "ü"
+        },
+        "paragraph_55": {
+            "line_1": "ü"
+        },
+        "paragraph_56": {
+            "line_1": "ü"
+        },
+        "paragraph_57": {
+            "line_1": "ü"
+        },
+        "paragraph_58": {
+            "line_1": "ü"
+        },
+        "paragraph_59": {
+            "line_1": "ü"
+        },
+        "paragraph_60": {
+            "line_1": "?"
+        },
+        "paragraph_61": {
+            "line_1": "ü"
+        },
+        "paragraph_62": {
+            "line_1": "ü"
+        },
+        "paragraph_63": {
+            "line_1": "ü"
+        },
+        "paragraph_64": {
+            "line_1": "ü"
+        },
+        "paragraph_65": {
+            "line_1": "ü"
+        },
+        "paragraph_66": {
+            "line_1": "ü"
+        },
+        "paragraph_67": {
+            "line_1": "ü"
+        },
+        "paragraph_68": {
+            "line_1": "ü"
+        },
+        "paragraph_69": {
+            "line_1": "ü"
+        },
+        "paragraph_70": {
+            "line_1": "ü"
+        },
+        "paragraph_71": {
+            "line_1": "ü"
+        },
+        "paragraph_72": {
+            "line_1": "ü"
+        },
+        "paragraph_73": {
+            "line_1": "ü"
+        },
+        "paragraph_74": {
+            "line_1": "ü"
+        },
+        "paragraph_75": {
+            "line_1": "ü"
+        },
+        "paragraph_76": {
+            "line_1": "ü"
+        },
+        "paragraph_77": {
+            "line_1": "ü"
+        },
+        "paragraph_78": {
+            "line_1": "ü"
+        },
+        "paragraph_79": {
+            "line_1": "ü"
+        },
+        "paragraph_80": {
+            "line_1": "the installation. The application developers and ",
+            "line_2": "companies rarely mention how the data is stored ",
+            "line_3": "and  for  what  purposes  it  is  going  to  be  used. ",
+            "line_4": "Threats such as semantic information attacks, tim-",
+            "line_5": "ing attacks, and boundary attacks mainly target ",
+            "line_6": "the location privacy of subscribers. At the physi-",
+            "line_7": "cal layer level, location privacy can be leaked by ",
+            "line_8": "access point selection algorithms in 5G mobile ",
+            "line_9": "networks. International Mobile Subscriber Identity ",
+            "line_10": "(IMSI) catching attacks can be used to reveal the ",
+            "line_11": "identity of a subscriber by catching the IMSI of the ",
+            "line_12": "subscriber’s user equipment (UE). Such attacks ",
+            "line_13": "can also be caused by setting up a fake base sta-",
+            "line_14": "tion that is considered as the preferred base sta-",
+            "line_15": "tion by UE which has lost access to a Temporary ",
+            "line_16": "Mobile Subscribers Identity (TMSI); thus, the sub-",
+            "line_17": "scriber will respond with their IMSI [12]. More-",
+            "line_18": "over, 5G networks have different actors such as ",
+            "line_19": "virtual mobile network operators (VMNOs), com-",
+            "line_20": "munication service providers (CSPs), and network ",
+            "line_21": "infrastructure providers. All of these actors have ",
+            "line_22": "different priorities for security and privacy. The ",
+            "line_23": "synchronization of mismatching privacy policies ",
+            "line_24": "among  these  actors  will  be  a  challenge  in  the ",
+            "line_25": "5G network. In the previous generations, mobile ",
+            "line_26": "operators had direct access and control of all the ",
+            "line_27": "system components. However, 5G mobile opera-",
+            "line_28": "tors are losing full control of the systems as they ",
+            "line_29": "will rely on new actors such as CSPs. Thus, 5G ",
+            "line_30": "operators will lose full governance of security and ",
+            "line_31": "privacy. User and data privacy are seriously chal-",
+            "line_32": "lenged in shared environments where the same ",
+            "line_33": "infrastructure is shared among various actors (e.g., ",
+            "line_34": "VMNOs and other competitors). Moreover, there ",
+            "line_35": "are  no  physical  boundaries  of  5G  networks  as"
+        },
+        "paragraph_81": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        },
+        "paragraph_82": {
+            "line_1": "39"
+        }
+    },
+    "page_5": {
+        "paragraph_1": {
+            "line_1": "measures in MCC revolve ",
+            "line_2": "around the strategic use ",
+            "line_3": "of virtualization technol-",
+            "line_4": "ogies, the redesign of ",
+            "line_5": "encryption methods and ",
+            "line_6": "dynamic allocation of data ",
+            "line_7": "processing points. Hence, ",
+            "line_8": "virtualization comes as a ",
+            "line_9": "natural option for securing ",
+            "line_10": "cloud services since each ",
+            "line_11": "end-node connects to a ",
+            "line_12": "specific virtual instance ",
+            "line_13": "in the cloud via a Virtual ",
+            "line_14": "Machine."
+        },
+        "paragraph_2": {
+            "line_1": "Security solutions"
+        },
+        "paragraph_3": {
+            "line_1": "Primary focus"
+        },
+        "paragraph_4": {
+            "line_1": "Target technology"
+        },
+        "paragraph_5": {
+            "line_1": "SDN"
+        },
+        "paragraph_6": {
+            "line_1": "NFV"
+        },
+        "paragraph_7": {
+            "line_1": "Cloud"
+        },
+        "paragraph_8": {
+            "line_1": "Links"
+        },
+        "paragraph_9": {
+            "line_1": "Privacy"
+        },
+        "paragraph_10": {
+            "line_1": "DoS, DDoS detection"
+        },
+        "paragraph_11": {
+            "line_1": "Security of centralized control points"
+        },
+        "paragraph_12": {
+            "line_1": "Configuration verification"
+        },
+        "paragraph_13": {
+            "line_1": "Flow rules verification in SDN switches"
+        },
+        "paragraph_14": {
+            "line_1": "Access control"
+        },
+        "paragraph_15": {
+            "line_1": "Control access to SDN and core network elements"
+        },
+        "paragraph_16": {
+            "line_1": "Traffic isolation"
+        },
+        "paragraph_17": {
+            "line_1": "Ensures isolation for VNFs and virtual slices"
+        },
+        "paragraph_18": {
+            "line_1": "Link security"
+        },
+        "paragraph_19": {
+            "line_1": "Provide security to control channels"
+        },
+        "paragraph_20": {
+            "line_1": "ü"
+        },
+        "paragraph_21": {
+            "line_1": "ü"
+        },
+        "paragraph_22": {
+            "line_1": "ü"
+        },
+        "paragraph_23": {
+            "line_1": "ü"
+        },
+        "paragraph_24": {
+            "line_1": "ü"
+        },
+        "paragraph_25": {
+            "line_1": "ü"
+        },
+        "paragraph_26": {
+            "line_1": "ü"
+        },
+        "paragraph_27": {
+            "line_1": "Identity verification"
+        },
+        "paragraph_28": {
+            "line_1": "User identity verification for roaming and clouds services"
+        },
+        "paragraph_29": {
+            "line_1": "Identity security"
+        },
+        "paragraph_30": {
+            "line_1": "Ensure identity security of users"
+        },
+        "paragraph_31": {
+            "line_1": "Location security"
+        },
+        "paragraph_32": {
+            "line_1": "Ensure security of user location"
+        },
+        "paragraph_33": {
+            "line_1": "IMSI security"
+        },
+        "paragraph_34": {
+            "line_1": "Secure the subscriber identity through encryption"
+        },
+        "paragraph_35": {
+            "line_1": "Mobile terminal security"
+        },
+        "paragraph_36": {
+            "line_1": "Anti-malware technologies to secure mobile terminals"
+        },
+        "paragraph_37": {
+            "line_1": "Integrity verification"
+        },
+        "paragraph_38": {
+            "line_1": "Security of data and storage systems in clouds"
+        },
+        "paragraph_39": {
+            "line_1": "HX-DoS mitigation"
+        },
+        "paragraph_40": {
+            "line_1": "Security for cloud web services"
+        },
+        "paragraph_41": {
+            "line_1": "Service access Control"
+        },
+        "paragraph_42": {
+            "line_1": "Service-based access control security for clouds"
+        },
+        "paragraph_43": {
+            "line_1": "Table 2. Potential security solutions for targeted threats [7]."
+        },
+        "paragraph_44": {
+            "line_1": "ü"
+        },
+        "paragraph_45": {
+            "line_1": "ü"
+        },
+        "paragraph_46": {
+            "line_1": "ü"
+        },
+        "paragraph_47": {
+            "line_1": "ü"
+        },
+        "paragraph_48": {
+            "line_1": "ü"
+        },
+        "paragraph_49": {
+            "line_1": "ü"
+        },
+        "paragraph_50": {
+            "line_1": "ü"
+        },
+        "paragraph_51": {
+            "line_1": "ü"
+        },
+        "paragraph_52": {
+            "line_1": "ü"
+        },
+        "paragraph_53": {
+            "line_1": "ü"
+        },
+        "paragraph_54": {
+            "line_1": "they use cloud-based data storage and NFV fea-",
+            "line_2": "tures. Hence, the 5G operators have no direct ",
+            "line_3": "control of the data storage place in cloud envi-",
+            "line_4": "ronments. As different countries have different ",
+            "line_5": "levels of data privacy mechanisms depending on ",
+            "line_6": "their preferred context, the privacy is challenged ",
+            "line_7": "if the user data is stored in a cloud in a different ",
+            "line_8": "country."
+        },
+        "paragraph_55": {
+            "line_1": "Potential Security Solutions",
+            "line_2": "In this section, we highlight security solutions for ",
+            "line_3": "the security challenges outlined in the previous ",
+            "line_4": "section. The challenges of flash network traffic ",
+            "line_5": "can  be  solved  by  either  adding  new  resourc-",
+            "line_6": "es or increasing the utility of existing systems ",
+            "line_7": "with novel technologies. We believe that new ",
+            "line_8": "technologies such as SDN and NFV can solve ",
+            "line_9": "these challenges more cost effectively. SDN has ",
+            "line_10": "the capability to enable runtime resource (e.g., ",
+            "line_11": "bandwidth)assignment to particular parts of the ",
+            "line_12": "network as the need arises. The SDN control-",
+            "line_13": "ler can gather network stats through the south-",
+            "line_14": "bound API from network equipment to see if ",
+            "line_15": "the traffic levels increase. Using NFV, services ",
+            "line_16": "from the core network cloud can be transferred ",
+            "line_17": "toward the edge to meet the user requirements. ",
+            "line_18": "Similarly, NFV enables the provision of virtual ",
+            "line_19": "slices or resources at runtime to meet the grow-",
+            "line_20": "ing traffic demands or surges in traffic at differ-",
+            "line_21": "ent network locations."
+        },
+        "paragraph_56": {
+            "line_1": "The  security  of  the  radio  interface  keys  is ",
+            "line_2": "still a challenge, as it needs secure exchange of ",
+            "line_3": "keys encrypted like the proposed Host Identity ",
+            "line_4": "Protocol (HIP)-based schemes in [7]. The same ",
+            "line_5": "end-to-end encryption protocol can be used for ",
+            "line_6": "user plane integrity. Roaming security and net-",
+            "line_7": "work-wide  mandated  security  policies  can  be ",
+            "line_8": "achieved  using  centralized  systems  that  have ",
+            "line_9": "global visibility of the users’ activities and network ",
+            "line_10": "traffic behavior (e.g., SDN). Signaling storms will ",
+            "line_11": "be more challenging due to the excessive con-",
+            "line_12": "nectivity of UEs, small base stations, and high user"
+        },
+        "paragraph_57": {
+            "line_1": "mobility. The cloud radio access network (C-RAN) ",
+            "line_2": "and edge computing are the potential problem ",
+            "line_3": "solvers  for  these  challenges,  but  the  design  of ",
+            "line_4": "these technologies must consider the increase ",
+            "line_5": "in signaling traffic as an important aspect of the ",
+            "line_6": "future networks as described by NGMN. Solu-",
+            "line_7": "tions for DoS and saturation attacks, and other ",
+            "line_8": "security challenges described in the previous sec-",
+            "line_9": "tion, are listed in Table 2, and the methodologies ",
+            "line_10": "are described below."
+        },
+        "paragraph_58": {
+            "line_1": "Security Solutions for SDN",
+            "line_2": "Once the basic security challenges inherent in ",
+            "line_3": "SDN  are  addressed,  SDN  can  be  a  potential ",
+            "line_4": "problem  solver  in  terms  of  security  in  com-",
+            "line_5": "munication networks. Having a global view of ",
+            "line_6": "the network, centralized control, and program-",
+            "line_7": "mability  in  network  elements,  SDN  enables ",
+            "line_8": "network-wide consistent security policies and ",
+            "line_9": "facilitates quick threat identification through a ",
+            "line_10": "cycle  of  harvesting  intelligence  from  the  net-",
+            "line_11": "work  resources,  states,  and  flows.  Therefore, ",
+            "line_12": "the SDN architecture supports highly reactive ",
+            "line_13": "and proactive security monitoring, traffic anal-",
+            "line_14": "ysis, and response systems to facilitate network ",
+            "line_15": "forensics, the alteration of security policies, and ",
+            "line_16": "security service insertion [13]."
+        },
+        "paragraph_59": {
+            "line_1": "One of the basic features of SDN is flow- or ",
+            "line_2": "packet-level granularity that provides transparency ",
+            "line_3": "in terms of packet origin or source, the route it ",
+            "line_4": "takes, and even the content. Security applications ",
+            "line_5": "can gather samples of flows or packets through ",
+            "line_6": "the control plane from any network perimeter ",
+            "line_7": "to check their content regardless of the network ",
+            "line_8": "ingress or egress ports, unlike traditional networks ",
+            "line_9": "in which the security appliances normally reside ",
+            "line_10": "in the entry points. This capability of SDN lays the ",
+            "line_11": "foundation for network-wide consistent security ",
+            "line_12": "policies, early threat identification at any network ",
+            "line_13": "location, and quick response by updating the flow ",
+            "line_14": "tables to route traffic to intrusion detection sys-",
+            "line_15": "tems (IDSs) or firewalls at runtime. Since most of"
+        },
+        "paragraph_60": {
+            "line_1": "40"
+        },
+        "paragraph_61": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        }
+    },
+    "page_6": {
+        "paragraph_1": {
+            "line_1": "To preserve the user pri-",
+            "line_2": "vacy in 5G systems, there ",
+            "line_3": "should be mutual agree-",
+            "line_4": "ments and trust models ",
+            "line_5": "among various stakehold-",
+            "line_6": "ers involved in the process ",
+            "line_7": "such as user, network ",
+            "line_8": "operator, service provider, ",
+            "line_9": "application developer, and ",
+            "line_10": "manufacturer on data ",
+            "line_11": "usage and storage. There-",
+            "line_12": "fore, 5G will require better ",
+            "line_13": "mechanisms for account-",
+            "line_14": "ability, data minimization, ",
+            "line_15": "transparency, openness, ",
+            "line_16": "and access control."
+        },
+        "paragraph_2": {
+            "line_1": "the security functionalities will be deployed in the ",
+            "line_2": "application plane in software, security leveraging ",
+            "line_3": "SDN can be referred to as software defined secu-",
+            "line_4": "rity [4]."
+        },
+        "paragraph_3": {
+            "line_1": "Security Solutions for NFV",
+            "line_2": "The security of VNFs through a security orches-",
+            "line_3": "trator in correspondence with the European Tele-",
+            "line_4": "communications Standards Institute (ETSI) NFV ",
+            "line_5": "architecture is presented in [14]. The proposed ",
+            "line_6": "architecture  provides  security  not  only  to  the ",
+            "line_7": "virtual functions in a multi-tenant environment, ",
+            "line_8": "but  also  to  the  physical  entities  of  a  telecom-",
+            "line_9": "munication network. Using trusted computing, ",
+            "line_10": "remote verification and integrity checking of vir-",
+            "line_11": "tual systems and hypervisors is proposed in [15] ",
+            "line_12": "to provide hardware-based protection to private ",
+            "line_13": "information and detect corrupt software in virtu-",
+            "line_14": "alized environments. In NFV systems, sophisticat-",
+            "line_15": "ed security protection solutions such as firewalls ",
+            "line_16": "and IDSs can be used to prevent outside attacks. ",
+            "line_17": "Moreover,  identity  and  access  management ",
+            "line_18": "mechanisms (e.g., role-based access control) can ",
+            "line_19": "be used to mitigate the impact of insider attacks. ",
+            "line_20": "Infrastructure-level  attacks  can  be  prevented ",
+            "line_21": "by continuous monitoring of the resource con-",
+            "line_22": "sumption of each user and preventing malicious ",
+            "line_23": "requests according to a blacklist of IP addresses."
+        },
+        "paragraph_4": {
+            "line_1": "In order to increase the trust between differ-",
+            "line_2": "ent entities, a chain of trust relationships needs ",
+            "line_3": "to be created and maintained in NFV environ-",
+            "line_4": "ments throughout its life cycle. Solutions based ",
+            "line_5": "on cryptographic techniques, such as message ",
+            "line_6": "stream encryption, can be used to guarantee the ",
+            "line_7": "confidentiality of VNFs. Furthermore, the account-",
+            "line_8": "ability and trust management can be utilized by a ",
+            "line_9": "VNF provider to know whether its software is run-",
+            "line_10": "ning without any modification in the infrastructure ",
+            "line_11": "provider’s network. Secure outsourcing is anoth-",
+            "line_12": "er viable solution in NFV to transfer the sensitive ",
+            "line_13": "information to external networks. It will not only ",
+            "line_14": "protect sensitive information but also validate the ",
+            "line_15": "integrity of data. Moreover, security-preserving ",
+            "line_16": "migration mechanisms establishing secure inter-",
+            "line_17": "faces with the authorized source and destination ",
+            "line_18": "parties, and detection and reporting of any mali-",
+            "line_19": "cious activities during migrations are needed to ",
+            "line_20": "enable secure VM migration."
+        },
+        "paragraph_5": {
+            "line_1": "Security Solutions for ",
+            "line_2": "Mobile Clouds and MEC",
+            "line_3": "Most proposed security measures in MCC revolve ",
+            "line_4": "around the strategic use of virtualization technol-",
+            "line_5": "ogies, the redesign of encryption methods, and ",
+            "line_6": "dynamic  allocation  of  data  processing  points. ",
+            "line_7": "Hence, virtualization comes as a natural option ",
+            "line_8": "for securing cloud services since each end node ",
+            "line_9": "connects to a specific virtual instance in the cloud ",
+            "line_10": "via a virtual machine (VM). Security is provided ",
+            "line_11": "through the isolation of each user’s virtual connec-",
+            "line_12": "tion from other users. Virtualized in-cloud security ",
+            "line_13": "is one such virtualization solution to secure MCC. ",
+            "line_14": "For specific security threats such as HX-DoS, ",
+            "line_15": "specific  solutions  such  as  learning-based  sys-",
+            "line_16": "tems  (e.g.,  [16])  are  more  useful  than  generic ",
+            "line_17": "approaches. For example, learning-based systems ",
+            "line_18": "take a certain number of samples of packets and ",
+            "line_19": "analyze  them  for  various  known  attributes  to ",
+            "line_20": "detect and mitigate threats."
+        },
+        "paragraph_6": {
+            "line_1": "To secure the mobile terminals, anti-malware"
+        },
+        "paragraph_7": {
+            "line_1": "solutions are installed on the mobile terminal or ",
+            "line_2": "hosted  and  served  directly  from  the  cloud.  In ",
+            "line_3": "MCC data and storage, the security framework ",
+            "line_4": "will consist of energy-efficient mechanisms for the ",
+            "line_5": "integrity verification of data and storage services ",
+            "line_6": "in conjunction with a public provable data pos-",
+            "line_7": "session scheme and some lightweight compro-",
+            "line_8": "mise-resilient storage outsourcing. For application ",
+            "line_9": "security, some proposed frameworks are based ",
+            "line_10": "on securing elastic applications on mobile devic-",
+            "line_11": "es for cloud computing, a lightweight dynamic ",
+            "line_12": "credential generation mechanism for user identity ",
+            "line_13": "protection, an in-device spatial cloaking mecha-",
+            "line_14": "nism for privacy protection, as well as MobiCloud, ",
+            "line_15": "which  is  a  secure  cloud  framework  for  mobile ",
+            "line_16": "computing and communication."
+        },
+        "paragraph_8": {
+            "line_1": "On the side of MEC, there are limited works ",
+            "line_2": "on the topic of security; however, the use of gate-",
+            "line_3": "ways at strategic points on the networks is highly ",
+            "line_4": "recommended. An IoT gateway is a typical exam-",
+            "line_5": "ple of such deployments. Other recommended ",
+            "line_6": "security strategies include ensuring that the appli-",
+            "line_7": "cation hosted at the edge server authenticates ",
+            "line_8": "any  user  attempting  to  access  the  application ",
+            "line_9": "resources. The MEC server should be configured ",
+            "line_10": "to protect applications and data storagee at the ",
+            "line_11": "edge server from intrusion. Also, mobile devic-",
+            "line_12": "es should be required to authenticate the edge ",
+            "line_13": "application accessing from the edge server, and ",
+            "line_14": "the MEC platform should give assurance of data ",
+            "line_15": "integrity [17]."
+        },
+        "paragraph_9": {
+            "line_1": "Security Solutions for Privacy in 5G",
+            "line_2": "5G  must  embody  privacy-by-design  and  ser-",
+            "line_3": "vice-oriented privacy-preserving approaches. To ",
+            "line_4": "preserve the user privacy in 5G systems, there ",
+            "line_5": "should be mutual agreements and trust models ",
+            "line_6": "among various stakeholders involved in the pro-",
+            "line_7": "cess such as user, network operator, service pro-",
+            "line_8": "vider, application developer, and manufacturer ",
+            "line_9": "on data usage and storage. Therefore, 5G will ",
+            "line_10": "require better mechanisms for accountability, data ",
+            "line_11": "minimization, transparency, openness, and access ",
+            "line_12": "control [7]. A hybrid cloud-based approach is also ",
+            "line_13": "required where mobile operators are able to store ",
+            "line_14": "and process highly sensitive data locally and less ",
+            "line_15": "sensitive data in public clouds. In this way, opera-",
+            "line_16": "tors will have more access and control over data ",
+            "line_17": "and can decide where to share it."
+        },
+        "paragraph_10": {
+            "line_1": "For location privacy, anonymity-based tech-",
+            "line_2": "niques must be applied where the subscriber’s ",
+            "line_3": "real identity could be hidden and replaced with ",
+            "line_4": "pseudonyms. Encryption-based practices are use-",
+            "line_5": "ful in this case; for instance, a message can be ",
+            "line_6": "encrypted before sending to a location-based ser-",
+            "line_7": "vices (LBS) provider. Techniques such as obfusca-",
+            "line_8": "tion are also crucial, where the quality of location ",
+            "line_9": "information is reduced in order to protect loca-",
+            "line_10": "tion privacy. Moreover, location-cloaking-based ",
+            "line_11": "algorithms are quite useful to handle some major ",
+            "line_12": "location privacy attacks such as timing and bound-",
+            "line_13": "ary  attacks  [7].  For  IMSI  catching  attacks,  one ",
+            "line_14": "ongoing solution for protecting subscribers’ iden-",
+            "line_15": "tities is to use TMSI, which is generated randomly ",
+            "line_16": "and assigned to the UE at regular intervals. The ",
+            "line_17": "long-term IMSI is utilized only in the case of fault ",
+            "line_18": "recovery and when a TMSI is not yet allocated. ",
+            "line_19": "Another way might be to adopt a passive method ",
+            "line_20": "that will allow detection of fake base stations that ",
+            "line_21": "capture the subscriber’s IMSI. The authors in [12]"
+        },
+        "paragraph_11": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        },
+        "paragraph_12": {
+            "line_1": "41"
+        }
+    },
+    "page_7": {
+        "paragraph_1": {
+            "line_1": "Standardization ",
+            "line_2": "bodies"
+        },
+        "paragraph_2": {
+            "line_1": "Work groups"
+        },
+        "paragraph_3": {
+            "line_1": "Major security areas in focus"
+        },
+        "paragraph_4": {
+            "line_1": "Milestones"
+        },
+        "paragraph_5": {
+            "line_1": "3GPP"
+        },
+        "paragraph_6": {
+            "line_1": "Service and System Aspects ",
+            "line_2": "Security Group (SA3)"
+        },
+        "paragraph_7": {
+            "line_1": "Security architecture, RAN security, authentication ",
+            "line_2": "mechanism, subscriber privacy, network slicing"
+        },
+        "paragraph_8": {
+            "line_1": "TR 33.899 Study on the security aspects of the next genera-",
+            "line_2": "tion system, TS 33.501: Security architecture and procedures ",
+            "line_3": "for 5G system"
+        },
+        "paragraph_9": {
+            "line_1": "5GPPP"
+        },
+        "paragraph_10": {
+            "line_1": "5GPPP Security WG"
+        },
+        "paragraph_11": {
+            "line_1": "Security architecture, subscriber privacy, authentica-",
+            "line_2": "tion mechanism"
+        },
+        "paragraph_12": {
+            "line_1": "5G PPP Security Landscape (White Paper) June 2017."
+        },
+        "paragraph_13": {
+            "line_1": "IETF"
+        },
+        "paragraph_14": {
+            "line_1": "NGMN"
+        },
+        "paragraph_15": {
+            "line_1": "ETSI"
+        },
+        "paragraph_16": {
+            "line_1": "I2NSF, DICE WG, ACE WG, ",
+            "line_2": "DetNet WG"
+        },
+        "paragraph_17": {
+            "line_1": "Security solutions for massive IoT devices in 5G, user ",
+            "line_2": "privacy, network security functions (NSFs)"
+        },
+        "paragraph_18": {
+            "line_1": "RFC 8192, RFC 7744, Deterministic Networking (DetNet) ",
+            "line_2": "Security Considerations"
+        },
+        "paragraph_19": {
+            "line_1": "NGMN 5G security group ",
+            "line_2": "(NGMN P1 WS1 5G security ",
+            "line_3": "group)"
+        },
+        "paragraph_20": {
+            "line_1": "Subscriber privacy, network slicing, MEC security"
+        },
+        "paragraph_21": {
+            "line_1": "5G security recommendations: Package 1 and 2, and 5G ",
+            "line_2": "security: Package 3"
+        },
+        "paragraph_22": {
+            "line_1": "ETSI TC CYBER, ETSI NFV ",
+            "line_2": "SEC WG"
+        },
+        "paragraph_23": {
+            "line_1": "Security architecture, NFV security, MEC security, ",
+            "line_2": "privacy"
+        },
+        "paragraph_24": {
+            "line_1": "ETSI GS NFV-SEC 010, ETSI GS NFV- SEC 013 ETSI GS NFV-",
+            "line_2": "SEC 006 and ETSI GS MEC 009"
+        },
+        "paragraph_25": {
+            "line_1": "Table 3. Security activities of various standardization bodies."
+        },
+        "paragraph_26": {
+            "line_1": "have proposed one potential solution to protect ",
+            "line_2": "subscribers from IMSI catching attacks in 5G net-",
+            "line_3": "works."
+        },
+        "paragraph_27": {
+            "line_1": "During the standardization of 5G, strong pri-",
+            "line_2": "vacy regulations and legislation should be taken ",
+            "line_3": "into  account.  The  regulatory  approach  can  be ",
+            "line_4": "classified into three types. First is government-lev-",
+            "line_5": "el regulation, where governments mainly make ",
+            "line_6": "country-specific privacy regulations and through ",
+            "line_7": "multi-national organizations such as the United ",
+            "line_8": "Nations (UN) and European Union (EU). Second ",
+            "line_9": "is the industry level, where various industries and ",
+            "line_10": "groups  such  as  3GPP  and  ETSI  collaboratively ",
+            "line_11": "draft the best principles and practices to protect ",
+            "line_12": "privacy. Third is the consumer-level regulations, ",
+            "line_13": "where desired privacy is ensured by considering ",
+            "line_14": "consumers’ requirements [7]."
+        },
+        "paragraph_28": {
+            "line_1": "5G Security Standardization",
+            "line_2": "5G security standardization is still in the drafting ",
+            "line_3": "phase,  and  various  key  organizations  are  pro-",
+            "line_4": "viding  immense  contributions  toward  its  rapid ",
+            "line_5": "development, as highlighted in Table 3. In March ",
+            "line_6": "2015,  3GPP  set  the  deadline  for  defining  5G ",
+            "line_7": "standards around 2020. The same year, NGMN ",
+            "line_8": "published a white paper on 5G [6] that covered ",
+            "line_9": "a wide range of topics including virtualization, ",
+            "line_10": "privacy, radio architecture, availability, and IoT, ",
+            "line_11": "among others. For 5G security standardization, ",
+            "line_12": "the NGMN P1 WS1 5G security group is mainly ",
+            "line_13": "gathering requirements and providing their sug-",
+            "line_14": "gestions. In January 2016, the SA3 group [3] of ",
+            "line_15": "3GPP started working to standardize the 5G secu-",
+            "line_16": "rity aspects and provide contributions to 5G-PPP ",
+            "line_17": "initiated projects. The major task was to propose ",
+            "line_18": "5G security architecture by analyzing threats and ",
+            "line_19": "requirements. The SA3 group of 3GPP covers all ",
+            "line_20": "security aspects including RAN security, authenti-",
+            "line_21": "cation mechanisms, and network slicing, among ",
+            "line_22": "others [1]."
+        },
+        "paragraph_29": {
+            "line_1": "The Open Networking Foundation (ONF) is ",
+            "line_2": "dedicated to accelerating the adoption of SDN ",
+            "line_3": "and NFV, and publishes technical specifications ",
+            "line_4": "including specifications for security of these tech-",
+            "line_5": "nologies [4]. Also, the ETSI Industry Specification ",
+            "line_6": "Group  (ISG)  for  NFV  Security  (ISG  NFV  SEC) ",
+            "line_7": "is responsible for security specifications of NFV ",
+            "line_8": "platforms. ISG NFV SEC has highlighted the need ",
+            "line_9": "for a standard interface in ETSI NFV architecture ",
+            "line_10": "for  adding  security  functions  that  can  react  to"
+        },
+        "paragraph_30": {
+            "line_1": "potential security threats in real time. In 2014, ",
+            "line_2": "ESTI  MEC  ISG  was  formed  to  look  after  MEC ",
+            "line_3": "security standards and empower NFV capabili-",
+            "line_4": "ties within the RAN to deliver security and robust-",
+            "line_5": "ness. The NGMN 5G security group is working ",
+            "line_6": "on identifying the security requirements for MEC ",
+            "line_7": "and proposing corresponding recommendations. ",
+            "line_8": "Regarding privacy, subscription privacy is one of ",
+            "line_9": "the core security areas focused in 3GPP SA3. For ",
+            "line_10": "example, privacy enhanced identity protection ",
+            "line_11": "deals with safeguarding the IMSI from adversaries ",
+            "line_12": "on the air interface. SA3 is also taking valuable ",
+            "line_13": "input from the FSAG group GSMA to identify sub-",
+            "line_14": "scriber privacy challenges [1]. Furthermore, the ",
+            "line_15": "standards suggested by the Internet Engineering ",
+            "line_16": "Task Force (IETF) will be critical because 5G will ",
+            "line_17": "use various Internet protocols. The Internation-",
+            "line_18": "al Telecommunication Union (ITU) continuously ",
+            "line_19": "gathers contributions from regional organizations ",
+            "line_20": "like ETSI and ARIB, and proposes recommenda-",
+            "line_21": "tions for the standardization organizations."
+        },
+        "paragraph_31": {
+            "line_1": "Conclusion",
+            "line_2": "5G  will  use  mobile  clouds,  SDN,  and  NFV  to ",
+            "line_3": "meet  the  challenges  of  massive  connectivity, ",
+            "line_4": "flexibility, and costs. With all their benefits, these ",
+            "line_5": "technologies also have inherent security challeng-",
+            "line_6": "es. Therefore, in this article we have highlighted ",
+            "line_7": "the  main  security  challenges  that  can  become ",
+            "line_8": "more threatening in 5G unless they are properly ",
+            "line_9": "addressed. We have also presented the poten-",
+            "line_10": "tial security mechanisms and solutions for those ",
+            "line_11": "challenges. 5G still has to be deployed; thus, the ",
+            "line_12": "security challenges in these technologies and their ",
+            "line_13": "solutions will become more vivid. However, the ",
+            "line_14": "integration of IoT seems to raise more security ",
+            "line_15": "concerns, specifically in terms of privacy. There-",
+            "line_16": "fore, novel security solutions need to be sought ",
+            "line_17": "out that use the development in, for example, arti-",
+            "line_18": "ficial intelligence and context awareness to enable ",
+            "line_19": "proactive network forensics and response lever-",
+            "line_20": "aging the programmability enabled by SDN and ",
+            "line_21": "runtime, but need-based security service insertion ",
+            "line_22": "in various network perimeters using NFV."
+        },
+        "paragraph_32": {
+            "line_1": "Acknowledgment",
+            "line_2": "This work was supported by TEKES Finland and ",
+            "line_3": "the  Academy  of  Finland  under  projects  The ",
+            "line_4": "Naked Approach, Towards Digital Paradise, and ",
+            "line_5": "SecureConnect. Andrei Gurtov was supported by"
+        },
+        "paragraph_33": {
+            "line_1": "42"
+        },
+        "paragraph_34": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        }
+    },
+    "page_8": {
+        "paragraph_1": {
+            "line_1": "the Center for Industrial Information Technology ",
+            "line_2": "(CENIIT)."
+        },
+        "paragraph_2": {
+            "line_1": "References",
+            "line_2": "[1] 5G-PPP Security WG, “5G-PPP Phase1 Security Landscape,”"
+        },
+        "paragraph_3": {
+            "line_1": "white paper, 2017."
+        },
+        "paragraph_4": {
+            "line_1": "[2] P. Mishra et al., “Out-VM Monitoring for Malicious Network ",
+            "line_2": "Packet Detection in Cloud,” 2017 ISEA Asia Security and ",
+            "line_3": "Privacy, Jan. 2017, pp. 1–10."
+        },
+        "paragraph_5": {
+            "line_1": "[3] 3GPP (May 2017) SA3-Security; http://www.3gpp. org/"
+        },
+        "paragraph_6": {
+            "line_1": "Specifications-groups/sa-plenary/54-sa3-security."
+        },
+        "paragraph_7": {
+            "line_1": "[4] I. Ahmad et al., “Security in Software Defined Networks: A ",
+            "line_2": "Survey,” IEEE Commun. Surveys & Tutorials, vol. 17, no. 4, ",
+            "line_3": "2015, pp. 2317–46."
+        },
+        "paragraph_8": {
+            "line_1": "[5]  A.  Shaik  et  al.,  “Practical  Attacks  Against  Privacy  and ",
+            "line_2": "Availability in 4G/LTE Mobile Communication Systems,” ",
+            "line_3": "CoRR,  vol.  abs/1510.07563,  2015;  http://arxiv.org/",
+            "line_4": "abs/1510.07563"
+        },
+        "paragraph_9": {
+            "line_1": "[6] NGMN Alliance, NGMN 5G white paper, 2015.",
+            "line_2": "[7] I. Ahmad et al., “5G security: Analysis of Threats and Solu-",
+            "line_3": "tions,” 2017 IEEE Conf. Standards for Commun. and Net-",
+            "line_4": "working, Sept 2017, pp. 193–99."
+        },
+        "paragraph_10": {
+            "line_1": "[8] W. Yang and C. Fung, “A Survey on Security in Network ",
+            "line_2": "Functions  Virtualization,”  2016  IEEE  NetSoft  Conf.  and ",
+            "line_3": "Wksps., June 2016, pp. 15–19."
+        },
+        "paragraph_11": {
+            "line_1": "[9] A. van Cleeff, W. Pieters, and R. J. Wieringa, “Security Impli-",
+            "line_2": "cations of Virtualization: A Literature  Study,” 2009  Int’l. ",
+            "line_3": "Conf. Computational Science and Engineering, vol. 3, Aug ",
+            "line_4": "2009, pp. 353–58."
+        },
+        "paragraph_12": {
+            "line_1": "[10] P. Kulkarni, R. Khanai, and G. Bindagi, “Security Frame-",
+            "line_2": "works for Mobile Cloud Computing: A Survey,” 2016 Int’l. ",
+            "line_3": "Conf. Electrical, Electronics, and Optimization Techniques, ",
+            "line_4": "Mar. 2016, pp. 2507–11."
+        },
+        "paragraph_13": {
+            "line_1": "[11] R. Roman, J. Lopez, and M. Mambo, “Mobile Edge Com-",
+            "line_2": "puting, Fog: A Survey and Analysis of Security Threats and ",
+            "line_3": "Challenges,” Future Generation Computer Systems, 2016.",
+            "line_4": "[12] K. Norrman, M. Näslund, and E. Dubrova, “Protecting IMSI and ",
+            "line_5": "User Privacy in 5G Networks,” Proc. 9th EAI Int’l. Conf. Mobile ",
+            "line_6": "Multimedia Communications. Inst. for Comp. Sci., Social-Infor-",
+            "line_7": "matics, and Telecommun. Engineering, 2016, pp. 159–66."
+        },
+        "paragraph_14": {
+            "line_1": "[13] S. Sezer et al., “Are We Ready for SDN? Implementation ",
+            "line_2": "Challenges for Software-Defined Networks,” IEEE Commun. ",
+            "line_3": "Mag., vol. 51, no. 7, July 2013, pp. 36–43."
+        },
+        "paragraph_15": {
+            "line_1": "[14] B. Jaeger, “Security Orchestrator: Introducing a Securi-",
+            "line_2": "ty Orchestrator in the Context of the ETSI NFV Reference ",
+            "line_3": "Architecture,” 2015 IEEE Trustcom/BigDataSE/ISPA, vol. 1, ",
+            "line_4": "Aug. 2015, pp. 1255–60."
+        },
+        "paragraph_16": {
+            "line_1": "[15] H. Lauer and N. Kuntze, “Hypervisor-Based Attestation of ",
+            "line_2": "Virtual Environments,” 2016 Int’l. IEEE Conf. Ubiquitous Intel-",
+            "line_3": "ligence Computing, Advanced and Trusted Computing, Scal-",
+            "line_4": "able Computing and Communications, Cloud and Big Data ",
+            "line_5": "Computing, Internet of People, and Smart World Congress, ",
+            "line_6": "July 2016, pp. 333–40."
+        },
+        "paragraph_17": {
+            "line_1": "[16]  A.  Chonka  and  J.  Abawajy,  “Detecting  and  Mitigating ",
+            "line_2": "HX-DoS Attacks Against Cloud Web Services,” 2012 15th ",
+            "line_3": "Int’l. Conf. Network-Based Info. Systems, Sept 2012, pp. ",
+            "line_4": "429–34."
+        },
+        "paragraph_18": {
+            "line_1": "[17] A. Ahmed and E. Ahmed, “A Survey on Mobile Edge Com-",
+            "line_2": "puting,” 2016 10th Int’l. Conf. IEEE Intelligent Systems and ",
+            "line_3": "Control, 2016, pp. 1–8."
+        },
+        "paragraph_19": {
+            "line_1": "Biographies",
+            "line_2": "Ijaz ahmad (ijaz.ahmad@oulu.fi) is a Ph.D. student at the Centre ",
+            "line_3": "for Wireless Communications, University of Oulu."
+        },
+        "paragraph_20": {
+            "line_1": "Tanesh Kumar (tanesh.kumar@oulu.fi) is a Ph.D. student at the ",
+            "line_2": "Centre for Wireless Communications, University of Oulu."
+        },
+        "paragraph_21": {
+            "line_1": "madhusanKa LIyanage (madhusanka.liyanage@oulu.fi) is a proj-",
+            "line_2": "ect manager at the Centre for Wireless Communications, Uni-",
+            "line_3": "versity of Oulu."
+        },
+        "paragraph_22": {
+            "line_1": "jude OKwuIbe (jude.okwuibe@oulu.fi) is a Ph.D. student at the ",
+            "line_2": "Centre for Wireless Communications, University of Oulu."
+        },
+        "paragraph_23": {
+            "line_1": "mIKa yLIanTTILa (mika.ylianttila@oulu.fi) is a professor at the ",
+            "line_2": "Centre for Wireless Communications, University of Oulu."
+        },
+        "paragraph_24": {
+            "line_1": "andreI gurTOv (gurtov@acm.org) is a professor at Linköping ",
+            "line_2": "University, Sweden."
+        },
+        "paragraph_25": {
+            "line_1": "Novel security solutions ",
+            "line_2": "need to be sought out ",
+            "line_3": "that use the development ",
+            "line_4": "in, for example, artificial ",
+            "line_5": "intelligence and context ",
+            "line_6": "awareness, to enable pro-",
+            "line_7": "active network forensics ",
+            "line_8": "and response leveraging ",
+            "line_9": "the programmability ",
+            "line_10": "enabled by SDN and run-",
+            "line_11": "time, yet, need-based ",
+            "line_12": "security service insertion ",
+            "line_13": "in various network perim-",
+            "line_14": "eters using NFV."
+        },
+        "paragraph_26": {
+            "line_1": "Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply."
+        },
+        "paragraph_27": {
+            "line_1": "43"
+        }
+    }
+}

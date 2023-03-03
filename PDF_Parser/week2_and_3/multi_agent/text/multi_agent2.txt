@@ -1,0 +1,121 @@
+the trafﬁc light using learner classiﬁer system has improved
+signiﬁcantly compared to constant time trafﬁc light. In [28],
+the learning purpose is modeled in such a way that states
+indications are based on the summation of the cars wait-
+ing times. Obviously, the more cars information is received,
+the model will be more complicated and state space will be
+larger. This issue is one of the signiﬁcant problems of large
+networks. Adaptive control, which is introduced in [23],
+uses the approximate of a function as mapping of states to
+scheduling. Fuzzy inference engine is exploited to decrease
+systematic faults of Q-algorithm in [22]. The results demon-
+strate that not only learning in fuzzy framework is done faster
+than Q-learning but also delay in intersections is decreased
+considerably. A multi-agent fuzzy approach is proposed in
+[18], where Q-learning updates the set of rule base in fussy
+inference engine. In [13], a new method which has the capa-
+bility to estimate an incomplete model of environment is
+described for a given non-static environment. This method
+is applied in a network composed of 9 intersections. The
+reported results show that this method has better performance
+than the model-free methods and model-based methods, but
+could not be generalized and used in larger networks.
+
+In other researches, agents consider other agents in
+determination of their own control policy. For instance, coor-
+dination among agents is desired in [21] where the agents not
+only consider number of waiting vehicles on its own inter-
+section, but also they consider number of vehicles which
+have stopped in adjacent intersections. The RL is applied
+on 5 intersections within three different scenario. The over-
+all results show improvement in delay time. In [32], RL is
+used to control the trafﬁc in a grid where a type of cooper-
+ative learning simultaneously controls the trafﬁc signals and
+determines the optimal routes. One of the main drawbacks
+of this method is the high costs of communication and infor-
+mation exchange, speciﬁcally when intersections of network
+are increased. Cooperative RL tries to extract the knowledge
+from neighbor agents in a scheduling learning [26]. This
+method is implemented in an area of Dublin including 64
+intersections.
+
+This paper introduces a hybrid fuzzy Q-learning and Game
+theory method for control of trafﬁc lights in multi-agent
+framework. It exploits the beneﬁts of fuzziﬁcation as well as
+interaction with other agents. The trafﬁc network is modeled
+by considering an autonomous agent controls in which each
+intersection decides on duration of green phase. The number
+of vehicles in different inputs of the intersection are mea-
+sured by the corresponding agent. Any agent interacts with
+neighbor agents by getting a reward from each decision. This
+paper proposes that each agent fuzzify the inputs and utilizes
+in a fuzzy inference system for fuzzy estimation of trafﬁc
+model states. The agent uses a Q-learning approach modi-
+ﬁed by Game theory to learn from the past experiences and
+consider the interaction with neighbor agents. The agent gets
+
+123
+
+Arabian Journal for Science and Engineering
+
+a reward proportional to its own trafﬁc state and a reward from
+each decision from neighbor agents to update its Q-learning
+algorithm. The neighbor reward and its weighting in Q-value
+update is proposed to be fuzzy in the proposed method. The
+proposed method is applied on a ﬁve-intersection trafﬁc net-
+work. The simulation results indicate that proposed method
+outperforms the ﬁxed time, fuzzy, Q-learning and fuzzy Q-
+learning control methods in the sense of average delay time.
+This paper is unfolds as follows. After this introduction,
+Q-learning and its fuzzy version are described in the next
+section. Section 3 is devoted to application of Game theory
+in ITS. Sections 4 and 5 are about problem statement and
+proposed solution, respectively. Simulation results are given
+in Sect. 6. Finally, the paper is concluded in Sect. 7.
+
+2 Q-Learning and Fuzzy Q-Learning
+
+The objective of agents which act in dynamic environments
+is making optimum decisions. If the agents are not aware of
+rewards corresponding to various actions, selecting a proper
+action would be challenging. To achieve this goal, learning
+adjusts agents’ action selection based on collected data. Each
+agent tries to optimize its actions with dynamic environment
+via trial and error in reinforcement learning (RL). The RL is
+actually how different situations are mapped upon actions to
+receive the best results or the highest reward. In many cases,
+actions inﬂuence the reward of next steps as well as affect the
+reward of its corresponding step. There are model-based [32]
+as well as model-free [12] RL techniques. In model-free RL,
+the agent does not need explicit modeling of the environ-
+ment because its actions could be directly selected based on
+rewards. Q-learning is a model-independent approach where
+the agent does not access to transfer model [1,31]. Suppose
+that the agent is in a state s, performs an action a, from
+which it gets the rewards r from the environment and the
+environment changes to state s(cid:2). This is given by a tuple in
+the form of (s, a, r , s(cid:2)). State-action value which represents
+the expected total reward resulting from taking action a in
+state s is denoted by Q-value Q(s, a). The agent starts with
+random value and after each action they receive a tuple in the
+form of (s, a, r , s(cid:2)). For each tuple, the value of state-action
+could be calculated according to the following equation:
+
+Q(s, a) = (1 − α)Q(s, a)
++ α
+
+(cid:2)
+r + γ max Q(s(cid:2), a(cid:2)) − Q(s, a)
+
+(cid:3)
+
+(1)
+
+where α ∈ [0, 1] is the learning rate of agent. α = 1 means
+that merely new information is considered and zero means
+that the agent does not have any learning. γ ∈ [0, 1] is dis-
+count factor which determines future rewards. Zero value
+for this factor makes the agent opportunist which means that
+the agent only considers current reward. On the other hand,
+
+

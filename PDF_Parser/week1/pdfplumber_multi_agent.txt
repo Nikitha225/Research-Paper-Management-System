@@ -1,0 +1,407 @@
+ArabianJournalforScienceandEngineeringhttps://doi.org/10.1007/s13369-017-3018-9
+RESEARCH ARTICLE - SYSTEMS ENGINEERING
+Fuzzy Q-Learning-Based Multi-agent System for Intelligent Trafﬁc
+Control by a Game Theory Approach
+Abolghasem Daeichian1·Amir Haghani2
+Received:11December2015/Accepted:3December2017©KingFahdUniversityofPetroleum&Minerals2017
+AbstractThispaperintroducesamulti-agentapproachtoadjusttrafﬁclightsbasedontrafﬁcsituationinordertoreduceaveragedelaytime.Inthetrafﬁcmodel,lightsofeachintersectionarecontrolledbyanautonomousagent.Sincedecisionofeachagentaffectsneighboragents,thisapproachcreatesaclassicalnon-stationaryenvironment.Thus,eachagentnotonlyneedstolearnfromthepastexperiencebutalsohastoconsiderdecisionofneighborstoovercomedynamicchangesofthetrafﬁcnetwork.FuzzyQ-learningandGametheoryareemployedtomakepolicybasedonpreviousexperiencesanddecisionofneighboragents.Simulationresultsillustratetheadvantageoftheproposedmethodoverﬁxedtime,fuzzy,Q-learningandfuzzyQ-learningcontrolmethods.
+Keywords Trafﬁccontrol·Multi-agentsystem·Gametheory·FuzzyQ-learning
+1 Introduction Inamultitudeofresearches,anyagentonlyconsidersits
+own trafﬁc state in order to determine the control policy.
+Urbanization, increasing number of vehicles, and lack of Forexample,singleintersectionwithtwophasesisinvesti-
+transportinfrastructureshaveincreasedtraveltime,fuelcon- gatedin [2].Lengthofvehiclesqueuewaitingonthelight
+sumption,andairpollution.Therefore,urbanlifeequalswith isconsideredasstatewhichcanbemeasuredbytheagent.It
+waste of time, less clean air, and acoustic pollution. Con- decidesonextendgreentimeorchangeittothenextphaseso
+ventional ﬁxed trafﬁc management systems are not able to thatthenumberofvehicleswaitingonthelightisminimized.
+ﬁghtcomplexityanddynamicoflargetrafﬁcnetworks.While The results show superiority of Q-learning agent over uni-
+artiﬁcial intelligence (AI) are greatly employed to develop form trafﬁc ﬂows and constant-ratio trafﬁc ﬂows. In [32],
+intelligenttrafﬁcsystems(ITS) [6,7,19,24],multi-agentsys- trafﬁc lights are considered as agents which communicate
+tem is an approach to model ITS [25,30]. This framework withvehicles.Thevehiclesestimatetheirmeanwaitingtime
+consistsofapopulationofintelligentandautonomousagents and transmit this time to trafﬁc light where a popular RL
+work together in an environment [27]. Trafﬁc lights [20], algorithm, namely Q-learning, is used to provide a control
+vehicles[3],andpedestrians [29]areconsideredasagents fortrafﬁcsignalscheduling.Resultsofthisstudyshow22%
+in modeling of urban trafﬁc networks. Each agent needs reductioninwaitingtimecomparedtoconstanttimelights.
+to learn from the past experiences which is a key point to Multi-objectivereinforcementlearningisutilizedtocontrol
+approximate a better decision-making policy. Multi-agent severaltrafﬁclightsin[17].Optimizationgoalsincludenum-
+model-based[32]aswellasmodel-free[12]reinforcement berofstopsofavehicle,meanstoppingtime,andlengthof
+learning (RL) techniques are widely used in researches on vehicles’queueonthenextintersection.Itsresultsindicate
+ITS [6,23]. that multi-RL can effectively prevent the queue spillovers
+undercongestedconditiontoavoidlarge-scaletrafﬁcjams.
+B Bull et al. [10] used learner classiﬁers to control light traf-
+AbolghasemDaeichiana-daeichian@araku.ac.ir;a.daeichian@gmail.com
+ﬁc including 4 intersections. In this research, trafﬁc lights
+includetwophasesateachintersection,whereonephaseis
+1 DepartmentofElectricalEngineering,Facultyof formovingnorth–southandoneisforeast-west.Controller
+Engineering,ArakUniversity,Arak38156-8-8349,Iran
+at each intersection obtains optimum phase time through
+2 DepartmentofElectricalEngineering,PayamInstituteof extractingif-thenrules.Itsresultsshowthatperformanceof
+HigherEducation,Golpayegan,Isfahan,Iran
+123ArabianJournalforScienceandEngineering
+thetrafﬁclightusinglearnerclassiﬁersystemhasimproved arewardproportionaltoitsowntrafﬁcstateandarewardfrom
+signiﬁcantlycomparedtoconstanttimetrafﬁclight.In[28], eachdecisionfromneighboragentstoupdateitsQ-learning
+the learning purpose is modeled in such a way that states algorithm.TheneighborrewardanditsweightinginQ-value
+indications are based on the summation of the cars wait- updateisproposedtobefuzzyintheproposedmethod.The
+ingtimes.Obviously,themorecarsinformationisreceived, proposedmethodisappliedonaﬁve-intersectiontrafﬁcnet-
+themodelwillbemorecomplicatedandstatespacewillbe work.Thesimulationresultsindicatethatproposedmethod
+larger.Thisissueisoneofthesigniﬁcantproblemsoflarge outperformstheﬁxedtime,fuzzy,Q-learningandfuzzyQ-
+networks. Adaptive control, which is introduced in [23], learningcontrolmethodsinthesenseofaveragedelaytime.
+uses the approximate of a function as mapping of states to Thispaperisunfoldsasfollows.Afterthisintroduction,
+scheduling.Fuzzyinferenceengineisexploitedtodecrease Q-learning and its fuzzy version are described in the next
+systematicfaultsofQ-algorithmin[22].Theresultsdemon- section.Section3isdevotedtoapplicationofGametheory
+stratethatnotonlylearninginfuzzyframeworkisdonefaster in ITS. Sections 4 and 5 are about problem statement and
+thanQ-learningbutalsodelayinintersectionsisdecreased proposedsolution,respectively.Simulationresultsaregiven
+considerably. A multi-agent fuzzy approach is proposed in inSect.6.Finally,thepaperisconcludedinSect.7.
+[18],whereQ-learningupdatesthesetofrulebaseinfussyinferenceengine.In[13],anewmethodwhichhasthecapa-bilitytoestimateanincompletemodelofenvironmentis
+2 Q-LearningandFuzzyQ-Learning
+described for a given non-static environment. This method
+is applied in a network composed of 9 intersections. The Theobjectiveofagentswhichactindynamicenvironments
+reportedresultsshowthatthismethodhasbetterperformance ismakingoptimumdecisions.Iftheagentsarenotawareof
+thanthemodel-freemethodsandmodel-basedmethods,but rewardscorrespondingtovariousactions,selectingaproper
+couldnotbegeneralizedandusedinlargernetworks. actionwouldbechallenging.Toachievethisgoal,learning
+In other researches, agents consider other agents in adjustsagents’actionselectionbasedoncollecteddata.Each
+determinationoftheirowncontrolpolicy.Forinstance,coor- agenttriestooptimizeitsactionswithdynamicenvironment
+dinationamongagentsisdesiredin[21]wheretheagentsnot viatrialanderrorinreinforcementlearning(RL).TheRLis
+only consider number of waiting vehicles on its own inter- actuallyhowdifferentsituationsaremappeduponactionsto
+section, but also they consider number of vehicles which receivethebestresultsorthehighestreward.Inmanycases,
+have stopped in adjacent intersections. The RL is applied actionsinﬂuencetherewardofnextstepsaswellasaffectthe
+on5intersectionswithinthreedifferentscenario.Theover- rewardofitscorrespondingstep.Therearemodel-based[32]
+all results show improvement in delay time. In [32], RL is aswellasmodel-free [12]RLtechniques.Inmodel-freeRL,
+usedtocontrolthetrafﬁcinagridwhereatypeofcooper- the agent does not need explicit modeling of the environ-
+ativelearningsimultaneouslycontrolsthetrafﬁcsignalsand mentbecauseitsactionscouldbedirectlyselectedbasedon
+determines the optimal routes. One of the main drawbacks rewards.Q-learningisamodel-independentapproachwhere
+ofthismethodisthehighcostsofcommunicationandinfor- theagentdoesnotaccesstotransfermodel[1,31].Suppose
+mationexchange,speciﬁcallywhenintersectionsofnetwork that the agent is in a state s, performs an action a, from
+areincreased.CooperativeRLtriestoextracttheknowledge which it gets the rewards r from the environment and the
+(cid:2)
+from neighbor agents in a scheduling learning [26]. This environmentchangestostates .Thisisgivenbyatuplein
+theformof(s,a,r,s(cid:2)).State-actionvaluewhichrepresents
+method is implemented in an area of Dublin including 64
+intersections. the expected total reward resulting from taking action a in
+ThispaperintroducesahybridfuzzyQ-learningandGame states isdenotedby Q-value Q(s,a).Theagentstartswith
+theory method for control of trafﬁc lights in multi-agent randomvalueandaftereachactiontheyreceiveatupleinthe
+formof(s,a,r,s(cid:2)).Foreachtuple,thevalueofstate-action
+framework.Itexploitsthebeneﬁtsoffuzziﬁcationaswellas
+interactionwithotheragents.Thetrafﬁcnetworkismodeled couldbecalculatedaccordingtothefollowingequation:
+byconsideringanautonomousagentcontrolsinwhicheachintersectiondecidesondurationofgreenphase.Thenumber
+Q(s,a)=(1−α)Q(s,a)(cid:2)
+(cid:3)
+of vehicles in different inputs of the intersection are mea- +α r +γ maxQ(s(cid:2),a(cid:2))−Q(s,a) (1)
+suredbythecorrespondingagent.Anyagentinteractswithneighboragentsbygettingarewardfromeachdecision.This
+whereα ∈ [0,1]isthelearningrateofagent.α = 1means
+paperproposesthateachagentfuzzifytheinputsandutilizes that merely new information is considered and zero means
+in a fuzzy inference system for fuzzy estimation of trafﬁc thattheagentdoesnothaveanylearning.γ ∈ [0,1]isdis-
+model states. The agent uses a Q-learning approach modi- count factor which determines future rewards. Zero value
+ﬁedbyGametheorytolearnfromthepastexperiencesand forthisfactormakestheagentopportunistwhichmeansthat
+considertheinteractionwithneighboragents.Theagentgets theagentonlyconsiderscurrentreward.Ontheotherhand,
+123ArabianJournalforScienceandEngineering
+γ = 1 means that the agent will wait for a longer time to methodofagentsbasedonGametheory[33].In[5],signal-
+achievealargereward.Q-learningwillconvergetooptimum ized intersections are modeled as ﬁnite controlled Markov
+valueQ∗(s,a)withprobabilityofoneifallstate-actionpairs
+chainsandeachintersectionisseenasnon-cooperativegame
+areexperiencedrepetitivelyandlearningratedecreaseduring where each player tryto minimize itsqueue. The solutions
+thetime [22].Generally,RLisusefulforsolvingproblems aregivenasNashequilibriumandStackelberbgequilibrium
+withsmalldimensiondiscretestateandactionspace.When andthesimulationresultsindicateshorterqueuelengththan
+thedimensionofstateandactionspacebecomeslarger,the adaptivecontrol.In[8],atwo-playernon-cooperativegame
+sizeofsearchtablewillbesolargethatitmakesthealgorithm is articulated between user seeking a path to minimize the
+veryslowduetocomputationaltime.Ontheotherhand,when expectedtripcostandchoosinglinkperformancescenarios
+the states or actions are stated continuously, using search to maximize the expected trip cost. It shows that the Nash
+tablewillnotbepossible.Totacklethisproblem,fuzzythe- equilibrium point measures network performance. Intelli-
+oryisemployed. Iftheintelligentagenthas aproper fuzzy genttrafﬁccontrolisexpressedasaCournotgamewherethe
+setasexpertknowledgeaboutthedesiredarea,theambigu- trafﬁcauthorityandtheuserschoosetheirstrategiessimulta-
+itycouldberesolved.Thus,intelligentagentcanunderstand neouslyandasabi-levelStackelberggamewherethetrafﬁc
+vagueobjectivesandunknownenvironment.Inpractice,the authorityistheleaderwhichdeterminesthesignalsettingsin
+actioninlargespacesisfacilitatedbyeliminating Q-values anticipationoftheuserreactions.In[33],Gametheoryisused
+table. In this method everything is based on quality values toaddresscoordinationbetweenagentsbasedontrafﬁcsignal
+andfuzzyinference.Fuzzyinferencesystem(FIS)dealswith controlwithQ-learning.Itspeciﬁesstrategies(C(m)={red
+inputandQ-learningalgorithmusesthefollowersectionand lighttimeplus4s,redlighttimeplus8s,redlighttimeminus
+itsactiverulesasstates.RewardsignalofQ-algorithmisbuilt 4s, red light time minus 8s,unchangeably}) and actions
+in accordance with fuzzy logic, environment reward signal (S(n)={eastweststraightandrightturn,southnorthstraight
+and performance estimation of current action. It is tried to and right turn, east west left turn, south north left turn}).
+selecttheactionwhichmaximizestherewardsignal[9,14]. Then, an interaction mathematical model via Game theory
+Learningsystemisabletoselectoneactionamong j actions as a four parameter group G = {B,A,I,U} is presented.
+foreachrule. j-thpossibleactionini-thruleisdenotedby B isagroupofdecision-makersasplayers. Aisagroupof
+a[i, j]anditsvalueisshownbyq[i, j]considerthefollow- any possible strategies and actions, i.e. A = C(m)∗ S(n).
+ingrules [9]: I representstheinformationwhichagentsmasters.U isthe
+beneﬁt function which adopts Q-value. So, the Nash equi-
+If x issi then a[i,1]withq[i,1] libriumis[33]:
+or a[i,2]withq[i,2]
+Ui(ai∗,a−∗i)≥Ui(ai,a−∗i)
+.. (3)
+. (2)
+or a[i, j]withq[i, j] whereai anda−i denoteactionofi-thagentandactionsof∗∗
+other agents, respectively. a and a represent the actions
+i −i
+Learningshouldﬁndthebestresultforeachrule.Iftheagent at Nash equilibrium. The renewed Q-values in distributed
+selects an action which results in high value, it may learn reinforcementQ-learningareusedtobuildthepayoffvalues.
+optimum policy. Thus, fuzzy inference system may obtain Q-valuefunctionisupdatedas:
+necessaryactionforeachrule[9].
+Q (s ,a )=(1−α )Q (s ,a )
+i i i ⎡i i i i
+(cid:6)n
+3 GameTheoryinITS +α ⎣r (s ,a )+ f(i, j)r (s ,a )
+i i i i j i i
+j=1,j(cid:6)=i
+⎤
+Relation between agent-oriented environments and games
+theory originates from the fact that each state of agent- +γ max(Q (s(cid:2),a(cid:2))−Q (s ,a ))⎦ (4)
+i i i i i i
+orientedenvironmentscanberesembledtoagameenviron-ment.Proﬁtfunctionofplayerswouldbecurrentstateoftheenvironmentandgoalofplayersistomovetowardbalanced
+whereαandγ arelearningrateanddiscountfactor,respec-
+orequilibriumpoint(reachingthebestdecision-makingpol- tively.s anda arecurrentstateoftrafﬁcenvironmentand
+i i
+(cid:2)
+icy). Some scholars have studied the application of Game currentaction,respectively.s isitsnextstate,nisthenum-
+i
+theory to control of trafﬁc lights [15,16]. They integrate ber of trafﬁc signal control agents surrounding i-th agent,
+Gametheoryintothemulti-agentinteractionapproach.Some Q (s ,a )istheQ-valuefunctionfori-thagentwhenselects
+i i i
+of them suit the trafﬁc problem into a rigorous mathemati- actiona instates .r (s ,a )isrewardfunctionofi-thagent
+i i i i i
+calgamemodel [5,8,11],whileothersmodifythelearning andr (s ,a )isrewardfunctionof j-thagentneighboringi-
+j i i
+123ArabianJournalforScienceandEngineering
+thagent. f(i, j)∈[0,1]isaweightedfunctionwhichshows
+theeffectofr (s ,a )oni-thagent.Mathematicalfunctions
+j i i
+aresuggestedin[33]forr(s,a)and f(i, j).Assumptionof
+discreteaction-statespaceanddeterminationofrewardandweightingfunctionsaredrawbacksofthatwork.
+4 ProblemStatements
+Consideratrafﬁcnetworkinwhichthelightsofeachinter-sectioniscontrolledbyanautonomousagentswithoutanycentralizedmanagement.Somesensorswhichareinstalledbelowthesurfaceofsurroundingstreetsortrafﬁccamerasofeachintersectionprovideinformationabouttrafﬁcsitua-tionforthecorrespondingagent.Anagenthastodecideon
+Fig.1 Theproposedstructureforatypicalagent
+duration of green light at north–south (NS) and west–east
+(WE)paths.Also,anyagentinteractswithneighboragents.
+The i-th agent takes decision of neighbor agent j into
+Anyway,theagentisexpectedtoscheduletrafﬁclightsopti-
+account by reward r (s ,a ) and a weighting function
+j i i
+mally, in the sense of average delay, based on the received
+f(i, j). The reward is calculated based on average delay
+informationfromitssensorsandreceivedinformationfrom
+obtained from the decision made by the agent and current
+neighboragents.
+trafﬁcsituationinafuzzymanner.Afuzzyinferenceengine
+Theagentsmayhavelittleknowledgeaboutothers’deci-
+obtains these two inputs after fuzziﬁcation and gives the
+sionduetodistributionofinformation.Evenifanagenthas
+reward after defuzziﬁcation; see Fig. 1. weighting function
+previousknowninformationaboutothers’decision,itisnot
+f(i, j) ∈ [0,1] shows the effect of r (s ,a ) on the deci-
+j i i
+valid as other agents are also learning. Thus, the environ-
+sionofi-thagent.Thisweightisalsocalculatedbyafuzzy
+mentisdynamicandthebehaviorofotheragentsmaychange
+inferenceengine.Thisenginetakesitsownt ,theneighborg
+duringtime.Lackofpredictionofotheragentscausesuncer-
+agents’t ,andnumberofwaitedvehiclesandgives f(i, j).
+g
+taintyinproblemsolvingprocedure.Thispaperlooksfora
+Suitable choice for reward and weighting function plays a
+decision-making algorithm for lights control agents which
+signiﬁcantroleinagentlearning.Theagentwithstructurein
+considersneighboragentsinformationinadditiontoitsown
+Fig.1runsthefollowingalgorithm:
+information.
+1. Initial value of Q -value for i-th trafﬁc signal control
+i
+5 ProposedAlgorithm agentisintheformof∀(si,ai): Qi(si,ai)=0.
+2. Observings byWEandNSsensorswhichisthecurrent
+i
+WeconsideraconstantdurationT forgreenplusredphases. stateofi-thintersection.
+So,iftheagentdeterminesthegreenphasedurationt ,then 3. Selectingaproperestimationfordesiredstatebyfuzzy
+g
+the red phase duration is t = T −t . Any typical agent i inferencesystem.
+r g
+receivesnumberofvehiclesontheNSandWEstreetsfrom 4. Calculating the reward related to i-th and j-th trafﬁc
+its own sensors and the green phase duration of neighbor signalcontrolagentandtheweightingfunctionforneigh-
+agent j in order to schedule its own green phase duration. boringagentsseparately.(cid:2)
+Thispaperproposesanautonomousagentwithstructurein 5. Observingnewstatesi.
+Fig.1tocontroleachintersection. 6. Updating Qi-valueaccordingtoEq.4.
+ThenumberofvehiclesinWEandNSstreetswhicharemea- 7. Returningtostep2tillthevariationofQ-valuebecomes
+lessthan(cid:4).
+suredbysensorsarefuzziﬁed.Then,afuzzyinferenceengine
+with rules as Eq. 2 are employed to ﬁre the corresponding
+outputmembershipfunctions.Finally,defuzziﬁcationresultstodurationofgreenphaseinNSpath(tNS).Thus,thedura-
+6 SimulationResults
+g
+tionofgreenphaseinotherpath,WE,istWE =T−tNS.We
+g g
+proposethat,Q-valuefunctionwhichisupdatedbyEq.4be Consider a trafﬁc network with a center and four neighbor
+thevalueofeachactioninEq.2whichisdenotedbyq[i, j]. intersection.Thedelayineachintersectiondependsonphys-
+Thisupdateequationtakestheneighboragents’decisioninto icalcharacteristicsoftheintersection,trafﬁclightscheduling
+account. andnumberofcarsininputstreets.Weutilizedtrafﬁcmodel
+123ArabianJournalforScienceandEngineering
+VL L M H VH VS S M H VH
+1 1
+0.8 0.8
+0.6 0.6
+0.4 0.4
+0.2 0.2
+0 0
+0 500 1000 1500 2000 2500 3000 3500 0 10 20 30 40 50 60
+Number of vehivles Delay
+Fig.2 Membershipfunctionofnumberofvehiclesenterthestreetfor Fig.3 MembershipfunctionofaveragedelayforrewardFIS
+rewardFIS
+VS S M H VH
+1
+whichisgivenbytheAmericanHighwayCapacityManual
+0.8
+(HCM) [4,Eq.20]:
+0.6
+C(1−λ)2
+0.4
+d =0.38
+1−x(cid:9)
+(cid:10) (cid:11) 0.2
+16x
++173x2 (x −1)+ (x −1)2+ (5) 0
+C -3 -2 -1 0 1 2 3
+Reward
+where d, C, λ, and x are average delay (s), cycle time (s), Fig.4 MembershipfunctionofoutputforrewardFIS
+green ratio, and degree of saturation, respectively. λ = gc
+andx = v,wherec,g,andvarecapacity(vehicleperhour),c
+L M H
+1
+greentime(sec),andinputvolume,respectively.Weusethismodeltocalculateaveragedelaybasedonthegreenphase
+0.8
+duration and number of vehicles. For more details of this 0.6
+equation,wereferto[4].
+0.4
+Assume that C = T = 100 s and c = 3500 veh/h. v is
+0.2
+volumeofvehiclesenteringeachstreetwhichvariesbetween0to3500veh/h.gisdurationofthegreenphasewhicheach
+00
+20 40 60 80 100
+agent selects considering fuzzy Q-learning and interaction
+Green phase duration
+with adjacent agents. The trafﬁc network simulation algo-
+rithmisasfollow: Fig. 5 Membership function of green phase duration for weighting
+functionFIS
+1. Thevolumeofvehiclesenteringeachintersection(v)arerandomlygeneratedbyadiscreteuniformdistributionon
+functionforitsownandneighborgreenphaseduration.Cen-
+theinterval[0,3500].
+troiddefuzziﬁcationisappliedtocalculateweightsonoutput
+2. AveragedelayiscalculatedbyEq.5. membership function as in Fig. 6 which should be a value
+3. Eachagentdecidesonthetimeofgreenphaseg. between0and1.
+4. Gotostep1untilendofsimulationtime. Finally,theagentusesfuzzyQ-learning(Eq.2)withQ-valueupdaterule(Eq.4)wherelearninganddiscountfactorare
+AssumestructureoftheagentsasinFig.1withtheMam- selected to be 0.5 and 0.7, respectively. The membership
+dani FIS with input membership function as in Fig. 2 for functionforeachmeasurednumberofvehiclesisshownin
+number of input vehicles and Fig. 3 for average delay to Fig.7.Theoutputestimatesgreenphasedurationwithmem-
+calculate the reward functions r (s ,a ). Centroid defuzzi- bershipfunctionsasinFig.8.
+j i i
+ﬁcation by the output membership function as in Fig. 4 is The proposed method is compared with Fuzzy Q-learning
+consideredtoestimatearewardvalueininterval[−3,3]. (using Eq. 2 where q[i, j] is the Q-value which updates
+TheweightingfunctionFIShasnumberofvehicles,itsown with Eq. 1), Q-learning (using Q-learning method with Q-
+green phase duration and the neighbor agents’ green phase value which updates with Eq. 1), fuzzy(using traditional
+durationasinputs.Figure2showsthemembershipfunction fuzzy inference method) and ﬁxed time (t = 60 s) in
+g
+for number of vehicles, and Fig. 5 depicts the membership the sense of total average delay. Average delay in each
+123ArabianJournalforScienceandEngineering
+VS S M H VH
+1
+0.8
+0.6
+0.4
+0.2
+00
+0.2 0.4 0.6 0.8 1
+Weight
+Fig.6 MembershipfunctionofoutputforweightingfunctionFIS
+VL L H VH
+1
+0.8
+0.6
+0.4
+Fig.9 Delay of the proposed method, ﬁxed time, fuzzy Q-learning,
+0.2
+Q-learningandfuzzyineachtimestep
+00
+500 1000 1500 2000 2500 3000 3500
+Number of vehivles
+Fig.7 MembershipfunctionofnumberofvehiclesforfuzzyQ-learning
+S1 S2 S3 S4 S5 S6 S7 S8 S9
+1
+0.8
+0.6
+0.4
+0.2
+0 Fig.10 Averageofdelayfortheproposedmethod,ﬁxedtime,fuzzy,
+0 20 40 60 80 100
+Q-learning,fuzzyQ-learning
+green phase duration
+Fig. 8 Membership function of green phase duration for fuzzy Q-
+Therewardreceivedfromtheneighborandweightedfunc-
+learning
+tions of neighboring agents are factors learning algorithm.
+These parameters are fuzziﬁed through a FIS. Also, the
+time interval is depicted in Fig. 9, and the total average number of vehicles in each street is measured and fuzzi-
+delay is illustrated in Fig. 10. The results illustrate that ﬁedtobeusedindecision-makingprocess.Thesimulation
+total average delay decrease from more than 50 s for ﬁxed results were compared with ﬁxed time method and other
+time scheduling to approximately 15 s for the proposed intelligent methods. The results revealed that our proposed
+method. methodachievesconsiderablereductionofaveragedelayinintersections.
+7 Conclusion
+References
+In this study, an intelligent control method of a controlling
+trafﬁc network was performed to decrease average delay
+1. Abdoos,M.;Mozayani,N.;Bazzan,A.L.:Trafﬁclightcontrolin
+time. Each trafﬁc light is considered as a learning agent. non-stationaryenvironmentsbasedonmultiagentq-learning.In:
+This paper proposed a structure for the agents. Each agent 14thInternationalIEEEConferenceonIntelligentTransportationSystems(ITSC),pp.1580–1585.IEEE(2011)
+learn to decide on the duration of green phase through a
+2. Abdulhai,B.;Pringle,R.;Karakoulas,G.J.:Reinforcementlearn-
+fuzzyQ-learningalgorithmwhichismodiﬁedbyGamethe-
+ingfortrueadaptivetrafﬁcsignalcontrol.J.Transp.Eng.129(3),
+ory. Each agent receives a reward from neighbor agents. 278–285(2003)
+123ArabianJournalforScienceandEngineering
+3. Adler,J.L.;Satapathy,G.;Manikonda,V.;Bowles,B.;Blue,V.J.:A 19. Kponyo,J.;Nwizege,K.;Opare,K.;Ahmed,A.;Hamdoun,H.;
+multi-agentapproachtocooperativetrafﬁcmanagementandroute Akazua,L.;Alshehri,S.;Frank,H.:Adistributedintelligenttraf-
+guidance.Transp.Res.PartBMethodol.39(4),297–318(2005) ﬁc system using ant colony optimization: a netlogo modeling
+4. Akgungor,A.P.;Bullen,A.G.R.:Analyticaldelaymodelsforsig- approach. In: International Conference on Systems Informatics,
+nalizedintersections.In:69thITEAnnualMeeting,Nevada,USA ModellingandSimulation(SIMS),pp.11–17.IEEE(2016)
+(1999) 20. Liu,Z.:Asurveyofintelligencemethodsinurbantrafﬁcsignal
+5. Alvarez,I.;Poznyak,A.;Malo,A.:Urbantrafﬁccontrolproblema control.IJCSNSInt.J.Comput.Sci.Netw.Secur.7(7),105–112
+gametheoryapproach.In:47thIEEEConferenceonDecisionand (2007)
+Control,pp.2168–2172.IEEE(2008) 21. Medina,J.C.;Hajbabaie,A.;Benekohal,R.F.:Arterialtrafﬁccon-
+6. Balaji,P.;German,X.;Srinivasan,D.:Urbantrafﬁcsignalcontrol trol using reinforcement learning agents and information from
+usingreinforcementlearningagents.IETIntell.Transp.Syst.4(3), adjacentintersectionsinthestateandrewardstructure.In:2010
+177–188(2010) 13thInternationalIEEEConferenceonIntelligentTransportation
+7. Bazzan,A.L.;Klgl,F.:Areviewonagent-basedtechnologyfortraf- Systems(ITSC),pp.525–530.IEEE(2010)
+ﬁcandtransportation.Knowl.Eng.Rev.29(03),375–403(2014) 22. Pacheco,J.C.;Rossetti,R.J.:Agent-basedtrafﬁccontrol:afuzzy
+8. Bell,M.G.:Agametheoryapproachtomeasuringtheperformance q-learning approach. In: 13th International IEEE Conference on
+reliability of transport networks. Transp. Res. Part B Methodol. IntelligentTransportationSystems(ITSC),pp.1172–1177.IEEE
+34(6),533–545(2000) (2010)
+9. Bonarini,A.;Lazaric,A.;Montrone,F.;Restelli,M.:Reinforce- 23. Prashanth,L.;Bhatnagar,S.:Reinforcementlearningwithfunction
+ment distribution in fuzzy q-learning. Fuzzy SetsSyst. 160(10), approximationfortrafﬁcsignalcontrol.IEEETrans.Intell.Transp.
+1420–1443(2009) Syst.12(2),412–421(2011)
+10. Bull,L.;ShaAban,J.;Tomlinson,A.;Addison,J.D.;Heydecker, 24. Rida,M.:Modelingandoptimizationofdecision-makingprocess
+B.G.:Towardsdistributedadaptivecontrolforroadtrafﬁcjunction duringloadingandunloadingoperationsatcontainerport.Arab.J.
+signalsusinglearningclassiﬁersystems.In:Bull,L.(ed.)Applica- Sci.Eng.39(11),8395–8408(2014)
+tionsofLearningClassiﬁerSystems,pp.276–299.Springer,Berlin 25. Roess, R.P.; Prassas, E.S.; McShane, W.R.: Trafﬁc Engineering.
+(2004) PrenticeHall,EnglewoodCliffs(2004)
+11. Chen,O.;Ben-Akiva,M.:Game-theoreticformulationsofinterac- 26. Salkham,A.;Cunningham,R.;Garg,A.;Cahill,V.:Acollaborative
+tionbetweendynamictrafﬁccontrolanddynamictrafﬁcassign- reinforcementlearningapproachtourbantrafﬁccontroloptimiza-
+ment. Transp. Res. Rec. J. Transp. Res. Board 1617, 179–188 tion.In:ProceedingsofIEEE/WIC/ACMInternationalConference
+(1998) onWebIntelligenceandIntelligentAgentTechnology,pp.560–
+12. Chin,Y.K.;Bolong,N.;Kiring,A.;Yang,S.S.;Teo,K.T.K.:Q- 566.IEEEComputerSociety(2008)
+learningbasedtrafﬁcoptimizationinmanagementofsignaltiming 27. Schaefer,M.;Vokˇrínek,J.;Pinotti,D.;Tango,F.:Multi-agenttrafﬁc
+plan.Int.J.Simul.Syst.Sci.Technol.12(3),29–35(2011) simulationfordevelopmentandvalidationofautonomiccar-to-car
+13. DaSilva,B.C.;Basso,E.W.;Perotto,F.S.;CBazzan,A.L.;Engel, systems.In:McCluskey,Th.L.,Kotsialos,A.,Müller,J.P.,Klügl,F.,
+P.M.: Improving reinforcement learning with context detection. Rana,O.,Schumann,R.(eds.)AutonomicRoadTransportSupport
+In: Proceedings of the Fifth International Joint Conference on Systems,pp.165–180.Springer,Berlin(2016)
+AutonomousAgentsandMultiagentSystems,pp.810–812.ACM 28. Steingrover,M.;Schouten,R.;Peelen,S.;Nijhuis,E.;Bakker,B.:
+(2006) Reinforcementlearningoftrafﬁclightcontrollersadaptingtotrafﬁc
+14. Glowaty,G.:Enhancementsoffuzzyq-learningalgorithm.Com- congestion.In:BNAIC,pp.216–223.Citeseer(2005)
+put.Sci.7,77–87(2005) 29. Teknomo, K.: Application of microscopic pedestrian simulation
+15. Goyal,T.;Kaushal,S.:Anintelligentschedulingschemeforreal- model. Transp. Res. Part F Trafﬁc Psychol. Behav. 9(1), 15–27
+timetrafﬁcmanagementusingcooperativegametheoryandahp- (2006)
+topsismethodsfornextgenerationtelecommunicationnetworks. 30. Vilarinho,C.;Tavares,J.P.;Rossetti,R.J.:Intelligenttrafﬁclights:
+ExpertSyst.Appl.86,125–134(2017) greentimeperiodnegotiation.Transp.Res.Procedia22,325–334
+16. Groot,N.;Zaccour,G.;DeSchutter,B.:Hierarchicalgamethe- (2017)
+oryforsystem-optimalcontrol:applicationsofreversestackelberg 31. Watkins,C.J.;Dayan,P.:Q-learning.Mach.Learn.8(3–4),279–
+gamesinregulatingmarketingchannelsandtrafﬁcrouting.IEEE 292(1992)
+ControlSyst.37(2),129–152(2017) 32. Wiering,M.:Multi-agentreinforcementlearningfortrafﬁclight
+17. Houli,D.;Zhiheng,L.;Yi,Z.:Multiobjectivereinforcementlearn- control.In:ICML,pp.1151–1158(2000)
+ing for trafﬁc signal control using vehicular ad hoc network. 33. Xinhai, X.; Lunhui, X.: Trafﬁc signal control agent interaction
+EURASIPJ.Adv.SignalProcess.1,724,035(2010) model based on game theory and reinforcement learning. In:
+18. Iyer, V.; Jadhav, R.; Mavchi, U.; Abraham, J.: Intelligent trafﬁc InternationalForumonComputerScience-TechnologyandAppli-
+signalsynchronizationusingfuzzylogicandq-learning.In:Inter- cations,vol.1,pp.164–168.IEEE(2009)
+nationalConferenceonComputing,AnalyticsandSecurityTrends(CAST),pp.156–161.IEEE(2016)
+123

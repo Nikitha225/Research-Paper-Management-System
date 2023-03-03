@@ -1,0 +1,130 @@
+ENABLING 5G VERTICALS AND SERVICES THROUGH NETWORK SOFTWARIZATION AND SLICING
+
+Overview of 
+5G Security Challenges and Solutions
+
+Ijaz Ahmad, Tanesh Kumar, Madhusanka Liyanage, Jude Okwuibe, Mika Ylianttila, and Andrei Gurtov
+
+Abstract
+
+5G networks will use novel technological con-
+cepts  to  meet  the  requirements  of  broadband 
+access everywhere, high user and device mobility, 
+and connectivity of massive number of devices 
+(e.g., the Internet of Things) in an ultra-reliable 
+and affordable way. Software defined networking 
+and network functions virtualization leveraging 
+the advances in cloud computing such as mobile 
+edge computing are the most sought out tech-
+nologies to meet these requirements. However, 
+securely using these technologies and providing 
+user privacy in future wireless networks are the 
+new concerns. Therefore, this article provides an 
+overview of the security challenges in clouds, soft-
+ware defined networking, and network functions 
+virtualization, and the challenges of user privacy. 
+Henceforth, this article presents solutions to these 
+challenges and future directions for secure 5G 
+systems.
+
+Introduction
+According to the Fifth Generation Public Private 
+Partnership (5G-PPP), 5G will connect about 7 
+trillion wireless devices or things, shrink the aver-
+age service creation time from 90 hours to 90 
+minutes, and enable advanced user controlled pri-
+vacy [1]. By connecting all aspects of life, 5G aims 
+at a digital society that requires high service avail-
+ability and security using a diverse set of technolo-
+gies. Therefore, the concepts of cloud computing, 
+software defined networking (SDN), and network 
+functions virtualization (NFV) are sought out to 
+meet the growing user and service demands with-
+in the constraints of capital expenditures (CapEx) 
+and operational expenses (OpEx) through flexible 
+network operation and management.
+
+Cloud computing provides an efficient way for 
+operators to maintain data, services, and applica-
+tions by bringing technologically distinct systems 
+into a single domain on which multiple services 
+can be deployed to achieve a higher degree of 
+flexibility  and  availability  with  less  CapEx  and 
+OpEx.  Mobile  edge  computing  (MEC),  using 
+the concepts of cloud computing, will empower 
+the network edge to process delay-sensitive and 
+context-aware applications in close proximity of 
+users or things. Softwarizing network functions 
+will enable portability and flexibility of network-
+ing systems and services. SDN enables network 
+function softwarization by separating the network 
+control  from  the  data  forwarding  planes,  and 
+
+enabling programmability of both planes. Hence, 
+SDN  brings  innovation  in  networking  through 
+abstraction  and  programmability  on  one  hand 
+and simplifies network management through log-
+ically centralized control of the network on the 
+other hand.
+
+NFV provides the basis for placing various 
+network functions in different network perim-
+eters  and  eliminates  the  need  for  function 
+or  service-specific  hardware.  SDN  and  NFV, 
+complementing each other, improve network 
+elasticity,  simplify  network  control  and  man-
+agement, break the barriers of vendor- specific 
+proprietary solutions, and thus are considered 
+the core technologies in the transformation of 
+networks for 5G by 5G-PPP. Network slicing, 
+leveraging NFV and SDN, enables the 5G net-
+work infrastructure to share the same resources 
+for multiple use cases such  as the Internet of 
+Things (IoT), enhanced broadband, and critical 
+communication [1]. A generic 5G deployment 
+scenario using these key technologies is depict-
+ed in Fig. 1.
+
+However, recent research in these technol-
+ogies reveals potential security challenges that 
+must  be  addressed  in  order  to  ensure  securi-
+ty of new 5G services and infrastructures, and 
+users. For example, multi-tenant shared cloud 
+infrastructures among multiple virtual network 
+operators require strict isolation at multiple levels 
+to avoid illegal resource consumption and main-
+tain integrity of users’ information of different 
+operators [2]. According to the 5G-PPP Phase 
+1  Security  Landscape  [1],  network  slicing  has 
+several open security challenges such as security 
+isolation of network slices and security of inter-
+slice communications [3]. Moreover, program-
+mable network architectures like SDN require 
+strong authentication and authorization for appli-
+cations to avoid misuse of the network resourc-
+es exposed to applications through the control 
+plane. Similarly, misconfigurations of virtual net-
+work functions (VNFs) can lead to inter-feder-
+ated  conflicts  creating  jeopardy  in  the  whole 
+network [4]. Since 5G will connect every aspect 
+of life to the network, having most users’ infor-
+mation stored and shared online, maintaining 
+user privacy, will be highly challenging.
+
+Furthermore,  wireless  communication  sys-
+tems have been prone to security vulnerabilities 
+from the very inception. In 1G wireless networks, 
+mobile phones and wireless channels were target-
+ed for illegal cloning and masquerading. In 2G 
+
+Digital Object Identifier:
+10.1109/MCOMSTD.2018.1700063
+
+Ijaz Ahmad, Tanesh Kumar, Madhusanka Liyanage, Jude Okwuibe, and Mika Ylianttila are with the University of Oulu;  
+Andrei Gurtov is with Linköping University.
+
+36
+
+Authorized licensed use limited to: Texas Tech University. Downloaded on January 19,2022 at 01:18:08 UTC from IEEE Xplore.  Restrictions apply. 
+
+IEEE Communications Standards Magazine • March 20182471-2825/18/$25.00 © 2018 IEEE

@@ -1,0 +1,143 @@
+Arabian Journal for Science and Engineering
+
+3. Adler, J.L.; Satapathy, G.; Manikonda, V.; Bowles, B.; Blue, V.J.: A
+multi-agent approach to cooperative trafﬁc management and route
+guidance. Transp. Res. Part B Methodol. 39(4), 297–318 (2005)
+4. Akgungor, A.P.; Bullen, A.G.R.: Analytical delay models for sig-
+nalized intersections. In: 69th ITE Annual Meeting, Nevada, USA
+(1999)
+
+5. Alvarez, I.; Poznyak, A.; Malo, A.: Urban trafﬁc control problem a
+game theory approach. In: 47th IEEE Conference on Decision and
+Control, pp. 2168–2172. IEEE (2008)
+
+6. Balaji, P.; German, X.; Srinivasan, D.: Urban trafﬁc signal control
+using reinforcement learning agents. IET Intell. Transp. Syst. 4(3),
+177–188 (2010)
+
+7. Bazzan, A.L.; Klgl, F.: A review on agent-based technology for traf-
+ﬁc and transportation. Knowl. Eng. Rev. 29(03), 375–403 (2014)
+8. Bell, M.G.: A game theory approach to measuring the performance
+reliability of transport networks. Transp. Res. Part B Methodol.
+34(6), 533–545 (2000)
+
+9. Bonarini, A.; Lazaric, A.; Montrone, F.; Restelli, M.: Reinforce-
+ment distribution in fuzzy q-learning. Fuzzy Sets Syst. 160(10),
+1420–1443 (2009)
+
+10. Bull, L.; ShaAban, J.; Tomlinson, A.; Addison, J.D.; Heydecker,
+B.G.: Towards distributed adaptive control for road trafﬁc junction
+signals using learning classiﬁer systems. In: Bull, L. (ed.) Applica-
+tions of Learning Classiﬁer Systems, pp. 276–299. Springer, Berlin
+(2004)
+
+11. Chen, O.; Ben-Akiva, M.: Game-theoretic formulations of interac-
+tion between dynamic trafﬁc control and dynamic trafﬁc assign-
+ment. Transp. Res. Rec. J. Transp. Res. Board 1617, 179–188
+(1998)
+
+12. Chin, Y.K.; Bolong, N.; Kiring, A.; Yang, S.S.; Teo, K.T.K.: Q-
+learning based trafﬁc optimization in management of signal timing
+plan. Int. J. Simul. Syst. Sci. Technol. 12(3), 29–35 (2011)
+
+13. Da Silva, B.C.; Basso, E.W.; Perotto, F.S.; C Bazzan, A.L.; Engel,
+P.M.: Improving reinforcement learning with context detection.
+In: Proceedings of the Fifth International Joint Conference on
+Autonomous Agents and Multiagent Systems, pp. 810–812. ACM
+(2006)
+
+14. Glowaty, G.: Enhancements of fuzzy q-learning algorithm. Com-
+
+put. Sci. 7, 77–87 (2005)
+
+15. Goyal, T.; Kaushal, S.: An intelligent scheduling scheme for real-
+time trafﬁc management using cooperative game theory and ahp-
+topsis methods for next generation telecommunication networks.
+Expert Syst. Appl. 86, 125–134 (2017)
+
+16. Groot, N.; Zaccour, G.; De Schutter, B.: Hierarchical game the-
+ory for system-optimal control: applications of reverse stackelberg
+games in regulating marketing channels and trafﬁc routing. IEEE
+Control Syst. 37(2), 129–152 (2017)
+
+17. Houli, D.; Zhiheng, L.; Yi, Z.: Multiobjective reinforcement learn-
+ing for trafﬁc signal control using vehicular ad hoc network.
+EURASIP J. Adv. Signal Process. 1, 724,035 (2010)
+
+18. Iyer, V.; Jadhav, R.; Mavchi, U.; Abraham, J.: Intelligent trafﬁc
+signal synchronization using fuzzy logic and q-learning. In: Inter-
+national Conference on Computing, Analytics and Security Trends
+(CAST), pp. 156–161. IEEE (2016)
+
+19. Kponyo, J.; Nwizege, K.; Opare, K.; Ahmed, A.; Hamdoun, H.;
+Akazua, L.; Alshehri, S.; Frank, H.: A distributed intelligent traf-
+ﬁc system using ant colony optimization: a netlogo modeling
+approach. In: International Conference on Systems Informatics,
+Modelling and Simulation (SIMS), pp. 11–17. IEEE (2016)
+20. Liu, Z.: A survey of intelligence methods in urban trafﬁc signal
+control. IJCSNS Int. J. Comput. Sci. Netw. Secur. 7(7), 105–112
+(2007)
+
+21. Medina, J.C.; Hajbabaie, A.; Benekohal, R.F.: Arterial trafﬁc con-
+trol using reinforcement learning agents and information from
+adjacent intersections in the state and reward structure. In: 2010
+13th International IEEE Conference on Intelligent Transportation
+Systems (ITSC), pp. 525–530. IEEE (2010)
+
+22. Pacheco, J.C.; Rossetti, R.J.: Agent-based trafﬁc control: a fuzzy
+q-learning approach. In: 13th International IEEE Conference on
+Intelligent Transportation Systems (ITSC), pp. 1172–1177. IEEE
+(2010)
+
+23. Prashanth, L.; Bhatnagar, S.: Reinforcement learning with function
+approximation for trafﬁc signal control. IEEE Trans. Intell. Transp.
+Syst. 12(2), 412–421 (2011)
+
+24. Rida, M.: Modeling and optimization of decision-making process
+during loading and unloading operations at container port. Arab. J.
+Sci. Eng. 39(11), 8395–8408 (2014)
+
+25. Roess, R.P.; Prassas, E.S.; McShane, W.R.: Trafﬁc Engineering.
+
+Prentice Hall, Englewood Cliffs (2004)
+
+26. Salkham, A.; Cunningham, R.; Garg, A.; Cahill, V.: A collaborative
+reinforcement learning approach to urban trafﬁc control optimiza-
+tion. In: Proceedings of IEEE/WIC/ACM International Conference
+on Web Intelligence and Intelligent Agent Technology, pp. 560–
+566. IEEE Computer Society (2008)
+
+27. Schaefer, M.; Vokˇrínek, J.; Pinotti, D.; Tango, F.: Multi-agent trafﬁc
+simulation for development and validation of autonomic car-to-car
+systems. In: McCluskey, Th.L., Kotsialos, A., Müller, J.P., Klügl, F.,
+Rana, O., Schumann, R. (eds.) Autonomic Road Transport Support
+Systems, pp. 165–180. Springer, Berlin (2016)
+
+28. Steingrover, M.; Schouten, R.; Peelen, S.; Nijhuis, E.; Bakker, B.:
+Reinforcement learning of trafﬁc light controllers adapting to trafﬁc
+congestion. In: BNAIC, pp. 216–223. Citeseer (2005)
+
+29. Teknomo, K.: Application of microscopic pedestrian simulation
+model. Transp. Res. Part F Trafﬁc Psychol. Behav. 9(1), 15–27
+(2006)
+
+30. Vilarinho, C.; Tavares, J.P.; Rossetti, R.J.: Intelligent trafﬁc lights:
+green time period negotiation. Transp. Res. Procedia 22, 325–334
+(2017)
+
+31. Watkins, C.J.; Dayan, P.: Q-learning. Mach. Learn. 8(3–4), 279–
+
+292 (1992)
+
+32. Wiering, M.: Multi-agent reinforcement learning for trafﬁc light
+
+control. In: ICML, pp. 1151–1158 (2000)
+
+33. Xinhai, X.; Lunhui, X.: Trafﬁc signal control agent interaction
+model based on game theory and reinforcement learning. In:
+International Forum on Computer Science-Technology and Appli-
+cations, vol. 1, pp. 164–168. IEEE (2009)
+
+123
+
+

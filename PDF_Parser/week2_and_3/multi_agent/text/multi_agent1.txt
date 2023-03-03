@@ -1,0 +1,88 @@
+Arabian Journal for Science and Engineering
+https://doi.org/10.1007/s13369-017-3018-9
+
+R E S E A R C H A R T I C L E - S Y S T E M S E N G I N E E R I N G
+
+Fuzzy Q-Learning-Based Multi-agent System for Intelligent Trafﬁc
+Control by a Game Theory Approach
+
+Abolghasem Daeichian1 · Amir Haghani2
+
+Received: 11 December 2015 / Accepted: 3 December 2017
+© King Fahd University of Petroleum & Minerals 2017
+
+Abstract
+This paper introduces a multi-agent approach to adjust trafﬁc lights based on trafﬁc situation in order to reduce average delay
+time. In the trafﬁc model, lights of each intersection are controlled by an autonomous agent. Since decision of each agent
+affects neighbor agents, this approach creates a classical non-stationary environment. Thus, each agent not only needs to
+learn from the past experience but also has to consider decision of neighbors to overcome dynamic changes of the trafﬁc
+network. Fuzzy Q-learning and Game theory are employed to make policy based on previous experiences and decision of
+neighbor agents. Simulation results illustrate the advantage of the proposed method over ﬁxed time, fuzzy, Q-learning and
+fuzzy Q-learning control methods.
+
+Keywords Trafﬁc control · Multi-agent system · Game theory · Fuzzy Q-learning
+
+1 Introduction
+
+Urbanization, increasing number of vehicles, and lack of
+transport infrastructures have increased travel time, fuel con-
+sumption, and air pollution. Therefore, urban life equals with
+waste of time, less clean air, and acoustic pollution. Con-
+ventional ﬁxed trafﬁc management systems are not able to
+ﬁght complexity and dynamic of large trafﬁc networks. While
+artiﬁcial intelligence (AI) are greatly employed to develop
+intelligent trafﬁc systems (ITS) [6,7,19,24], multi-agent sys-
+tem is an approach to model ITS [25,30]. This framework
+consists of a population of intelligent and autonomous agents
+work together in an environment [27]. Trafﬁc lights [20],
+vehicles [3], and pedestrians [29] are considered as agents
+in modeling of urban trafﬁc networks. Each agent needs
+to learn from the past experiences which is a key point to
+approximate a better decision-making policy. Multi-agent
+model-based [32] as well as model-free [12] reinforcement
+learning (RL) techniques are widely used in researches on
+ITS [6,23].
+
+B Abolghasem Daeichian
+
+a-daeichian@araku.ac.ir; a.daeichian@gmail.com
+
+1 Department of Electrical Engineering, Faculty of
+
+Engineering, Arak University, Arak 38156-8-8349, Iran
+
+2 Department of Electrical Engineering, Payam Institute of
+
+Higher Education, Golpayegan, Isfahan, Iran
+
+In a multitude of researches, any agent only considers its
+own trafﬁc state in order to determine the control policy.
+For example, single intersection with two phases is investi-
+gated in [2]. Length of vehicles queue waiting on the light
+is considered as state which can be measured by the agent. It
+decides on extend green time or change it to the next phase so
+that the number of vehicles waiting on the light is minimized.
+The results show superiority of Q-learning agent over uni-
+form trafﬁc ﬂows and constant-ratio trafﬁc ﬂows. In [32],
+trafﬁc lights are considered as agents which communicate
+with vehicles. The vehicles estimate their mean waiting time
+and transmit this time to trafﬁc light where a popular RL
+algorithm, namely Q-learning, is used to provide a control
+for trafﬁc signal scheduling. Results of this study show 22%
+reduction in waiting time compared to constant time lights.
+Multi-objective reinforcement learning is utilized to control
+several trafﬁc lights in [17]. Optimization goals include num-
+ber of stops of a vehicle, mean stopping time, and length of
+vehicles’ queue on the next intersection. Its results indicate
+that multi-RL can effectively prevent the queue spillovers
+under congested condition to avoid large-scale trafﬁc jams.
+Bull et al. [10] used learner classiﬁers to control light traf-
+ﬁc including 4 intersections. In this research, trafﬁc lights
+include two phases at each intersection, where one phase is
+for moving north–south and one is for east-west. Controller
+at each intersection obtains optimum phase time through
+extracting if-then rules. Its results show that performance of
+
+123
+
+
