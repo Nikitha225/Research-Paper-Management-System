@@ -75,5 +75,5 @@ def pdf_to_json(pdf_file):
     print("Converted PDF to Json successfully from text files generated in pdf pages to text convertion ")
 
 
-pdf_to_json('multi_agent/multi_agent.pdf')
-# pdf_to_json('5G_Security/5G_Security.pdf')
+# pdf_to_json('multi_agent/multi_agent.pdf')
+pdf_to_json('5G_Security/5G_Security.pdf')

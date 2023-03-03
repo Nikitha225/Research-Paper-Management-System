@@ -1,6 +1,5 @@
 import json
 
-
 def identify_abstract(json_file):
     with open(json_file, 'r', encoding='utf-8') as f:
         data = json.load(f)
@@ -9,17 +8,18 @@ def identify_abstract(json_file):
 
     abstract = []
 
-    for para, lines in page1.items():
-        if "abstract" in lines[0].lower():
-            if len(lines) > 2:
-                abstract = lines[1:]
+    for para, paraDetails in page1.items():
+        # print(paraDetails)
+        if "abstract" in paraDetails["text"].lower():
+            if len(paraDetails["text"]) > 20:
+                abstract = paraDetails["text"][9:]
             else:
                 paraNum = int(para.split("_")[1]) + 1
-                abstract = page1[para.split("_")[0] + "_" + str(paraNum)]
+                abstract = page1[para.split("_")[0] + "_" + str(paraNum)]["text"]
             break
 
-    print(abstract)
+    return {"abstract": abstract}
 
 
-# identify_abstract('multi_agent/binary/multi_agent.json')
-identify_abstract('5G_Security/binary/5G_Security.json')
+# print(identify_abstract('multi_agent/text/multi_agent.json'))
+print(identify_abstract('5G_Security/text/5G_Security.json'))
