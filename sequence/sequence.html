@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="sequence.css" />
+    <title>SeQUeNCe</title>
+  </head>
+  <body>
+    <header>
+      <div class="header">
+        <h1>
+            SeQUeNCe: A customizable discrete-event simulator of quantum networks            
+        </h1>
+      </div>
+    </header>
+    <main class="container">
+      <section class="description">
+        <p class="paragraph">
+            The simulator of QUantum Network Communication (SeQUeNCe) is a customizable discrete-event quantum network simulator that models quantum hardware and network protocols.  The modularized design of the simulator separates functionality at different network layers into modules. This modularized design allows testing alternative quantum network protocols and hardware models and studying their interactions.
+        </p>
+        <p class="paragraph">
+            SeQUeNCe is designed to track millions of events per second of simulation time, and the most intensive simulations generate approximately two billion events using SeQUeNCe simulator.
+        </p>
+      </section>
+      <section class="entanglement">
+        <h2>Entanglement in SeQUeNCe</h2>
+        <div class="section-desc">
+          <p>
+            SeQUeNCe uses the Barrett-Kok protocol to generate the entanglement between two qubits. 
+            The Barrett-Kok entanglement generation protocol utilizes qubits and linear optics. Unlike the DLCZ entanglement generation protocol, this protocol can tolerate the hardware errors such as detector loss and spontaneous emission. Figure 1 shows the setup of the Barrett-Kok entanglement generation protocol, where two quantum memories are connected to a beam splitter (BS) by optical channels. The quantum memories are prepared in the |+> = √1 2 (|↑>+ |↓>) state; the 50:50 BS is used to erase the photon source information, and the single-photon detectors D+ and D- are used to detect emitted photons. The protocol involves two rounds. The first round generates entanglement between two qubits, and the second round improves the entangled state. The protocol produces a pair of entangled memories with maximal entanglement state |Ψ+> or |Ψ−>.
+            
+          </p>
+          <h3>Entanglement generation between two nodes</h3>
+          <p>
+            Here, the entanglement is generated between two adjacent nodes. The hardware components required and the network topology are shown in the figure. 
+            We first import necessary tools such as timeline, quantum router, quantum channel, classical channel, rule, and the entanglement generation protocol from the sequence library to run the simulation.
+            Next, we define and customize rules and conditions and then build the simulation.
+
+          </p>
+          <ul>
+            <li> Create the timeline for the simulation. </li>
+            <li> Create the simulated network topology. It includes adjustment of default hardware parameters as necessary.</li>
+            <li> Instantiate custom protocols and ensure all protocols are set up (paired) properly.</li>
+            <li> Initialize and run the simulation. This also includes the installation of custom rules.</li>
+            <li> Collect and display the desired metrics.</li>
+          </ul>
+        
+        <!-- <div class="img-box">
+          <img
+            class="entanglement-img"
+            src="/img/netsquid-entanglement.png"
+            alt="Entanglement Image"
+          />
+        </div> -->
+
+        <h3>Entanglement generation between three nodes</h3>
+          <p>
+            To generate the entanglement between 3 nodes, unlike the one with 2 nodes, manually adding the rules is not scalable. So, new protocols are added to purify and swap the generated entanglements. Here the rules are created and installed automatically by the network manager. The steps are as follows:
+
+          </p>
+          <ul>
+            <li> Generate entanglement between quantum memory pairs on adjacent nodes. </li>
+            <li> Consume several entangled pairs to produce a single, high-fidelity entangled pairs.</li>
+            <li> "Swap" the entanglement of two memory pairs, consuming the two shorter-distance entanglements to produce one at a greater distance.</li>
+          </ul>
+          <p> The above steps are repeated until the entanglement is achieved.
+            Like the entanglement generation between two nodes, we first import necessary tools such as timeline, quantum router, BSM node, quantum channel, and classical channel from the sequence library to run the simulation.
+            Next, we define and customize rules and conditions and then build the simulation. The process to build the simulation is as follows:
+            </p>
+            <ul>
+                <li> Create the timeline for the simulation. </li>
+                <li> Create the simulated network topology. This includes adjusting default hardware parameters and creating a static routing table for entanglement paths.</li>
+                <li> Instantiate custom protocols and ensure all protocols are set up (paired) properly (if necessary)</li>
+                <li> Initialize and run the simulation.</li>
+                <li> Collect and display the desired metrics.</li>
+              </ul>
+        <!-- <div class="img-box">
+          <img
+            class="entanglement-img"
+            src="/img/netsquid-entanglement.png"
+            alt="Entanglement Image"
+          />
+        </div> -->
+
+        </div>
+      </section>
+      
+      <section class="purify">
+        <h2>Quantum Key Distribution in SeQUeNCe</h2>
+        <div class="section-desc">
+          <p>
+            Quantum key distribution distributes cryptographic keys between parties using quantum methods. Due to the unique properties of quantum information compared to classical, the security of a key can be guaranteed. In SeQUeNCe, we use BB84 and Cascade protocol to simulate Quantum key distribution between two adjacent nodes.
+          </p>
+          <h3>BB84 Protocol</h3>
+          <p>BB84 protocol collects key error rates, throughput, and latency. For this, KeyManager class is used to collect a custom metric (in this case, simply collect all of the generated keys and their generation time) and to provide an interface for the BB84 Protocol. To achieve this, push and pop functions are provided by the protocol stack on QKD nodes. Push is used to send information down the stack (from the key manager to BB84 in this example), while pop sends information upwards (from BB84 to the key manager). Below are the steps to build the simulation.
+        </p>
+          <ul>
+            <li>Create the timeline for the simulation.</li>
+            <li>Create the simulated network topology.</li>
+            <li>Instantiate custom protocols and ensure all protocols are set up (paired) properly (if necessary).</li>
+            <li>Initialize and run the simulation.</li>
+            <li>Collect and display the desired metrics.</li>              
+          </ul>
+          <h3>Cascade Protocol</h3>
+          <p>The cascade protocol uses checksums to determine if there are errors in a generated key and pinpoint the errors.
+            The protocol exists in 3 stages : 
+            Initialization step of protocol, Generating block and End.
+        It is similar to the BB84 protocol. Additionally, it allows the Instantiation of the cascade error correction protocol on the QKD nodes and Differences in the cascade push/pop interface compared to BB84.
+        </p>
+        </div>
+        <!-- <div class="img-box">
+          <img class="purify-img" src="/img/netsquid-purify.png" alt="" />
+        </div> -->
+      </section>
+    </main>
+  </body>
+</html>
