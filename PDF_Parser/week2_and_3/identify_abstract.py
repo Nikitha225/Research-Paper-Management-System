@@ -21,5 +21,5 @@ def identify_abstract(json_file):
     return {"abstract": abstract}
 
 
-# print(identify_abstract('multi_agent/text/multi_agent.json'))
-print(identify_abstract('5G_Security/text/5G_Security.json'))
+print(identify_abstract('multi_agent/text/multi_agent.json'))
+# print(identify_abstract('5G_Security/text/5G_Security.json'))

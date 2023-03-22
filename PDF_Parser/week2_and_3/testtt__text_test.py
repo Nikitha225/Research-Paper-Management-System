@@ -1,7 +1,7 @@
 from pdfminer.pdfinterp import PDFResourceManager, PDFPageInterpreter
 from pdfminer.pdfpage import PDFPage
 from pdfminer.converter import XMLConverter, HTMLConverter, TextConverter
-from pdfminer.layout import LAParams, LTTextContainer, LTChar, LTLine
+from pdfminer.layout import LAParams, LTTextContainer, LTChar, LTLine, LTTextLineHorizontal
 from pdfminer.high_level import extract_pages
 import io, json, os
 
@@ -58,11 +58,14 @@ def pdf_to_json(pdf_file):
             if isinstance(element, LTTextContainer):
                 for text_line in element:
                     bold = False
+                    if not isinstance(text_line, LTTextLineHorizontal): continue
                     for character in text_line:
                         if isinstance(character, LTChar):
                             Font_size = character.size
                             if 'Bold' in character.fontname:
                                 bold = True
+                        else:
+                            continue
                     Extract_lines.append((Font_size, bold, (text_line.get_text())))
             Extract_Data.append(Extract_lines)
         # print(Extract_Data)
@@ -73,15 +76,15 @@ def pdf_to_json(pdf_file):
         # print(pdf_json)
         # break
 
-    filename += "__.json"
+    filename += ".json"
     with open(filename, 'w', encoding='utf-8') as jp:
-        json.dump(pdf_json, jp, ensure_ascii=False, indent=4)
+        json.dump(pdf_json, jp, ensure_ascii=True, indent=4)
 
     print("Converted PDF to Json successfully from text files generated in pdf pages to text convertion ")
 
 
-# pdf_to_json('multi_agent/multi_agent.pdf')
+pdf_to_json('multi_agent/multi_agent.pdf')
 # pdf_to_json('5G_Security/5G_Security.pdf')
 # pdf_to_json('NetSquid/NetSquid.pdf')
 # pdf_to_json('Sequence/Sequence.pdf')
-pdf_to_json('Sequence2/Sequence2.pdf')
+# pdf_to_json('Sequence2/Sequence2.pdf')
