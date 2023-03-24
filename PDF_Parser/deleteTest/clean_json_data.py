@@ -3,6 +3,7 @@ import json
 boldTexts = {'introduction', 'abstract', 'key words', 'references', 'conclusion', 'acknowledgements',
              'additional information'}
 
+
 # filePath = './multi_agent/text/multi_agent.json'
 # newFilePath = './multi_agent/text/multi_agent_clean.json'
 # filePath = './NetSquid/text/NetSquid.json'
@@ -16,17 +17,16 @@ def identify_bold_fontSize(file_path):
             font_sizes = dict()
             bold_lines = set()
             for page_num, page_data in json_file.items():
-                for para_num, para_data in page_data.items():
-                    for line_num, line_data in para_data.items():
+                for para_num, para_data in enumerate(page_data):
+                    for line_num, line_data in enumerate(para_data):
                         font_sizes[line_data['font_size']] = font_sizes.get(line_data['font_size'], 0) + 1
                         if line_data['bold']:
                             bold_lines.add((page_num, para_num, line_num))
 
             return font_sizes, bold_lines
-    except:
-        print("An unexpected error happened in cleanData.py > identify_bold_fontSize function")
+    except Exception as e:
+        print("An unexpected error happened in clean_json_data.py > identify_bold_fontSize function" + str(e))
         return dict(), set()
-
 
 
 def return_bold_font_sizes(font_sizes):
@@ -52,20 +52,18 @@ def return_bold_font_sizes(font_sizes):
             boldFontSizes.add(metric[0])
 
         return boldFontSizes
-    except:
-        print('An unexpected error happened in cleanData.py > return_bold_font_sizes function')
+    except Exception as e:
+        print('An unexpected error happened in clean_json_data.py > return_bold_font_sizes function' + str(e))
         return set()
-
 
 
 def keyWordCheck(bold_texts, word):
     try:
         if word in bold_texts:
             return True
-    except:
-        print('An unexpected error happened in cleanData.py > keyWordCheck function')
+    except Exception as e:
+        print('An unexpected error happened in clean_json_data.py > keyWordCheck function' + str(e))
         return False
-
 
 
 def convert_unStructured_to_structured_json(file_path, boldFontSizes, bold_lines):
@@ -74,13 +72,14 @@ def convert_unStructured_to_structured_json(file_path, boldFontSizes, bold_lines
         with open(file_path, "r", errors="ignore") as read_file:
             json_file = json.load(read_file)
             newJsonFile = {}
+            # pages_data = []
             for page_num, page_data in json_file.items():
-                newPage = {}
+                newPage = []
                 if page_data:
-                    for para_num, para_data in page_data.items():
+                    for para_num, para_data in enumerate(page_data):
                         if para_data:
-                            newParagraph = {}
-                            for line_num, line_data in para_data.items():
+                            newParagraph = []
+                            for line_num, line_data in enumerate(para_data):
                                 if line_data:
                                     text = line_data['text']
                                     newLine = {}
@@ -96,15 +95,15 @@ def convert_unStructured_to_structured_json(file_path, boldFontSizes, bold_lines
                                         newLine['bold'] = False
                                     newLine['font_size'] = font_size
                                     newLine['text'] = text
-                                    newParagraph[line_num] = newLine
-                            newPage[para_num] = newParagraph
+                                    newParagraph.append(newLine)
+                            newPage.append(newParagraph)
+                    # pages_data.append(newPage)
                     newJsonFile[page_num] = newPage
-
+            # newJsonFile['pages'] = page_data
             return newJsonFile
-    except:
-        print('An unexpected error happened in cleanData.py > convert_unStructured_to_structured_json function')
+    except Exception as e:
+        print('An unexpected error happened in clean_json_data.py > convert_unStructured_to_structured_json function' + str(e))
         return {}
-
 
 
 def clean_json_data(json_file_path):
@@ -112,12 +111,16 @@ def clean_json_data(json_file_path):
         font_sizes, bold_lines = identify_bold_fontSize(json_file_path)
         boldFontSizes = return_bold_font_sizes(font_sizes)
         newJson = convert_unStructured_to_structured_json(json_file_path, boldFontSizes, bold_lines)
-        newFilePath = json_file_path.split(".")[0] + "_clean" + ".json"
-        with open(newFilePath, 'w', encoding='utf-8') as jp:
+        # newJson["file_name"] = json_file_path.split("/")[-1]
+        # newFilePath = json_file_path[:-5] + "_clean" + ".json"
+        with open(json_file_path, 'w', encoding='utf-8') as jp:
             json.dump(newJson, jp, ensure_ascii=True, indent=4)
-    except:
-        print('An unexpected error happened in cleanData.py > clean_json_data function')
+        
+        print("------------------- stage 2 -------------------------\n")
+        print("Cleaned Json successfully unstructured format to structured \n")
+    except Exception as e:
+        print('An unexpected error happened in clean_json_data.py > clean_json_data function'+ str(e))
 
 
-# clean_json_data('./multi_agent/multi_agent.json')
-clean_json_data('./NetSquid/NetSquid.json')
+# clean_json_data('multi_agent/multi_agent.json')
+# clean_json_data('NetSquid/NetSquid.json')

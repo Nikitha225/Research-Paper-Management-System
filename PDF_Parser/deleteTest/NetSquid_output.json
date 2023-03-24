@@ -1,0 +1,3691 @@
+{
+    "pages": [
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 10,
+                    "bold": true,
+                    "text": "OPEN"
+                }
+            ],
+            [
+                {
+                    "font_size": 24,
+                    "bold": true,
+                    "text": "NetSquid, a NETwork Simulator for QUantum Information using Discrete events"
+                },
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "1,5, Axel Dahlberg1,2, David Maier"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "1,2,5, Robert Knegjens"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "1,2, Loek Nijsten1,"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "Tim Coopmans Julio de Oliveira Filho1, Martijn Papendrecht1,2, Julian Rabbie1,2, Filip Rozp\u0119dek Leon Wubben1,2, Walter de Jong Stephanie Wehner1,2,6\u2709"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "4, Damian Podareanu4, Ariana Torres-Knoop4, David Elkouss1,6\u2709"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "&"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "1,2,3, Matthew Skrzypczyk"
+                }
+            ],
+            [
+                {
+                    "font_size": 11,
+                    "bold": true,
+                    "text": "1,2,"
+                }
+            ],
+            [
+                {
+                    "font_size": 1,
+                    "bold": false,
+                    "text": "; , :"
+                },
+                {
+                    "font_size": 2,
+                    "bold": false,
+                    "text": ") ("
+                },
+                {
+                    "font_size": 3,
+                    "bold": false,
+                    "text": "0 9 8 7 6 5 4 3 2"
+                },
+                {
+                    "font_size": 2,
+                    "bold": false,
+                    "text": "1"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In order to bring quantum networks into the real world, we would like to determine the requirements of quantum network protocols including the underlying quantum hardware. Because detailed architecture proposals are generally too complex for mathematical analysis, it is natural to employ numerical simulation. Here we introduce NetSquid, the NETwork Simulator for QUantum Information using Discrete events, a discrete-event based platform for simulating all aspects of quantum networks and modular quantum computing systems, ranging from the physical layer and its control plane up to the application level. We study several use cases to showcase NetSquid\u2019s power, including detailed physical layer simula- tions of repeater chains based on nitrogen vacancy centres in diamond as well as atomic ensembles. We also study the control plane of a quantum switch beyond its analytically known regime, and showcase NetSquid\u2019s ability to investigate large networks by simulating entanglement distribution over a chain of up to one thousand nodes."
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "1 QuTech, Delft University of Technology and TNO, Delft, The Netherlands. 2 Kavli Institute of Nanoscience, Delft, The Netherlands. 3 Pritzker School of Molecular Engineering, University of Chicago, Chicago, IL, USA. 4 SURF, Amsterdam, The Netherlands. 5These authors contributed equally: Tim Coopmans, Robert Knegjens. 6These authors jointly supervised this work: David Elkouss, Stephanie Wehner. email: d.elkousscoronas@tudelft.nl;s.d.c.wehner@tudelft.nl"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "\u2709"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Quantum communication can be used to connect distant"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "quantum devices into a quantum network. At short dis- tances, networking quantum devices provides a path towards a scalable distributed quantum computer1. At larger distances, interconnected quantum networks allow for commu- nication tasks between distant users on a quantum internet. Both types of quantum networks have the potential for large societal impact. First, analogous to classical computers, it is likely that any approach for scaling up a quantum computer so that it can solve real world problems impractical to treat on a classical computer, will require the interconnection of different modules2\u20134. Fur- thermore, quantum communication networks enable a host of tasks that are impossible using classical communication5."
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "analytical methods9\u201330"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "For both types of networks, many challenges must be overcome before they can ful\ufb01l their promise. The exact extent of these challenges remains unknown, and precise requirements to guide the construction of large-scale quantum networks are missing. At the physical layer, many proposals exist for quantum repeaters that can carry qubits over long distances (see e.g.6\u20138 for an ad-hoc overview). Using simulations31\u201338 rough estimates for the requirements of such hardware proposals have been obtained. Yet, while greatly valu- able to set minimal requirements, these studies still provide limited detail. Even for a small-scale quantum network, the intricate interplay between many communicating devices, and the resulting timing dependencies makes a precise analysis challen- ging. To go beyond, we would like a tool that can incorporate not only a detailed physical modelling, but also account for the implications of time-dependent behaviour."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "and"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Quantum networks cannot be built from quantum hardware alone; in order to scale they need a tightly integrated classical control plane, i.e. protocols responsible for orchestrating quantum network devices to bring entanglement to users. Fundamental differences between quantum and classical information demand an entirely new network stack in order to create entanglement, and run useful applications on future quantum networks39\u201344. The design of such a control stack is furthermore made challenging by numerous technological limitations of quantum devices. A good example is given by the limited lifetimes of quantum memories, due to which delays in the exchange of classical control messages have a direct impact on the performance of the network. To succeed, we hence need to understand how possible classical control strategies do perform on speci\ufb01c quantum hardware. Finally, to guide overall development, we need to understand the requirements of quantum network applications themselves. Apart from quantum key distribution (QKD)45\u201349 and a few select applications50\u201353, the requirements of quantum applications5 on imperfect hardware."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "little is known about"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Analytical tools offer only a limited solution for our needs. Statistical tools (see e.g.54\u201357) have been used to make predictions about certain aspects of large regular networks using simpli\ufb01ed models, but are of limited use for more detailed studies. Infor- mation theory58 can be used to benchmark implementations against the ideal performance. However, it gives no information about how well a speci\ufb01c proposal will perform. As a con- sequence, numerical methods are of great use to go beyond what is feasible using an analytical study. Ad-hoc simulations of quantum networks have indeed been used to provide further insights on speci\ufb01c aspects of quantum networks (see e.- g.31\u201338,59\u201361). However, while greatly informative, setting up ad- hoc simulations for each possible networking scenario to a level of detail that might allow the determination of more precise requirements is cumbersome, and does not straightforwardly lend itself to extensive explorations of new possibilities."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "We would hence like a simulation platform that satis\ufb01es at least the following three features: First, accuracy: the tool should allow"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "modelling the relevant physics. This includes the ability to model time-dependent noise and network behaviour. Second, mod- ularity: it should allow stacking protocols and models together in order to construct complicated network simulations out of simple components. This includes the ability to investigate not only the physical layer hardware, but the entirety of the quantum network system including how different control protocols behave on a given hardware setup. Third, scalability: it should allow us to investigate large networks."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Evaluating the performance of large classical network systems, including their time-dependent behaviour is the essence of clas- sical network analysis. Yet, even for classical networks, the pre- dictive power of analytical methods is limited due to complex emergent behaviour arising from the interplay between many network devices. Consequently, a crucial tool in the design of such networks are network simulators, which form a tool to test new ideas, and many such simulators exist for purely classical networks62\u201364. However, such simulators do not allow the simulation of quantum behaviour."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In the quantum domain, many simulators are known for the simulation of quantum computers (see e.g.65). However, the task of simulating a quantum network differs greatly from simulating the execution of one monolithic quantum system. In the network, many devices are communicating with each other both quan- tumly and classically, leading to complex stochastic behaviour, and asynchronous and time-dependent events. From the per- spective of building a simulation engine, there is also an impor- tant difference that allows for gains in the ef\ufb01ciency of the simulation. A simulator for a quantum computation is optimised to track large entangled states. In contrast, in a quantum network the state space grows and shrinks dynamically as qubits get measured or entangled, but for many protocols, at any moment in time the state space describing the quantum state of the network is small. We would thus like a simulator capable of exploiting this advantage."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In this paper we introduce the quantum network simulator NetSquid: the NETwork Simulator for QUantum Information using Discrete events. NetSquid is a software tool (available as a package for Python and previously made freely available online66) for accurately simulating quantum networking and modular computing systems that are subject to physical non-idealities. It achieves this by integrating several key technologies: a discrete- event simulation engine, a specialised quantum computing library, a modular framework for modelling quantum hardware devices, and an asynchronous programming framework for describing quantum protocols. We showcase the utility of this tool for a range of applications by studying several use cases: the analysis of a control plane protocol beyond its analytically accessible regime, predicting the performance of protocols on realistic near-term hardware, and benchmarking different quan- tum devices. These use cases, in combination with a scalability analysis, demonstrate that NetSquid achieves all three features set forth above. Furthermore, they show its potential as a general and versatile design tool for quantum networks, as well as for modular quantum computing architectures."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Results and discussion NetSquid in a nutshell. Simulating a quantum network with NetSquid is generally performed in three steps. Firstly, the net- work is modelled using a modular framework of components and physical models. Next, protocols are assigned to network nodes to describe the intended behaviour. Finally, the simulation is exe- cuted for a typically large number of independent runs to collect statistics with which to determine the performance of the net- work. To explain these steps and the features involved further, we"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "2"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 1 Illustrative example of a NetSquid use case. Each sub-\ufb01gure explains part of the modelling and simulation process. For greater clarity the \ufb01gures are not based on real simulation data. The scenario shown is a quantum repeater utilising entanglement distillation (see main text). a The setup of a quantum network using node and connection components. b A zoom in showing the subcomponents of the entangling connection component. The quantum channels are characterised using \ufb01bre delay and loss models. The quantum source samples from an entangled bipartite state sampler when externally triggered by the classical channel. c A zoom in of the quantum memory positions within a quantum processor illustrating their physical gate topology. The physical single-qubit instructions possible on each memory in this example are the Pauli (X, Y, Z), Hadamard (H), and X-rotation (RX) gates, and measurement. The blue-dashed arrows show the positions and control direction (where applicable) for which the two-qubit instructions controlled-X (CNOT) and swap are possible. Noise and error models for the memories and gates are also assigned. d Illustration of a single simulation run. Time progresses by discretely stepping from event to event, with new events generated as the simulation proceeds. Qubits are represented by circles, which are numbered according to the order they were generated. A star shows the moment of generation. The curved lines between qubits denote their entanglement with the colour indicating \ufb01delity. The state of each qubit is updated as it is accessed during the simulation, for instance to apply time- dependent noise from waiting in memory. e A zoom in of the distillation protocol. The shared quantum states of the qubits are combined in an entangling step, which then shrinks as two of the qubits are measured. The output is randomly sampled, causing the simulation to choose one of two paths by announcing success or failure. f A plot illustrating the stochastic paths followed by multiple independent simulation runs over time, labelled by their \ufb01nal end-to-end \ufb01delity Fi. The blue dashed line corresponds to the run shown in (d). The runs are typically executed in parallel. Their results are statistically analysed to produce performance metrics such as the average outcome \ufb01delity and run duration."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "consider a simple use case for illustration. For a more detailed presentation of the available functionality and design of the NetSquid framework see section \u2018Design and functionality of NetSquid\u2019 of the Methods."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The scenario we will consider is the analysis of an entangle- ment distribution protocol over a quantum repeater chain with three nodes. The goal of the analysis is to estimate the average output \ufb01delity of the distributed entangled pairs. The entangle- ment distribution protocol is depicted in Fig. 1d, e. It works as follows. First, the intermediate node generates two entangled pairs with each of its adjacent neighbours. Entanglement generation is modelled as a stochastic process that succeeds with a certain probability at every attempt. When two pairs are ready at one of the DEJMPS entanglement distillation scheme67 is run to improve the quality of the entanglement. If it fails, the two links are discarded and the executing nodes restart entanglement generation. Once both distilled states are ready, the intermediate node swaps the entanglement to achieve end-to-end entanglement. We remark that already this simple protocol is rather involved to analyse."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the links,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "We begin by modelling the network. The basic element of NetSquid\u2019s modular framework is the \u2018component\u2019. It is capable of describing the physical model composition, quantum and any ports, classical"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "communication"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "recursively,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "and,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "subcomponents. All hardware elements, including the network itself, are represented by components. For this example we require three remote nodes linked by two quantum and two classical connections, the setup of which is shown in Fig. 1a. In Fig. 1b, c the nested structure of these components is highlighted. A selection of physical models is used to describe the loss and delay of the \ufb01bre optic channels, the decoherence of the quantum memories, and the errors of quantum gates."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Quantum information in NetSquid is represented at the level of qubits, which are treated as objects that dynamically share their quantum states. These internally shared states will automatically merge or \u2018split\u2019\u2014a term we use to mean the separation of a tensor product state into two separately shared sub-states\u2014as qubits entangle or are measured, as illustrated by the distillation protocol in Fig. 1e. The states are tracked internally, i.e. hidden from users, to encourage a node-centric approach to programming network protocols, and to allow a seamless switching between different quantum state representa- tions. The representations offered by NetSquid are ket vectors, density matrices, stabiliser tableaus and graph states with local Cliffords, each with trade-offs in modelling versatility, computa- tion speed and network (memory) scalability (see the subsection \u2018Fast and scalable quantum network simulation\u2019 below and Supplementary Note 1)."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "for two reasons:"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "3"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 2 Abstract example of simulating a quantum protocol with discrete events. When setting up the simulation, protocol actions are de\ufb01ned to occur when a speci\ufb01c event occurs, as in the setup of a real system. Instead of performing a continuous time evolution, the simulation advances to the next event, and then automatically executes the actions that should occur when the event takes place. Any action may again de\ufb01ne future events to be triggered after a certain (stochastic) amount of time has elapsed. For concreteness a simpli\ufb01ed quantum teleportation example is shown where a qubit, shown as an orange circle with arrow, is teleported between the quantum memories of Alice and Bob. Here, entanglement is produced using an abstract source sending two qubits, shown as blue circles with arrows, to Alice and Bob. Once the qubit has traversed the \ufb01bre and reaches Alice\u2019s lab, an event is triggered that invokes the simulation of Alice\u2019s Bell state measurement (BSM) apparatus. The simulation engine steps from event to events de\ufb01ned by the next action, which generally occur at irregular intervals. This approach allows time-dependent physical non-idealities, such as quantum decoherence, to be accurately tracked."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Discrete-event simulation, an established method for simulat- ing classical network systems68, is a modelling paradigm that progresses time by stepping through a sequence of events\u2014see Fig. 2 for a visual explanation. This allows the simulation engine to ef\ufb01ciently handle the control processes and feedback loops characteristic of quantum networking systems, while tracking quantum state decoherence based on the elapsed time between events. A novel requirement for its application to quantum networks is the need to accurately evolve the state of the quantum information present in a network with time. This can be achieved by retroactively updating quantum states when the associated qubits are accessed during an event. While it is possible to ef\ufb01ciently track a density matrix, quantum operations requiring a singular outcome for classical decision making, for instance a quantum measurement, must be probabilistically sampled. A single simulation run thus consists of a sequence of random choices that forms one of many possible paths. In Fig. 1d we show such a run for the repeater protocol example, which demonstrates the power of the discrete-event approach for tracking qubit decoherence and handling feedback loops."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The performance metrics of a simulation are determined statistically from many runs. Due to the independence of each run, simulations can be massively parallelised and thereby ef\ufb01ciently executed on computing clusters. For the example at hand we choose as metrics the output \ufb01delity and run duration. In Fig. 1f the sampled run from Fig. 1d, which resulted in perfect \ufb01delity, is plotted in terms of its likelihood and duration together with several other samples, some less successful. By statistically averaging all of the sampled runs the output \ufb01delity and duration can be estimated."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In the following sections, we will outline three use cases of NetSquid: \ufb01rst, a quantum switch, followed by simulations of quantum repeaters based on nitrogen-vacancy technology or atomic-ensemble memories. We will also benchmark NetSquid\u2019s scalability in both quantum state size and number of quantum network nodes. Although the use cases each provide relevant"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "insights into the performance of the studied hardware and protocols, we emphasise that one can use NetSquid to simulate arbitrary network topologies."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Simulating a quantum network switch beyond its analytically known regime. As a \ufb01rst use case showcasing the power of NetSquid, we study the control plane of a recently introduced quantum switch beyond the regime for which analytical results have been obtained, including its performance under time- dependent memory noise."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The switch is a node which is directly connected to each of k users by an optical link. The communications task is distributing Bell pairs and n-partite Greenberger\u2013Horne\u2013Zeilinger (GHZ) states69 between n \u2264 k users. The switch achieves this by connecting Bell pairs which are generated at random intervals on each link (See Fig. 3)."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Intuitively, the switch can be regarded as a generalisation of a simple repeater performing entanglement swapping with added logic to choose which parties to link. Even with a streamlined physical model, it is already rather challenging to analytically characterise the switch use case56."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In the following, we recover via simulation a selection of the results from Vardoyan et al.56, who studied the switch as the central node in a star network, and extend them in two directions. First, we increase the range of parameters for which we can estimate entanglement rates using the same model as used in the work of Vardoyan et al. Second, simulation enables us to investigate more sophisticated models than the exponentially distributed erasure process from their work, in particular we analyse the behaviour of a switch in the presence of memory dephasing noise."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The protocol for generating the target n-partite GHZ states is simple. Entanglement generation is attempted in parallel across all k links. If successful they result in bipartite Bell states that are stored in quantum memories. The switch waits until n Bell pairs have been generated until performing an n-partite GHZ"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "4"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "quality, we introduce a more sophisticated decoherence model where the memories suffer from decay over time. In particular, we model decoherence as exponential T2 noise, which impacts the quality of the state, as expressed in its \ufb01delity with the ideal state. In Fig. 4b, we show the effect of the time-dependent memory noise on the average \ufb01delity."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Sensitivity analysis for the physical modelling of a long range repeater chain. The next use case is the distribution of long-"
+                },
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "distance entanglement via a chain of quantum repeater nodes6,9"
+                },
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "based on nitrogen-vacancy (NV) centres in diamond70,71. This example consists of a more detailed physical model and more complicated control plane logic than the quantum switch or the distillation example presented at the start of this section. It is also an example of how NetSquid\u2019s modularity supports setting up simulations involving many nodes; in this case the node model and the protocol (which runs locally at a node) only need to be speci\ufb01ed once, and can then be assigned to each node in the chain. Furthermore, the use of a discrete-event engine allows the actions of the individual protocols to be simulated asynchro- to the typically sequential execution of nously, quantum computing simulators."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "in contrast"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The NV-based quantum processor includes the following three features. First, the nodes have a single communication qubit, i.e. a qubit acting as the optical interface that can be entangled with a remote qubit via photon interference. This seemingly small restriction has important consequences for the communications protocol. In particular, entanglement can not proceed in parallel with both adjacent nodes. As a consequence, operations need to be scheduled in sequence and the state of the communication qubit transferred onto a storage qubit. Second, the qubits in a node are connected with a star topology with the communication qubit located in the centre. Two-qubit gates are only possible between the communication qubit and a storage qubit. Third, communication and storage qubits have unequal coherence times. Furthermore, the storage qubits suffer additional decoherence when the node attempts to generate entanglement. Previous repeater-chain ana- lyses, e.g.22,23,43, did not take all three into account simultaneously. Together with the node model, we consider two protocols: SWAP-ASAP and NESTED-WITH-DISTILL. In SWAP-ASAP, as soon as adjacent links are generated the entanglement is swapped. NESTED-WITH-DISTILL is a nested protocol9 with entanglement distillation at every nesting level. For a description of the simulation, including the node model and protocols, see Methods, section \u2018Implementing a processing-node repeater chain in NetSquid\u2019."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The \ufb01rst question that we investigate is the distance that can be covered by a repeater chain. For this we choose two sets of hardware parameters that we dub near-term and 10\u00d7 improved (see Supplementary Note 4) and choose two con\ufb01gurations: one without intermediate repeaters and one with three of them. We observe, see Fig. 5a, that the repeater chain performs worse in \ufb01delity than the repeaterless con\ufb01guration with near-term hardware. For improved hardware, we see two regimes, for short distances the use of repeaters increases rate but lowers \ufb01delity while from 750 km until 1500 km the repeater chain outperforms the no-repeater setup."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The second question that we address is which protocol performs best for a given distance. We consider seven protocols: no repeater, and repeater chains implementing SWAP-ASAP or NESTED-WITH-DISTILL over 1, 3 or 7 repeaters. The latter is motivated by the fact that the NESTED-WITH-DISTILL protocol is de\ufb01ned for 2n \u2212 1 repeaters (n \u2265 1), and thus 1, 3 and 7 are the \ufb01rst three possible con\ufb01gurations. In Fig. 5b, we sweep over the hardware parameter space for two distances, where we improve"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 3 A quantum switch in a star-shaped network topology as studied by Vardoyan et al.56. The switch (central node) is connected to a set of users (leaf nodes) via an optical \ufb01bre link that distributes perfect Bell pairs at random times, following an exponential distribution with mean rate \u03bc \u221d e\u2212\u03b2L, where L denotes the distance of the link and \u03b2 the attenuation coef\ufb01cient. Associated with each link there is a buffer that can store B qubits at each side of the link. As soon as n Bell pairs with different leaves are available, the switch performs a measurement in the n-partite Greenberger\u2013Horne\u2013Zeilinger (GHZ) basis, which results in an n-partite GHZ state shared by the leaves. The GHZ-basis measurement consists of: \ufb01rst, controlled-X gates with the same qubit as control; next, a Hadamard (H) gate on the control qubit; \ufb01nally, measurement of all qubits individually. The \ufb01gure shows four leaf nodes, GHZ size n = 3 and a buffer size B = 2."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "measurement, which converts the pairs into a state locally equivalent to a GHZ state. An additional constraint is that the switch has a \ufb01nite buffer B of number of memories dedicated for each user (see Fig. 3). If the number of pairs stored in a link is B and a new pair is generated, the old one is dropped and the new one is stored."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The protocol can be translated to a Markov chain. The state space is represented by a k-length vector where each entry is associated with a link and its value denotes the number of stored links. The switch\u2019s mean capacity, i.e. the number of states produced per second, can be derived from the steady-state of the Markov chain56."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Using NetSquid, it is straightforward to fully reproduce the previous model and study the behaviour of the network without constructing the Markov Chain (details can be found in Supplementary Note 3). In Fig. 4a, we use NetSquid to study the capacity of a switch network serving nine users. The \ufb01gure shows the capacity (number of produced GHZ-states per second), which we investigate for three use cases. First we consider a switch network distributing bipartite entanglement. Second, we consider also a switch-network serving bipartite entanglement but with link generation rates that do not satisfy the stability condition for the Markov Chain if the buffer B is in\ufb01nitely large, i.e. a regime so far intractable. Third, we consider a switch-network distributing four- partite entanglement where the link generation rates \u03bc differ per user, a regime not studied so far, and compute the capacity."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Beyond rate, it is important to understand the quality of the states produced. Answering this question with Markov chain models seems challenging. In order to analyse entanglement"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "5"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 4 Performance analysis of the quantum switch with nine users using NetSquid. a Capacity as a function of the buffer size (number of quantum memories that the switch has available per user) for either 2 \u2212or 4\u2212 qubit Greenberger\u2013Horne\u2013Zeilinger (GHZ)-states. For each scenario, the generation rate \u03bc of pairs varies per user. For the blue scenario (2-partite entanglement, \u03bc = [1.9, 1.9, 1.9, 1, 1, 1, 1, 1, 1] MHz), the capacity was determined analytically by Vardoyan et al. using Markov Chain methods56. Here we extend this to 4-partite entanglement (orange scenario, same \u03bcs), for which Vardoyan et al. have found an upper bound (by assuming unbounded buffer and each \u03bc = maximum of original rates = 1.9 MHz) but no exact analytical expression. The green scenario (\u03bc = [15, 1.9, 1.9, 1, 1, 1, 1, 1, 1] MHz) does not satisfy the stability condition for the Markov chain for unbounded buffer size (each leaf\u2019s rate < half of sum of all rates) so in that case steady-state capacity is not well-de\ufb01ned. We note that regardless of buffer size, the switch has a single link to each user, which is the reason why the capacity does not scale linearly with buffer size. b Average \ufb01delity of the produced entanglement on the user nodes (no analytical results known) with unbounded buffer size. The fact that the green curve has lower \ufb01delity than the blue one, while the former has higher rates, can be explained from the fact that the protocol prioritises entanglement which has the longest storage time (see Supplementary Note 3). Each data point represents the average of 40 runs (each 0.1 ms in simulation). Standard deviation is smaller than dot size."
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 5 Performance of repeaters based on nitrogen-vacancy (NV) centres in diamond. a Fidelity and entanglement distribution rate achieved with near- term and 10\u00d7 improved hardware (Supplementary Note 4) with the SWAP-ASAP protocol. Dashed line represents classical \ufb01delity threshold of 0.5. We observe that for near-term hardware, the use of three repeaters yields worse performance in terms of \ufb01delity than the no-repeater setup. For improved hardware we observe (i) that for ~0\u2013750 km, repeaters improve upon rate by orders of magnitude while still producing entanglement (\ufb01delity > 0.5), while (ii) for ~750\u20131500 km, repeaters outperform in both rate and \ufb01delity. b, c Fidelity and rate achieved without and with repeaters (1, 3 or 7 repeaters) as function of a hardware improvement factor (Methods, section \u2018How we choose improved hardware parameters\u2019) for two typical distances from both distance regime (i) and (ii), for two protocols SWAP-ASAP and NESTED-WITH-DISTILL. For the repeater case, only the best-performing number-of- repeaters and protocol in terms of achieved \ufb01delity is shown in (b), accompanied by its rate in (c). Each data point represents the average over (a) 200 and (b) 100 runs. Standard deviation is smaller than dot size."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "6"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Lastly,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "in Fig. 6, we investigate the sensitivity of"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the entanglement \ufb01delity for the different hardware parameters. We take as the \ufb01gure of merit the best \ufb01delity achieved with a SWAP- ASAP protocol. The uniform improvement factor is set to 3, while the following four hardware parameters are varied: a two- qubit gate noise parameter, photon detection probability induced storage qubit noise and (excluding transmission), visibility. We observe that improving the detection probability yields the largest \ufb01delity increase from 2\u00d7 to 50\u00d7 improvement, while this increase is smallest for visibility. We also see that improving two-qubit gate noise or induced storage qubit noise on top of an increase in detection probability yields only a small additional \ufb01delity improvement, which however boosts \ufb01delity beyond the classical threshold of 0.5. These observations indicate that detection probability is the most important parameter for realising remote-entanglement generation with the SWAP-ASAP scheme, followed by two-qubit gate noise and induced storage qubit noise."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Performance comparison between two atomic-ensemble memory types through NetSquid\u2019s modular design. Finally, we showcase that NetSquid\u2019s modular design greatly reduces the effort of assessing possible hardware development scenarios. We demonstrate the power of this modularity by simulating point-to- point remote-entanglement generation based on either of two types of atomic-ensemble based quantum memories: atomic fre- quency combs (AFC)72 and electronically induced transparency (EIT)73,74 memories. Both simulations are identical except for the choice of a different quantum memory component."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The two types of memories are a promising building block for high-rate remote entanglement generation through quantum repeaters because of their high ef\ufb01ciency (EIT) or their ability for multiplexing (AFC), i.e. to perform many attempts at entangle- ment generation simultaneously without network components having to wait for the arrival of classical messages that herald successful generation. The \ufb01rst type of memories, AFCs, are based on a photon-echo process, where an absorbed photon is re- emitted after an engineered duration. In contrast, the second type, EITs, emit the photon after an on-demand interval, due to optical control. In principle the AFC protocol can be extended to offer such on-demand retrieval as well. At this point both technologies are promising candidates and it is not yet clear which outper- forms the other and under what circumstances."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Atomic-ensemble based repeaters have been analytically and numerically studied before with streamlined physical models19,75. NetSquid\u2019s discrete-event based paradigm allows us to go beyond that by concurrently introducing several non-ideal characteristics. In particular, we include the emission of more than one photon pair, photon distinguishability and time-dependent memory ef\ufb01ciency. Ef\ufb01ciency in this context is the probability that the absorbed photon will be re-emitted. All these characteristics have a signi\ufb01cant impact on the performance of the repeater protocol. In order to compare the two memory types, we simulate many rounds of the BB84 quantum key distribution protocol76 between two remote nodes, using a single repeater positioned precisely in between them. Entanglement generation is attempted in syn- chronised rounds over both segments in parallel. At the end of each round, the two end nodes measure in the X- or Z-basis, chosen uniformly at random, and the repeater performs a probabilistic linear-optical Bell-state measurement. Upon a successful outcome, we expect correlation between the measure- ment outcomes if they were performed in the same basis. As a \ufb01gure of merit we choose the asymptotic BB84 secret-key rate."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The results of our simulations are shown in Fig. 7, where the rate at which secret key between the two nodes can be generated"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 6 Sensitivity of \ufb01delity in various hardware parameters for nitrogen- vacancy (NV) repeater chains. The NV hardware model consists of ~15 parameters and from those we focus on four parameters in this \ufb01gure: (A) two-qubit gate \ufb01delity, (B) detection probability, (C) induced storage qubit noise and (D) visibility. We start by improving all ~15 parameters, including the four designated ones, using an improvement factor of 3 (Methods, section \u2018How we choose improved hardware parameters\u2019). Then, for each of the four parameters only, we individually decrease their improvement factor to 2, or increase it to 10 or 50. The \ufb01gure shows the resulting \ufb01delity (horizontal and vertical grid lines; dashed line indicates maximal \ufb01delity which can be attained classically). Note that at an improvement factor of 3 (orange line), all ~15 parameters are improved by three times, resulting in a \ufb01delity of 0.39. In addition, we vary the improvement factor for combinations of two of the four parameters (diagonal lines). The 3 \u00d7 improved parameter values can be found in Supplementary Table II. The"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "other values (at 2/10/50\u00d7) are approximately: two-qubit gate \ufb01delity FEC"
+                },
+                {
+                    "font_size": 6,
+                    "bold": false,
+                    "text": "(0.985/0.997/0.9994), detection probability pnofibre"
+                },
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "(6.8%/58%/90%), induced storage qubit noise N1/e (2800/14,000/70,000), visibility V (95%/99%/99.8%). The \ufb01delities shown are obtained by simulation of the SWAP-ASAP protocol (three repeaters) with a total spanned distance of 500 km. Each data point represents the average of 1000 runs (standard deviation on \ufb01delity < 0.002)."
+                }
+            ],
+            [
+                {
+                    "font_size": 6,
+                    "bold": false,
+                    "text": "det"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "all hardware parameters simultaneously and the improvement is quanti\ufb01ed by a number we refer to as \u2018improvement factor\u2019 (see section \u2018How we choose improved hardware parameters\u2019 of the Methods). For 500 km, we observe that the no-repeater con\ufb01g- uration achieves larger or equal \ufb01delity for the entire range studied. However, repeater schemes boost the rate for all parameter values. If we increase the distance to 800 km, then we see that the use of repeaters increases both rate and \ufb01delity for the same range of parameters. If we focus on the repeater scheme, we observe for both distances that for high hardware quality, the NESTED-WITH-DISTILL scheme, which includes distillation, is the best- optimal. performing scheme that achieves \ufb01delities larger than the classical bound 0.5 is the SWAP-ASAP protocol."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "for lower hardware quality,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In contrast,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "We note that beyond 700 km the entanglement rate decreases when the hardware is improved. This is due to the presence of dark counts, i.e. false signals that a photon has been detected. At large distances most photons dissipate in the \ufb01bre, whereby the majority of detector clicks are dark counts. Because a dark count is mistakenly counted as a successful entanglement generation attempt, improving (i.e. decreasing) the dark count rate in fact results in a lower number of observed detector clicks, from which the (perceived) entanglement rate plotted in Fig. 5a is calculated."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "7"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 7 Performance comparison of a single quantum repeater with atomic frequency comb (AFC) or electronically induced transparency (EIT) quantum memories. Shown are: (a) the secret key rate in secret bits per entanglement generation attempt, (b) the quantum bit error rate (QBER) in the X and Z bases (c) the average number of attempts necessary for one successful end-to-end entanglement generation. Each data point is obtained using 10.000 (EIT) or 30.000 (AFC) successful attempts at generating entanglement between the end nodes. Solid lines are \ufb01ts. Note that for the secret key plot we use logarithmic scale with added 0 at the origin of the axes. Error bars denote standard deviation and are symmetrical."
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 8 Runtime comparison of NetSquid\u2019s quantum state formalisms. Runtime comparisons of the available quantum state formalisms in NetSquid as well as ProjectQ ket vector for two benchmark use cases. The KET, DM, STAB and GSLC formalisms refer to the use of ket vectors, density matrices, stabiliser tableaus and graph states with local Cliffords, respectively. a Generating a Greenberger-Horne-Zeilinger (GHZ) state. Qubits are split off from the shared quantum state after a measurement. For the KET formalism the effect of turning off memoization (dotted line) is also shown. b Quantum computation involved in a repeater chain. Each formalism is shown with qubits split (dotted lines) versus being kept in-place (solid lines) after measurement."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "is obtained as a function of the distance between the nodes. For the parameters considered (see Supplementary Note 7), we observe that EIT memories outperform AFC memories at short distances. The crossover performance point is reached at ~50 km, beyond which AFC memories outperform EIT memories."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In the use case above, we showcased NetSquid\u2019s modularity by only replacing the memory component. We emphasise that this modularity also applies to different parts of the simulation. For example, if the quantum switch should produce a different type of multipartite state than GHZ states, then one only needs to change the circuit at the switch node. A different example is the NV repeater chain, where one could replace the protocol module (currently either SWAP-ASAP or NESTED-WITH-DISTILL)."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Fast and scalable quantum network simulation. NetSquid has been designed and optimised to meet several key performance criteria: to be capable of accurate physical modelling, to be"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "scalable to large networks, and to be suf\ufb01ciently fast to support multi-variate design analyses with adequate statistics. While it is not always possible to jointly satisfy all the criteria for all use cases, NetSquid\u2019s design allows the user to prioritise them. We proceed to benchmark NetSquid to demonstrate its capabilities and unique strengths for quantum network simulation."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Benchmarking of quantum computation. To accurately model physical non-idealities, it is necessary to choose a representation for quantum states that allows a characterisation of general processes such as amplitude damping, general measurements, or arbitrary rotations. NetSquid provides two representations, or \u2018formalisms\u2019, that are capable of universal quantum computation: ket state vectors (KET) and density matrices, both stored using dense arrays. The resource requirements for storage in memory and the computation time associated with applying quantum operations both scale exponentially with the number of qubits. While the density matrix scales less favourably, 22n versus 2n for n"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "8"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "qubits, its ability to represent mixed states makes it more versatile for speci\ufb01c applications. Given the exponential scaling, these formalisms are most suitable for simulations in which a typical qubit lifetime involves only a limited number of (entangling) interactions."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "(STAB)"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "When scaling to large network simulations it can happen that hundreds of qubits share the same entangled quantum state. For such use cases, we need a quantum state representation that scales sub-exponentially in time and space. NetSquid provides two such representations based on the stabiliser state formalism: \u2018stabiliser tableaus\u2019 and \u2018graph states with local Cliffords\u2019 (GSLC)77,78 that the user can select. Stabiliser states are a subset of quantum states that are closed under the application of Clifford unitaries and single-qubit measurement in the computational basis. In the context of simulations for quantum networks stabiliser states are particularly interesting because many network protocols consist of only Clifford operations and noise can be well approximated by stochastic application of Pauli gates. For a theoretical comparison of the STAB and GSLC formalisms see Supplementary Note 1."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The repetitive nature of simulation runs due to the collection of statistics via random sampling allows NetSquid to take advantage of \u2018memoization\u2019 for expensive quantum operations, which is a form of caching that stores the outcome of expensive operations and returns them when the same input combinations reoccur to save computation time. Speci\ufb01cally, the action of a quantum operator onto a quantum state for a speci\ufb01c set of qubit indices and other discrete parameters can be ef\ufb01ciently stored, for instance as a sparse matrix. Future matching operator actions can then be reduced to a fast lookup and application, avoiding several expensive computational steps\u2014see the Methods, section \u2018Qubits and quantum computation\u2019 for more details."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the In the following we benchmark the performance of available quantum state formalisms. For this, we \ufb01rst consider the generation of an n qubit entangled GHZ state followed by a measurement of each qubit (see section \u2018Benchmarking\u2019 of the Methods). For a baseline comparison with classical quantum computing simulators we also include the ProjectQ79 package for Python, which uses a quantum state representation equivalent to our ket vector. We show the average computation time for a single run versus the number of qubits for the different quantum computation libraries in Fig. 8a. The exponential scaling of the universal formalisms in contrast to the stabiliser formalisms is clearly visible, with the density matrix formalism performing noticeably worse. For the ket formalism we also show the effect of memoization, which gives a speed-up roughly between two and \ufb01ve."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Let us next consider a more involved benchmarking use case: the quantum computation involved in simulating a repeater chain i.e. only the manipulation of qubits, postponing all other simulation aspects, such as event processing and component modelling, to the next section. This benchmark involves the following steps: \ufb01rst the N \u2212 1 pairs of qubits along an N node repeater chain are entangled, then each qubit experiences depolarising noise, and \ufb01nally adjacent qubits on all but the end-nodes do an entanglement swap via a Bell state measurement (BSM). If from their shared quantum states after the BSM, then the size of any state is limited to four qubits."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the measured qubits are split"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The average computation time for a single run versus the number of qubits in the chain are shown for the different quantum computation libraries in Fig. 8b, where we have again included ProjectQ. We observe that for the NetSquid formalisms for ProjectQ) keeping qubits \u2018in-place\u2019 after each (but not measurement is more performant than \u2018splitting\u2019 them below a certain threshold due to the extra overhead of doing the latter."
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 9 Runtime pro\ufb01le of a repeater chain simulation using Netsquid. Runtime pro\ufb01le for a repeater chain simulation with a varying number of nodes in the chain. The maximum quantum state size is four qubits. The total time spent in the functions of each NetSquid subpackage and its main package dependencies (in italics) is shown. The dark hatched bands show the largest contribution from a single function in each NetSquid sub- package, as well as in NumPy and uncategorised (other) functions. The sub- packages are stacked in the same order as they are listed in the legend."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "The ket vector formalism is seen to be the most ef\ufb01cient for this benchmarking use case if states are split after measurement. When the measurement operations are performed in-place the GSLC formalism performs the best beyond 15 qubits."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Benchmarking of event-driven simulations. As explained in the results section, a typical NetSquid simulation involves repeatedly sampling many independent runs. As such NetSquid is \u2018embar- rassingly parallelisable\u2019: the reduction in runtime scales linearly with the number of processing cores available, assuming there is suf\ufb01cient memory available. Nonetheless, given the computa- tional requirements associated with collecting suf\ufb01cient statistics and analysing large parameter spaces it remains crucial to opti- mise the runtime performance per core."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Depending on the size of the network, the detail of the physical modelling, and the duration of the protocols under consideration, the number of events processed for a single simulation run can range anywhere from a few thousand to millions. To ef\ufb01ciently process the dynamic scheduling and handling of events NetSquid simulation engine PyDynAA80 (see uses section \u2018Discrete event simulation\u2019 of the Methods). NetSquid aims to schedule events as economically as possible, for instance by streamlining the \ufb02ow of signals and messages between components using inter-connecting ports."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the discrete-event"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "To benchmark the performance of an event-driven simulation run in NetSquid we consider a simple network that extends the single repeater (without distillation) shown in Fig. 1 into an N node chain\u2014see Supplementary Note 2 for further details on the simulation setup. For the quantum computation we will use the ket vector formalism based on the benchmarking results from the previous section, and split qubits from their quantum states after measurement to avoid an exponential scaling with the number of nodes. In Fig. 9 we show the average computation time for deterministically generating end-to-end entanglement versus the number of nodes in the chain. Also shown is a relative breakdown in terms of the time spent in the NetSquid sub-packages involved, as well as the PyDynAA and NumPy packages. We observe that the biggest contribution to the simulation runtime is the components sub-package, which accounts for 30% of the total at 1000 nodes. The relative time spent in each of the NetSquid sub-packages, as well as NumPy and PyDynAA, is seen to remain"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "9"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "NetSquid, which achieves this by managing the size of the state space, and providing the stabiliser representation as one of its quantum state formalisms, QuISP\u2019s approach is to track an error model of the qubits in a network instead of their quantum state. qkdX, on the other hand, captures the physics more closely through models of the quantum devices but is restricted to the simulation of quantum key distribution protocols. Lastly, SeQUeNCe, similar to NetSquid, aims at simulation at the level of hardware, control plane or application. It has a \ufb01xed control layer consisting of In contrast, NetSquid\u2019s modularity is not tied to a particular network stack to us how performant is unclear design. Furthermore, SeQUeNCe\u2019s quantum simulation engine is: currently, at most a 9-node network has been simulated, whereas NetSquid\u2019s \ufb02exibility to choose a quantum state representation enables scalability to simulation of networks of up to 1000 nodes."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "reprogrammable modules."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "it"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Conclusions. In this work we have presented our design of a modular software framework for simulating scalable quantum networks and accurately modelling the non-idealities of real world physical hardware, providing us with a design tool for future quantum networks. We have showcased its power and also its limitations via example use cases. Let us recap NetSquid\u2019s main features."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "First, NetSquid allows the modelling of any physical device in the network that can be mapped to qubits. To demonstrate this we studied two use cases involving nitrogen-vacancy centres in diamond as well as atomic-ensemble based memories."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Second, NetSquid is entirely modular, allowing users to set up large scale simulations of complicated networks and to explore variations in the network design; for example, by comparing how different hardware platforms perform in an otherwise identical network layout. Moreover, this modularity makes it possible to explore different control plane protocols for quantum networks in a way that is essentially identical to how such protocols would be executed in the real world. Control programmes can be run on any simulated network node, exchanging classical and quantum communication with other nodes as dictated by the protocol. That allows users to investigate the intricate interplay between control plane protocols and the physical devices dictating the performance of the combined quantum network system. As an example, we studied the control plane of a quantum network switch. NetSquid has also already found use in exploring the interplay between the control plane and the physical layer in39,87,88. Finally,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the quantum computation library used by NetSquid has been designed to manage the dynamic lifetimes of many qubits across a network. It offers a seamless choice of quantum state representations to support different modelling use cases, allowing both a fully detailed simulation in terms of wave functions or density matrices, or simpli\ufb01ed ones using certain stabiliser formalisms. As an example use case, we explored the simulation run-time of a repeater chain with up to one thousand nodes."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "to allow large scale"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "simulations,"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In light of the results we have presented, we see a clear application for NetSquid in the broad context of communication networks. It can be used to predict performance with accurate models, to study the stability of large networks, to validate protocol designs, to guide experiment, etc. While we have only touched upon it in our discussion of performance benchmarks, NetSquid would also lend itself well to the study of modular quantum computing architectures, where the timing of control plays a crucial role in studying their scalability. For instance, it might be used to validate the microarchitecture of distributed"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "Fig. 10 Overview of NetSquid\u2019s software architecture. The sub-packages that make up the NetSquid package are shown stacked in relation to each other and the PyDynAA package dependency. The main classes in each (sub-)package are highlighted, and their relationships in terms of inheritance, composition and aggregation are shown. Also shown are the key modules users interact with, which are described in the main text. In this paper NetSquid version 0.10 is described."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "constant with the number of nodes. The total runtime of each of the NetSquid sub-packages is the sum of many small contribu- tions, with the costliest function for the components sub-package for a 1000 node chain, for example, contributing only 7% to the total."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Extending this benchmark simulation with more detailed physical modelling may shift the relative runtime distribution and impact the overall performance. For example, more time may be spent in calls to the \u2018components\u2019 and \u2018components.models\u2019 sub- packages, additional complexity can increase the volume of events processed by the \u2018pydynaa\u2019 engine, and extra quantum character- istics can lead to larger quantum states. In case of the latter, however, the effective splitting of quantum states can still allow such networks to scale if independence among physical elements can be preserved."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Comparison with other quantum network simulators. Let us compare NetSquid to other existing quantum network simulators. First, SimulaQron81 and QuNetSim82 are two simulators that do not aim at realistic physical models of channels and devices, or timing control. Instead, SimulaQron\u2019s main purpose is applica- tion development. It is meant to be run in a distributed fashion on physically-distinct classical computers. QuNetSim focuses on simplifying the development and implementation of quantum network protocols."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "In contrast with SimulaQron and QuNetSim, the simulator SQUANCH83 allows for quantum network simulation with con\ufb01gurable error models at layer. However, SQUANCH, similar to SimulaQron and QuNetSim, does not use a simulation engine that can accurately track time. Accurate tracking is crucial for e.g. studying time-dependent noise such as memory decoherence."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "the physical"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Other than NetSquid, there now exist three discrete-event"
+                },
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "quantum simulators: the QuISP84, qkdX85 and SeQUeNCe86"
+                },
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "simulators. With these simulators it is possible to accurately characterise complex timing behaviour, however they differ in goals and scope. Similarly to NetSquid, QuISP aims to support the investigation of large networks that consist of too many entangled qubits for full quantum-state tracking. In contrast to"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "10"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "quantum computers or more generally to simulate different components in modular architectures."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Methods"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Design and functionality of NetSquid. The NetSquid simulator is available as a software package for the Python 3 programming language. It consists of the sub- packages \u2018qubits\u2019, \u2018components\u2019, \u2018models\u2019, \u2018nodes\u2019, \u2018protocols\u2019 and \u2018util\u2019, which are shown stacked in Fig. 10. NetSquid depends on the PyDynAA software library to provide its discrete-event simulation engine80. Under the hood speed critical routines and classes are written in Cython89 to give C-like performance, including its interfaces to both PyDynAA and the scienti\ufb01c computation packages NumPy and SciPy. In the following subsections we highlight some of the main design features and functionality of NetSquid; for a more detailed presentation see Sup- plementary Note 1."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Discrete event simulation. The PyDynAA package provides a fast, powerful, and lightweight discrete-event simulation engine. It is a C++ port of the core engine layer from the DynAA simulation framework80, with bindings added for the Python and Cython languages. DynAA de\ufb01nes a concise set of classes and concepts for modelling event-driven simulations. The simulation engine manages a timeline of \u2018events\u2019, which can only be manipulated by objects that are sub-classes of the \u2018entity\u2019 base class. Simulation entities can dynamically schedule events on the timeline and react to events by registering an \u2018event handler\u2019 object to wait for event(s) with a speci\ufb01ed type, source entity, or identi\ufb01er to be triggered."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "To deal with the timing complexities encountered in NetSquid simulations, an \u2018event expression\u2019 class was introduced to PyDynAA to allow entities to also wait on logical combinations of events to occur. Atomic event expressions, which describe regular wait conditions for standard events, can be combined to form composite expressions using logical \u2018and\u2019 and \u2018or\u2019 operators to any depth. This feature has been used extensively in NetSquid to model both the internal behaviour of hardware components, as well as for programming network protocols."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Qubits and quantum computation. The qubits sub-package of NetSquid de\ufb01nes the \u2018qubit\u2019 object that is used to track the \ufb02ow of quantum information. Qubits internally share quantum state (\u2018QState\u2019) objects, which grow and shrink in size as qubits interact or are measured. The \u2018QState\u2019 class is an interface that is imple- mented by a range of different formalisms, as presented in section \u2018Benchmarking of quantum computation\u2019 of the Results and Discussion. Via the qubit-centric API, which provides functions to directly manipulate qubits without knowledge of their shared quantum states, users can programme simulations in a formalism agnostic way. Functionality is also provided to automatically convert between quantum states that use different formalisms, and to sample from a distribution of states, which is useful for instance for pure state formalisms."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The ket and density matrix formalisms use dense arrays (vectors or matrices, respectively) to represent quantum states. Applying a k qubit operator to an n qubit ket vector state generally involves the computationally expensive task of performing 2n\u2212k matrix multiplications on 2k temporary sub-vectors and aggregating the result (only in special cases can this be done in-place)90,91. The analogous application of an operator to a density matrix is more expensive due to the extra dimension involved. However, as discussed in section \u2018Fast and scalable quantum network simulation\u2019 of the Results and Discussion, the repetitive nature of NetSquid simulations allows us to take advantage of operators frequently being applied to the same qubit indices for states of a given size. For these operators, we compute a 2n \u00d7 2n dimensional sparse matrix representation of the k qubit operator via tensor products with the identity and memoize this result for the speci\ufb01c indices and size. When the memoization is applicable the computational cost of applying a quantum operator can then be reduced to just sparse matrix multiplication onto a dense vector or matrix. Memoization is similarly applicable to general Clifford operators in the stabiliser tableau formalism. To use memoization on operators that depend on a continuous parameter, such as arbitrary rotations, the parameter can be discretised i.e. rounded to some limited precision."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Physical modelling of network components. All physical devices in a quantum network are modelled by a \u2018component\u2019 object, and are thereby also all simulation entities, as shown in Fig. 10. Components can be composed of subcomponents, which makes setting up networks in NetSquid modular. The network itself, for instance, can be modelled as a composite component containing \u2018node\u2019 and \u2018connection\u2019 components; these composite components can in turn contain com- ponents such as quantum memories, quantum and classical channels, quantum sources, etc., as illustrated in Fig. 1. The physical behaviour of a component is described by composing it of \u2018models\u2019, which can specify physical characteristics such as transmission delays or noise such as photon loss or decoherence. Com- munication between components is facilitated by their \u2018ports\u2019, which can be con- nected together to automatically pass on messages."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "NetSquid also allows precise modelling of quantum computation capable devices. For this it provides the \u2018quantum processor\u2019 component, a subclass of the quantum memory. This component is capable of executing \u2018quantum programmes\u2019 i.e. sequences of \u2018instructions\u2019 that describe operations such as quantum gates and measurements or physical processes such as photon emission. Quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "programmes fully support conditional and iterative statements, as well as parallelisation if the modelled device supports it. When a programme is executed its instructions are mapped to the physical instructions on the processor, which model the physical duration and errors associated to carrying out the operation. A physical instruction can be assigned to all memory positions or only to a speci\ufb01c position, as well as directionally between speci\ufb01c memory positions in the case of multi-qubit instructions."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Asynchronous framework for programming protocols. NetSquid provides a \u2018proto- col\u2019 class to describe the network protocols and classical control plane logic run- ning on a quantum network. Similarly to the component class, a protocol is a simulation entity and can thereby directly interact with the event timeline. Pro- tocols can be nested inside other protocols and may describe both local or remote behaviour across a network. The \u2018node protocol\u2019 subclass is speci\ufb01cally restricted to only operating locally on a single node. Inter-protocol communication is possible via a signalling mechanism and a request and response interface de\ufb01ned by the \u2018service protocol\u2019 class. Protocols can be programmed using both the standard callback functionality of PyDynAA and a tailored asynchronous framework that allows the suspension of a routine conditioned on an \u2018event expression\u2019; for example, to wait for input to arrive on a port, a quantum programme to \ufb01nish, or to pause for a \ufb01xed duration."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The \u2018util\u2019 sub-package shown in Fig. 10 provides a range of utilities for running, recording and interacting with simulations. Functions to control the simulation are de\ufb01ned in the \u2018simtools\u2019 module, including functions for inspecting and diagnosing the timeline. A \u2018data collector\u2019 class supports the event-driven collection of data during a simulation, which has priority over other event handlers to react to events. The \u2018simstats\u2019 module is responsible for collecting a range of statistics during a simulation run, such as the number of events and callbacks processed, the maximum and average size of manipulated quantum states, and a count of all the quantum operations performed. Finally, the \u2018simlog\u2019 module allows \ufb01ne grained logging of the various modules for debugging purposes."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Benchmarking. To perform the benchmarking described in section \u2018Fast and scalable quantum network simulation\u2019 of the Results and Discussion we used computing nodes with two 2.6 GHz Intel Xeon E5-2690 v3 (Haswell) 12 core processors and 64 GB of memory. Because each process only requires a single core, care was taken to ensure suf\ufb01cient cores and memory were available when running jobs in parallel. The computation time of a process is the arithmetic average of a number of successive iterations; to avoid \ufb02uctuations due to interfering CPU processes the reported time is a minimum of \ufb01ve such repeated averages. To perform the simulation pro\ufb01ling the Cython extension modules of both NetSquid and PyDynAA were compiled with pro\ufb01ling on, which adds some runtime over- head. Version 0.10.0 and 0.3.5 of NetSquid and PyDynAA were benchmarked. We benchmarked against ProjectQ version 0.4.2 using its \u2018MainEngine\u2019 backend. See Supplementary Note 2 for further details."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Using the same machine, simulations for Fig. 5b, c were run, which took almost 260 core hours wallclock time in total, while simulations for Fig. 7 took roughly 625 core hours. For Fig. 4 (\u224810 h in total), Fig. 5(a) (\u224890 min) and Fig. 6 (\u224830 min), a single core Intel Xeon Gold 6230 processor (3.9 GHz) with 192 GB RAM was used."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Implementing a processing-node repeater chain in NetSquid. Here, we explain the details of the most complex of our three use cases, namely the repeater chain of Nitrogen-Vacancy-based processing nodes from section \u2018Sensitivity analysis for the physical modelling of a long range repeater chain\u2019 of the Results and Discussion (see Supplementary Notes 3 and 7 for details on the other two use cases). We \ufb01rst describe how we modelled the NV hardware, followed by the repeater protocols used. With regard to the physical modelling, let us emphasise that this is well established (see e.g.92); the main goal here is to explain how we used this model in a NetSquid implementation."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "In our simulations the following NetSquid components model the physical repeater chain: \u2018nodes\u2019, each holding a single \u2018quantum processor\u2019 modelling the NV centre, and \u2018classical channels\u2019 that connect adjacent nodes and are modelled as \ufb01bres with a constant transmission time. We choose equal spacing between the nodes. If we were to simulate individual attempts at entanglement generation, we would also need components for transmitting and detecting qubits such as was used in previous NetSquid simulations of NV centres39. However, in order to speed up simulations we insert the entangled state between remote NVs using a model. We designed two types of protocols to run on each node of this network that differ in whether they implement a scheme with or without distillation."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "In the remainder of this section, we describe the components modelling. More"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "detailed descriptions of the hardware parameters and their values used in our simulation can be found in Supplementary Note 4."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Modelling a nitrogen-vacancy centre in diamond. In NetSquid, the NV centre is modelled by a quantum processor component, which holds a single communica- tion qubit (electronic spin-1 system) and multiple storage qubits (13C nuclear spins). The decay of the state held by a communication qubit or storage qubit is implemented using a noise model, which is based on the relaxation time T1 and the dephasing time T2. If a spin is acted upon after having been idle for time \u0394t, then to"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "11"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "its state \u03c1 we \ufb01rst apply a quantum channel"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "\u03c1 7! E0"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "\u03c1Ey"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "0 \u00fe E1"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "\u03c1Ey 1"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "E0 \u00bc 0j i 0h j \u00fe"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03 1 (cid:2) p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1j i 1h j; E1 \u00bc"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03 p p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0j i 1h j"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "and p \u00bc 1 (cid:2) e(cid:2)\u0394t=T1 . Subsequently, we apply a dephasing channel"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "N deph p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": ": \u03c1 7! \u00f01 (cid:2) p\u00de\u03c1 \u00fe pZ\u03c1Z"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00f01\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where Z \u00bc 0j i 0h j (cid:2) 1j i 1h j and the dephasing probability equals (cid:3)"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p \u00bc"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1 (cid:2) e(cid:2)\u0394t=T 2 (cid:3) e"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "\u0394t=\u00f02T 1\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1 2"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:4) :"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The electron and nuclear spins have different T1 and T2 times. We allow the quantum processor to perform the following operations on the electron spin: initialisation (setting the state to 0j i), readout (measurement in the f 0j i; 1j ig basis) and arbitrary single-qubit rotation. In particular, the latter includes Pauli rotations"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "RP\u00f0\u03b8\u00de \u00bc cos\u00f0\u03b8=2\u00de112 (cid:2) isin\u00f0\u03b8=2\u00deP"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00f02\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where \u03b8 is the rotation angle, P \u2208 {X, Y, Z} and 112 \u00bc 0j i 0h j \u00fe 1j i 1h j, X \u00bc 0j i 1h j \u00fe 1j i 0h j, Y \u00bc (cid:2)i 0j i 1h j \u00fe i 1j i 0h j and Z \u00bc 0j i 0h j (cid:2) 1j i 1h j are the single- qubit Pauli operators."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "For the nuclear spin, we have only initialisation and rotations RZ(\u03b8) for arbitrary rotation angle \u03b8. In addition, we allow the two-qubit controlled-RX( \u00b1 \u03b8) gate between an electron (e) and a nuclear (n) spin:"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "0j i 0h je (cid:4) RX \u00f0\u03b8\u00den \u00fe 1j i 1h je (cid:4) RX \u00f0(cid:2)\u03b8\u00den"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": ":"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "We model each noisy operation Onoisy as the perfect operation Operfect followed"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "by a noise channel N :"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "Onoisy \u00bc N (cid:5) Operfect"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": ":"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "If O is a single-qubit rotation, then N is the depolarising channel:"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "N depol p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:5) : \u03c1 7! 1 (cid:2)"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:6)"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "3p 4"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u03c1 \u00fe"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "X\u03c1X \u00fe Y\u03c1Y \u00fe Z\u03c1Z"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:8)"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:7)"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p 4"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00f03\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "with parameter p = 4(1 \u2212 F)/3 with F the \ufb01delity of the operation."
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "If O is single-qubit initialisation, N \u00bc N depol"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "with parameter p = 2(1 \u2212 F). The"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "noise map of the controlled-RX gate is an identical single-qubit depolarising"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "channel on both involved qubits, i.e. N \u00bc N depol"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "."
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "(cid:4) N depol p"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Finally, we model electron spin readout by a POVM measurement with the"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Kraus operators"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "M0 \u00bc"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03\ufb03\ufb03"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "f 0"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0 \ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "1 (cid:2) f 1"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "!"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "; M1 \u00bc"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "1 (cid:2) f 0"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "!"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0 \ufb03\ufb03\ufb03\ufb03\ufb03 p"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "f 1"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00f04\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where 1 \u2212 f0 (1 \u2212 f1) is the probability that a measurement outcome 0 (1) is \ufb02ipped to 1 (0)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Simulation speedup via state insertion. For generating entanglement between the electron spins of two remote NVs, we simulate a scheme based on single-photon detection, following its experimental implementation in93. NetSquid was used previously to simulate each generation attempt of this scheme, which includes the emission of a single photon by each NV, the transmission of the photons to the midpoint through a noisy and lossy channel, the application of imperfect mea- surement operators at the midpoint, and the transmission of the measurement outcome back to the two involved nodes39. For larger internode distances, simu- lating each attempt requires unfeasibly long simulation times due to the expo- nential decrease in attempt success rate. To speed up our simulations in the examples studied here, we generate the produced state between adjacent nodes from a model which has shown good agreement with experimental results93. This procedure includes a random duration and noise induced on the storage qubits, as we describe below. Let us de\ufb01ne"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:9)"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p00 \u00bc \u03b12 2pdet\u00f01 (cid:2) pdet\u00de\u00f01 (cid:2) pdc\u00de"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "\u00fe 2pdc\u00f01 (cid:2) pdc\u00de\u00f01 (cid:2) pdet\u00de2"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1 2"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "\u00fep2"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00f01 \u00fe V\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "det \u00f01 (cid:2) pdc\u00de (cid:3) (cid:9)"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p10 \u00bc \u03b1\u00f01 (cid:2) \u03b1\u00de (cid:3) \u00f01 (cid:2) pdc\u00de (cid:3) pdet"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:11) \u00fe2pdc\u00f01 (cid:2) pdc\u00de\u00f01 (cid:2) pdet\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(cid:10)"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p01 \u00bc p01 p11 \u00bc \u00f01 (cid:2) \u03b1\u00de2 (cid:3) pdc"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where pdet is the detection probability, pdc the dark count probability, V denotes photon indistinguishability and \u03b1 is the bright-state parameter (see Supplementary Note 4 for parameter descriptions). We follow the model of the produced"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "entangled state from the experimental work of 93, whose setup consists of a beam splitter with two detectors located between the two adjacent nodes. In their model, the unnormalised state is given by"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u03c1 \u00bc"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "B B B @"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p00"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0 0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p01"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "Vp01p10"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00b1"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00b1"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0 \ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "Vp01p10 p10"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "C C C A"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "0"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "p11"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where \u00b1 denotes which of the two detectors detected a photon (each occurring with 2). We also follow the model of93 for double-excitation noise and optical"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "probability 1"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "phase uncertainty, by applying a dephasing channel to both qubits with parameter p = pdexc/2, followed by a dephasing channel of one of the qubits, respectively."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The success probability of a single attempt is"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "psucc \u00bc p00 \u00fe p01 \u00fe p10 \u00fe p11"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": ":"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The time elapsed until the fresh state is put on the electron spins is (k \u2212 1)\u22c5\u0394t"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "with \u0394t \u2254 (temission"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "+ L/c), where temission is the delay until the NV centre emits a photon, L the internode distance and c the speed of light in \ufb01bre. Here, k is the number of attempts up to and including successful entanglement generation and is computed by drawing a random sample from the geometric distribution Pr\u00f0k\u00de \u00bc psucc (cid:3) \u00f01 (cid:2) psucc\u00dek(cid:2)1. After the successful generation, we wait for another time \u0394t to mimic the photon travel delay and midpoint heralding message delay. Every entanglement generation attempt induces dephasing noise on the storage qubits in the same NV system. We apply the dephasing channel (eq. (1)) at the end of the successful entanglement generation, where the accumulated dephasing probability is"
+                }
+            ],
+            [
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "1 (cid:2) \u00f01 (cid:2) 2psingle\u00dek"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "2"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00f05\u00de"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "where psingle is the single-attempt dephasing probability (see eq. 46 in Supplementary Note 4)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "How we choose improved hardware parameters. Here, we explain how we choose \u2018improved\u2019 hardware parameters. Let us emphasise that this choice is independent of the setup of our NetSquid simulations and only serves the purpose of showcasing that NetSquid can assess the performance of hardware with a given quality."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "By \u2018near-term\u2019 hardware, we mean values for the above de\ufb01ned parameters as expected to be achieved in the near future by NV hardware. If we say that an error probability is improved by an improvement factor k, we mean that its corresponding no-error probability equals probability of the near-term hardware. For example, visibility V is improved as \ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03 1 (cid:2) p while the probability of dephasing p of a gate is improved as 1 (cid:2) k = 1 thus corresponds to \u2018near-term\u2019 hardware. By \u2018uniform hardware improvement by k\u2019, we mean that all hardware parameters are improved by a factor k. We do not improve the duration of local operations or the \ufb01bre attenuation. The near-term parameter values as well as the individual improvement functions for each parameter can be found in Supplementary Note 4."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03\ufb03 p"
+                },
+                {
+                    "font_size": 4,
+                    "bold": false,
+                    "text": "Vk"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": ". A factor"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": ", where pne is the no-error"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\ufb03\ufb03\ufb03\ufb03\ufb03\ufb03"
+                },
+                {
+                    "font_size": 5,
+                    "bold": false,
+                    "text": "pne"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "p"
+                }
+            ],
+            [
+                {
+                    "font_size": 4,
+                    "bold": false,
+                    "text": "k"
+                }
+            ],
+            [
+                {
+                    "font_size": 4,
+                    "bold": false,
+                    "text": "k"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "NV repeater chain protocols. For the NV repeater chain, we simulated two proto- cols: SWAP-ASAP and NESTED-WITH-DISTILL. Both protocols are composed of \ufb01ve building blocks: ENTGEN, STORE, RETRIEVE, DISTILL and SWAP. By ENTGEN, we denote the simulation of the entanglement generation protocol based on the description in the previous subsection: two nodes wait until a classical message signals that their respective electron spins hold an entangled pair. In reality, such functionality would be achieved by a link layer protocol39. STORE is the mapping of the electron spin state onto a free nuclear spin, and RETRIEVE is the reverse operation. The DISTILL block implements entanglement distillation between two remote NVs for probabilistically improving the quality of entangle- ment between two nuclear spins (one at each NV), at the cost of reading out entanglement between the two electron spins. It consists of local operations fol- lowed by classical communication to determine whether distillation succeeded. The entanglement swap (SWAP) converts two short-distance entangled qubit pairs A \u2212 M and M \u2212 B into a single long-distance one A \u2212 B, where A, B and M are nodes. It consists of local operations at M, including spin readout, and commu- nicating the measurement outcomes to A and B, followed by A and B updating their knowledge of the precise state A \u2212 B they hold in the perfect case. We opt for such tracking as opposed to applying a correction operator to bring A \u2212 B back to a canonical state since the correction operator generally cannot be applied to the nuclear spins directly. Details of the tracking are given in Supplementary Note 6. The circuit implementations for the building blocks, \u2018quantum programmes\u2019 in NetSquid, are given in Supplementary Note 5."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Let us explain the SWAP-ASAP and NESTED-WITH-DISTILL protocols in spirit; the exact protocols run asynchronously on each node and can be found in Supplementary Note 5. In the SWAP-ASAP protocol, a repeater node performs ENTGEN with both its neighbours, followed by SWAP as soon as it holds the two entangled pairs. Next, NESTED-WITH-DISTILL is a nested protocol on 2n + 1 nodes (integer n \u2265 0) with distillation at each nesting level which is based on the"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "12"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "BDCZ protocol9. For nesting level n = 0, there are no repeaters and the two nodes only perform ENTGEN once. For nesting level n > 0, the chain is divided into a left part and a right part of 2n\u22121 + 1 nodes, and the middle node (included in both parts) in the chain generates twice an entangled pair with the left end node following the (n \u2212 1)-level protocol; STORE is applied in between to free the electron spin. Subsequently, DISTILL is performed with the two pairs as input (restart if distillation fails), after which the same procedure is performed on the right. Once the right part has \ufb01nished, the middle node performs SWAP to connect the end nodes. If needed, STORE and RETRIEVE are applied prior to DISTILL and SWAP in order achieve the desired con\ufb01guration of qubits in the quantum processor, e.g. for DISTILL to ensure that the two involved NVs hold an electron\u2013electron and nuclear\u2013nuclear pair of qubits, instead of electron-nuclear for both entangled pairs."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Data availability"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The data presented in this paper have been made available at https://doi.org/10.34894/ URV16994."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Code availability"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The NetSquid-based simulation code that was used for the simulations in this paper has been made available at https://doi.org/10.34894/DU3FTS95."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Received: 23 December 2020; Accepted: 20 May 2021;"
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": true,
+                    "text": "References"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "1. Van Meter, R. & Devitt, S. J. The path to scalable distributed quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "2."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "computing. Computer 49, 31\u201342 (2016). Lekitsch, B. et al. Blueprint for a microwave trapped ion quantum computer. Sci. Adv. 3, e1601540 (2017)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "3. Monroe, C. et al. Large-scale modular quantum-computer architecture with atomic memory and photonic interconnects. Phys. Rev. A 89, 022317 (2014). Stephens, A. M. et al. Deterministic optical quantum computer using photonic modules. Phys. Rev. A 78, 032318 (2008)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "4."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "5. Wehner, S., Elkouss, D. & Hanson, R. Quantum internet: a vision for the road"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "ahead. Science 362 https://science.sciencemag.org/content/362/6412/ eaam9288. https://science.sciencemag.org/content/362/6412/eaam9288.full. pdf (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "6. Munro, W. J., Azuma, K., Tamaki, K. & Nemoto, K. Inside quantum repeaters."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "IEEE J. Selec. Top. Quantum Electron. 21, 78\u201390 (2015)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "7. Muralidharan, S. et al. Optimal architectures for long distance quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "communication. Sci. Rep. 6, 20463 https://doi.org/10.1038/srep20463 EP\u2014 (2016)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "8. Gisin, N. & Thew, R. Quantum communication. Nat. Photon. 1, 165 https://"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "doi.org/10.1038/nphoton.2007.22. EP\u2014(2007). Briegel, H.-J., D\u00fcr, W., Cirac, J. I. & Zoller, P. Quantum repeaters: the role of imperfect local operations in quantum communication. Phys. Rev. Lett. 81, 5932\u20135935 (1998)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "9."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "10. D\u00fcr, W., Briegel, H.-J., Cirac, J. I. & Zoller, P. Quantum repeaters based on"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "entanglement puri\ufb01cation. Phys. Rev. A 59, 169\u2013181 (1999)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "11. Duan, L.-M., Lukin, M. D., Cirac, J. I. & Zoller, P. Long-distance quantum communication with atomic ensembles and linear optics. Nature 414, 413 https://doi.org/10.1038/35106500 EP \u2013 (2001)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "12. Amirloo, J., Razavi, M. & Majedi, A. H. Quantum key distribution over probabilistic quantum repeaters. Phys. Rev. A 82, 032304 (2010)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "13. Kimiaee Asadi, F. et al. Quantum repeaters with individual rare-earth ions at"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "telecommunication wavelengths. Quantum 2, 93 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "14. Bernardes, N. K., Praxmeyer, L. & van Loock, P. Rate analysis for a hybrid"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "quantum repeater. Phys. Rev. A 83, 012323 (2011)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "15. Borregaard, J., K\u00f3m\u00e1r, P., Kessler, E. M., S\u00f8rensen, A. S. & Lukin, M. D."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Heralded quantum gates with integrated error detection in optical cavities. Phys. Rev. Lett. 114, 110502 (2015)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "16. Bruschi, D. E., Barlow, T. M., Razavi, M. & Beige, A. Repeat-until-success"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "quantum repeaters. Phys. Rev. A 90, 032306 (2014)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "17. Chen, Z.-B., Zhao, B., Chen, Y.-A., Schmiedmayer, J. & Pan, J.-W. Fault-"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "tolerant quantum repeater with atomic ensembles and linear optics. Phys. Rev. A 76, 022329 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "18. Collins, O. A., Jenkins, S. D., Kuzmich, A. & Kennedy, T. A. B. Multiplexed"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "memory-insensitive quantum repeaters. Phys. Rev. Lett. 98, 060502 (2007). 19. Guha, S. et al. Rate-loss analysis of an ef\ufb01cient quantum repeater architecture."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Phys. Rev. A 92, 022357 (2015)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "20. Hartmann, L., Kraus, B., Briegel, H.-J. & D\u00fcr, W. Role of memory errors in"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "quantum repeaters. Phys. Rev. A 75, 032310 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "21."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Jiang, L. et al. Quantum repeater with encoding. Phys. Rev. A 79, 032325 (2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "22. Nemoto, K. et al. Photonic quantum networks formed from NV-centers. Sci."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Rep. 6, 26284 https://doi.org/10.1038/srep26284 EP \u2013 (2016)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "23. Razavi, M., Piani, M. & L\u00fctkenhaus, N. Quantum repeaters with imperfect"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "memories: cost and scalability. Phys. Rev. A 80, 032301 (2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "24. Razavi, M. & Shapiro, J. H. Long-distance quantum communication with"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "neutral atoms. Phys. Rev. A 73, 042303 (2006)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "25. Simon, C. et al. Quantum repeaters with photon pair sources and multimode"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "memories. Phys. Rev. Lett. 98, 190503 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "26. Vinay, S. E. & Kok, P. Practical repeaters for ultralong-distance quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "communication. Phys. Rev. A 95, 052336 (2017)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "27. Wu, Y., Liu, J. & Simon, C. Near-term performance of quantum repeaters with imperfect ensemble-based quantum memories. Phys. Rev. A 101, 042301 (2020)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "28. Sangouard, N. et al. Long-distance entanglement distribution with single-"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "photon sources. Phys. Rev. A 76, 050301 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "29. Sangouard, N. et al. Robust and ef\ufb01cient quantum repeaters with atomic"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "ensembles and linear optics. Phys. Rev. A 77, 062301 (2008)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "30. Sangouard, N., Dubessy, R. & Simon, C. Quantum repeaters based on single"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "trapped ions. Phys. Rev. A 79, 042340 (2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "31. Abruzzo, S. et al. Quantum repeaters and quantum key distribution: analysis"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "of secret-key rates. Phys. Rev. A 87, 052315 (2013)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "32. Brask, J. B. & S\u00f8rensen, A. S. Memory imperfections in atomic-ensemble-"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "based quantum repeaters. Phys. Rev. A 78, 012350 (2008)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "33. Muralidharan, S., Kim, J., L\u00fctkenhaus, N., Lukin, M. D. & Jiang, L. Ultrafast and fault-tolerant quantum communication across long distances. Phys. Rev. Lett. 112, 250501 (2014)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "34. Pant, M., Krovi, H., Englund, D. & Guha, S. Rate-distance tradeoff and"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "resource costs for all-optical quantum repeaters. Phys. Rev. A 95, 012304 (2017)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "35. Ladd, T. D., van Loock, P., Nemoto, K., Munro, W. J. & Yamamoto, Y. Hybrid quantum repeater based on dispersive CQED interactions between matter qubits and bright coherent light. New J. Phys. 8, 184\u2013184 (2006)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "36. van Loock, P. et al. Hybrid quantum repeater using bright coherent light. Phys."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Rev. Lett. 96, 240501 (2006)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "37. Zwerger, M. et al. Quantum repeaters based on trapped ions with"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "38."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "decoherence-free subspace encoding. Quantum Sci. Technol. 2, 044001 (2017). Jiang, L., Taylor, J. M. & Lukin, M. D. Fast and robust approach to long- distance quantum communication with atomic ensembles. Phys. Rev. A 76, 012301 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "39. Dahlberg, A. et al. A link layer protocol for quantum networks. In Proceedings of the ACM Special Interest Group on Data Communication, SIGCOMM \u201919, 159\u2013173 https://doi.org/10.1145/3341302.3342070 (Association for Computing Machinery, New York, NY, USA, 2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "40. Meter, R. V. Quantum networking and internetworking. IEEE Netw. 26, 59\u201364"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2012)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "41. Aparicio, L., Van Meter, R. & Esaki, H. Protocol design for quantum repeater"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "networks. In Proceedings of the 7th Asian Internet Engineering Conference, AINTEC \u201911, 73\u201380 https://doi.org/10.1145/2089016.2089029 (Association for Computing Machinery, New York, NY, USA, 2011)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "42. Meter, R. V. & Touch, J. Designing quantum repeater networks. IEEE"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Commun. Mag. 51, 64\u201371 (2013)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "43. Meter, R. V., Ladd, T. D., Munro, W. J. & Nemoto, K. System design for a long-line quantum repeater. IEEE/ACM Trans. Netw. 17, 1002\u20131013 (2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "44. Pirker, A. & D\u00fcr, W. A quantum network stack and protocols for reliable"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "entanglement-based networks. New J. Phys. 21, 033003 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "45. Ac\u00edn, A. et al. Device-independent security of quantum cryptography against"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "collective attacks. Phys. Rev. Lett. 98, 230501 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "46. Branciard, C., Cavalcanti, E. G., Walborn, S. P., Scarani, V. & Wiseman, H. M. One-sided device-independent quantum key distribution: security, feasibility, and the connection with steering. Phys. Rev. A 85, 010301 (2012)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "47. Scarani, V. et al. The security of practical quantum key distribution. Rev. Mod."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Phys. 81, 1301\u20131350 (2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "48. Xu, F., Ma, X., Zhang, Q., Lo, H.-K. & Pan, J.-W. Secure quantum key"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "distribution with realistic devices. Rev. Mod. Phys. 92, 025002 (2020). 49. Pirandola, S. et al. Advances in quantum cryptography. Adv. Optics Photon."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "12, 1012\u20131236 (2020)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "50. Barz, S. et al. Demonstration of blind quantum computing. Science 335,"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "303\u2013308 (2012)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "51. Nickerson, N. H., Fitzsimons, J. F. & Benjamin, S. C. Freely scalable quantum technologies using cells of 5-to-50 qubits with very lossy and noisy photonic links. Phys. Rev. X 4, 041041 (2014)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "52. Lipinska, V., Murta, G. & Wehner, S. Anonymous transmission in a noisy quantum network using the w state. Phys. Rev. A 98, 052320 (2018). 53. Khabiboulline, E. T., Borregaard, J., De Greve, K. & Lukin, M. D. Optical"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "interferometry with quantum networks. Phys. Rev. Lett. 123, 070504 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "13"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "54. Shchukin, E., Schmidt, F. & van Loock, P. Waiting time in quantum repeaters with probabilistic entanglement swapping. Phys. Rev. A 100, 032322 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "55. Vinay, S. E. & Kok, P. Statistical analysis of quantum-entangled-network"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "85. Mailloux, L. O. et al. A modeling framework for studying quantum key"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "distribution system implementation nonidealities. IEEE Access 3, 110\u2013130 (2015)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "generation. Phys. Rev. A 99, 042313 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "86. Wu, X. et al. SeQUeNCe: a customizable discrete-event simulator of quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "56. Vardoyan, G., Guha, S., Nain, P. & Towsley, D. On the stochastic analysis of a quantum entanglement switch. SIGMETRICS Perform. Eval. Rev. 47, 27\u201329 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "57. Razavi, M., Thompson, K., Farmanbar, H., Piani, M. & L\u00fctkenhaus, N."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Physical and architectural considerations in quantum repeaters. In Arakawa, Y., Sasaki, M. & Sotobayashi, H. (eds.) https://doi.org/10.1117/12.811880 Quantum Communications Realized II, vol. 7236, 18\u201330. International Society for Optics and Photonics (SPIE, 2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "58. Wilde, M. M. Quantum Iinformation Theory. (Cambridge University Press, 2013). 59. Pant, M. et al. Routing entanglement in the quantum internet. npj Quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Inform. 5, 25 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "60. Kuzmin, V., Vasilyev, D., Sangouard, N., D\u00fcr, W. & Muschik, C. Scalable repeater"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "architectures for multi-party states. npj Quantum Inform. 5, 1\u20136 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "61. Khatri, S., Matyas, C. T., Siddiqui, A. U. & Dowling, J. P. Practical \ufb01gures of merit and thresholds for entanglement distribution in quantum networks. Phys. Rev. Res. 1, 023032 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "62. Varga, A. The OMNeT++ discrete event simulation system. In Proceedings of"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "the European Simulation Multiconference (ESM\u20192001) (2001)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "63. Riley, G. F. & Henderson, T. R.The ns-3 Network Simulator, 15\u201334 https://doi. org/10.1007/978-3-642-12331-3_2 (Springer Berlin Heidelberg, Berlin, Heidelberg, 2010)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "networks. arXiv:2009.12000 (2020)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "87. Lee, Y., Bersin, E., Dahlberg, A., Wehner, S. & Englund, D. A quantum router architecture for high-\ufb01delity entanglement \ufb02ows in multi-user quantum networks. arXiv:2005.01852 (2020)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "88. Kozlowski, W., Dahlberg, A. & Wehner, S. Designing a quantum network protocol. In Proceedings of the 16th International Conference on Emerging Networking EXperiments and Technologies (CoNEXT \u201920), 16 (ACM, 2020). 89. Behnel, S. et al. Cython: the best of both worlds. Comput. Sci. Eng. 13, 31\u201339"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2011)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "90. De Raedt, K. et al. Massively parallel quantum computer simulator. Comput."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Phys. Commun. 176, 121\u2013136 (2007)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "91. H\u00e4ner, T. & Steiger, D. S. 0.5 petabyte simulation of a 45-qubit quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "circuit. In Proceedings of the International Conference for High Performance Computing, Networking, Storage and Analysis, SC \u201917 https://doi.org/10.1145/ 3126908.3126947 (Association for Computing Machinery, New York, NY, USA, 2017)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "92. Rozp\u0119dek, F. et al. Near-term quantum repeater experiments with NV centers: overcoming the limitations of direct transmission. Phys. Rev. A 99, 052330 (2019)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "93. Humphreys, P. C. et al. Deterministic delivery of remote entanglement on a"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "quantum network. Nature 558, 268\u2013273 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "64. Lantz, B., Heller, B. & McKeown, N. A network in a laptop: rapid prototyping for software-de\ufb01ned networks. In Proceedings of the 9th ACM SIGCOMM Workshop on Hot Topics in Networks, 1\u20136 (2010)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "94. Coopmans, T. et al. Replication Data for: NetSquid, a discrete-event"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "simulation platform for quantum networks https://doi.org/10.34894/URV169 (2021)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "65. Fingerhuth, M., Babej, T. & Wittek, P. Open source software in quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "95. Coopmans, T. et al. Simulation Code for: NetSquid, a discrete-event"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "computing. PLOS One 13, e0208561 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "66. Netsquid website and online documentation. https://netsquid.org. Access to"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "documentation requires registration."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "67. Deutsch, D. et al. Quantum privacy ampli\ufb01cation and the security of quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "cryptography over noisy channels. Phys. Rev. Lett. 77, 2818 (1996). 68. Wehrle, K., G\u00fcnes, M. & Gross, J. Modeling and Tools for Network"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Simulation (Springer Science & Business Media, 2010)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "69. Greenberger, D. M., Horne, M. A. & Zeilinger, A. Going beyond Bell\u2019s"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "theorem. In Bell\u2019s Theorem, Quantum Theory and Conceptions of the Universe, 69-72 (Springer, 1989)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "70. Awschalom, D. D., Hanson, R., Wrachtrup, J. & Zhou, B. B. Quantum technologies with optically interfaced solid-state spins. Nat. Photon. 12, 516\u2013527 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "71. Doherty, M. W. et al. The nitrogen-vacancy colour centre in diamond. Phys."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Rep. 528, 1\u201345 (2013)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "72. Afzelius, M., Simon, C., De Riedmatten, H. & Gisin, N. Multimode quantum memory based on atomic frequency combs. Phys. Rev. A 79, 052329 (2009)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "73. Fleischhauer, M., Imamoglu, A. & Marangos, J. P. Electromagnetically"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "induced transparency: optics in coherent media. Rev. Mod. Phys. 77, 633 (2005)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "74. Lukin, M. Colloquium: trapping and manipulating photon states in atomic"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "ensembles. Rev. Mod. Phys. 75, 457 (2003)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "75. Krovi, H. et al. Practical quantum repeaters with parametric down-conversion"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "sources. Appl. Phys. B 122, 52 (2016)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "76. Bennett, C. H. & Brassard, G. Quantum cryptography: public key distribution"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "and coin tossing. Theor. Comput. Sci. 560, 7\u201311 (2014)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "77. Aaronson, S. & Gottesman, D. Improved simulation of stabilizer circuits. Phys."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Rev. A 70, 052328 (2004)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "78. Anders, S. & Briegel, H. J. Fast simulation of stabilizer circuits using a graph-"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "state representation. Phys. Rev. A 73, 022334 (2006)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "79. Steiger, D. S., H\u00e4ner, T. & Troyer, M. ProjectQ: an open source software"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "framework for quantum computing. Quantum 2, 49 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "80. de Oliveira Filho, J., Papp, Z., Djapic, R. & Oosteveen, J. Model-based design of self-adapting networked signal processing systems. In Proceedings of IEEE 7th International Conference on Self-Adaptive and Self-Organizing Systems, 41- 50 (IEEE, 2013)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "81. Dahlberg, A. & Wehner, S. SimulaQron\u2014a simulator for developing quantum"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "internet software. Quantum Sci. Technol. 4, 015001 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "82. Diadamo, S., Notzel,"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "J., Zanger B., Bese, M. M., QuNetSim: A Software"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Framework for Quantum Networks, IEEE Transactions on Quantum Engineering https://doi.org/10.1109/TQE.2021.3092395 (2021)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "83. Bartlett, B. A distributed simulation framework for quantum networks and"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "channels. arXiv:quant-ph/1808.07047 (2018)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "84. Matsuo, T. Simulation of a dynamic, RuleSet-based quantum network."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "arXiv:1908.10758 (2020)."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "simulation platform for quantum networks https://doi.org/10.34894/DU3FTS (2021)."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": true,
+                    "text": "Acknowledgements"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "This work was supported by the Dutch Research Cooperation Funds (SMO), the Eur- opean Research Council through a Starting Grant (S.W.), the QIA project (funded by European Union\u2019s Horizon 2020, Grant Agreement No. 820445) and the Netherlands Organisation for Scienti\ufb01c Research (NWO/OCW), as part of the Quantum Software Consortium programme (project number 024.003.037/3368). The authors would like to thank Francisco Ferreira da Silva, Wojciech Kozlowski and Gayane Vardoyan for critical reading of the manuscript. The authors would like to thank Gustavo Amaral, Guus Avis, Conor Bradley, Chris Elenbaas, Francisco Ferreira da Silva, Sophie Hermans, Roeland ter Hoeven, Hana Jirovsk\u00e1, Wojciech Kozlowski, Matteo Pompili, Arian Stolk and Gayane Vardoyan for useful discussions."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Author contributions"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "T.C. realised the NV repeater chain and the quantum switch simulations. R.K., L.W. realised the benchmarking simulations. D.M., J.R. realised the atomic ensembles simu- lations. R.K. and J.O. designed NetSquid\u2019s software architecture and R.K. led its software development. T.C, A.D, R.K., D.M., L.N., J.O., M.P., F.R, J.R., M.S., A.T., L.W., and S.W designed use case driven architectures, and contributed to the development of NetSquid and the modelling libraries used in the simulations. W.J., D.P., A.T. contributed to the optimal execution of simulations on computing clusters. T.C., D.E., R.K., D.M., and S.W. wrote the manuscript. All authors revised the manuscript. D.E. and S.W. conceived and supervised the project."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Competing interests"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "The authors declare no competing interests."
+                }
+            ],
+            [
+                {
+                    "font_size": 9,
+                    "bold": false,
+                    "text": "Additional information"
+                },
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Supplementary information The online version contains supplementary material available at https://doi.org/10.1038/s42005-021-00647-8."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Correspondence and requests for materials should be addressed to D.E. or S.W."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Peer review information Communications Physics thanks the anonymous reviewers for their contribution to the peer review of this work. Peer reviewer reports are available."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Reprints and permission information is available at http://www.nature.com/reprints"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Publisher\u2019s note Springer Nature remains neutral with regard to jurisdictional claims in published maps and institutional af\ufb01liations."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "14"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ]
+        ],
+        [
+            [
+                {
+                    "font_size": 8,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS | https://doi.org/10.1038/s42005-021-00647-8"
+                }
+            ],
+            [
+                {
+                    "font_size": 14,
+                    "bold": true,
+                    "text": "ARTICLE"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "Open Access This article is licensed under a Creative Commons Attribution 4.0 International License, which permits use, sharing, adaptation, distribution and reproduction in any medium or format, as long as you give appropriate credit to the original author(s) and the source, provide a link to the Creative Commons license, and indicate if changes were made. The images or other third party material in this article are included in the article\u2019s Creative Commons license, unless indicated otherwise in a credit line to the material. If material is not included in the article\u2019s Creative Commons license and your intended use is not permitted by statutory regulation or exceeds the permitted use, you will need to obtain permission directly from the copyright holder. To view a copy of this license, visit http://creativecommons.org/ licenses/by/4.0/."
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "\u00a9 The Author(s) 2021"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "COMMUNICATIONS PHYSICS |"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "(2021) 4:164  | https://doi.org/10.1038/s42005-021-00647-8 | www.nature.com/commsphys"
+                }
+            ],
+            [
+                {
+                    "font_size": 7,
+                    "bold": false,
+                    "text": "15"
+                }
+            ]
+        ]
+    ],
+    "file_name": "NetSquid.json",
+    "title": "NetSquid, a NETwork Simulator for QUantum"
+}
