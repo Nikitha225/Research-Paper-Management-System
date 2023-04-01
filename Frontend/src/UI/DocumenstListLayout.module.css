@@ -1,0 +1,8 @@
+.layout div {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-size: bold;
+}
